@@ -249,7 +249,9 @@ body:has(.home-hero) .nav-link[href="/"]::after,
 body:has(.chat-page) .nav-link[href="/chat"]::after,
 body:has(.care-page) .nav-link[href="/care"]::after,
 body:has(.learn-grid) .nav-link[href="/learn"]::after,
-body:has(.about-grid) .nav-link[href="/about"]::after {
+body:has(.learn-bento) .nav-link[href="/learn"]::after,
+body:has(.about-grid) .nav-link[href="/about"]::after,
+body:has(.about-bento) .nav-link[href="/about"]::after {
   opacity: 1;
   transform: scaleX(1);
 }
@@ -258,7 +260,9 @@ body:has(.home-hero) .nav-link[href="/"],
 body:has(.chat-page) .nav-link[href="/chat"],
 body:has(.care-page) .nav-link[href="/care"],
 body:has(.learn-grid) .nav-link[href="/learn"],
-body:has(.about-grid) .nav-link[href="/about"] {
+body:has(.learn-bento) .nav-link[href="/learn"],
+body:has(.about-grid) .nav-link[href="/about"],
+body:has(.about-bento) .nav-link[href="/about"] {
   color: var(--text-primary);
 }
 
@@ -646,10 +650,37 @@ main {
   font-size: 17px;
 }
 
-.learn-grid {
+.learn-grid,
+.learn-bento,
+.about-bento {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+.learn-bento {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.learn-bento .learn-card {
+  grid-column: span 3;
+}
+
+.learn-bento .learn-card-wide {
+  grid-column: span 6;
+}
+
+.about-bento {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.about-bento .info-card {
+  grid-column: span 3;
+}
+
+.about-bento .about-card-feature {
+  grid-column: span 6;
+  background: linear-gradient(155deg, #ffffff 0%, #d9efec 100%);
 }
 
 .learn-card,
@@ -669,7 +700,7 @@ main {
 .info-card:hover {
   transform: translateY(-3px);
   border-color: #a8c9c4;
-  box-shadow: 0 14px 32px rgba(236, 160, 180, 0.16);
+  box-shadow: 0 14px 32px rgba(13, 90, 94, 0.14);
 }
 
 .learn-number {
@@ -688,10 +719,72 @@ main {
 
 .learn-card p,
 .info-card p,
-.info-card li {
+.info-card li,
+.learn-theme-card p,
+.about-steps p {
   margin: 0;
   color: var(--text-secondary);
   font-size: 14px;
+  line-height: 1.55;
+}
+
+.learn-section {
+  margin-top: 48px;
+}
+
+.learn-section-intro {
+  max-width: 640px;
+  margin-bottom: 22px;
+}
+
+.learn-section-intro h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.learn-section-intro > p:last-child {
+  margin: 12px 0 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.learn-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.learn-theme-card {
+  padding: 22px 22px 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.learn-theme-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.learn-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.learn-prep .learn-cta-row,
+.learn-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
 }
 
 .learn-note {
@@ -710,6 +803,10 @@ main {
   gap: 16px;
 }
 
+.about-grid-tight {
+  margin-top: 48px;
+}
+
 .info-card.full-width {
   grid-column: 1 / -1;
 }
@@ -719,6 +816,37 @@ main {
   gap: 8px;
   margin: 14px 0 0;
   padding-left: 19px;
+}
+
+.about-aside {
+  margin-top: 12px !important;
+  color: var(--text-muted) !important;
+  font-size: 13px !important;
+}
+
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-steps li {
+  padding: 24px 22px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.about-steps h3 {
+  margin: 10px 0 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .emergency-card {
@@ -2429,10 +2557,19 @@ main {
 
   .learn-grid,
   .about-grid,
+  .learn-bento,
+  .about-bento,
+  .learn-theme-grid,
+  .learn-split,
+  .about-steps,
   .theme-grid {
     grid-template-columns: 1fr;
   }
 
+  .learn-bento .learn-card,
+  .learn-bento .learn-card-wide,
+  .about-bento .info-card,
+  .about-bento .about-card-feature,
   .info-card.full-width {
     grid-column: auto;
   }
