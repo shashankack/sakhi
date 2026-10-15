@@ -1,21 +1,21 @@
-# ML docs
+# ML docs (RAG)
 
-**Branch:** `ml`  
-**Owns:** `services/ml/**`, `docs/ml/**`
+**RAG owner:** Integration lead for this hackathon  
+**STT:** `services/ml/stt/**` only on `ml` branch
 
-## Goal
+## Run RAG service
 
-Local analyze service: red flags + RAG over `research/corpus` + templates (+ optional Ollama). No cloud LLM APIs.
-
-## Planned run
-
-```bash
+```powershell
 cd services/ml
 python -m venv .venv
-# Windows: .venv\Scripts\activate
-source .venv/bin/activate
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Update this file when the actual module path exists.
+BFF (`apps/api`) proxies to this at `http://127.0.0.1:8000/analyze`.
+
+## Docs
+
+- [RAG_PIPELINE.md](RAG_PIPELINE.md)
+- [LOCAL_LLM.md](LOCAL_LLM.md)

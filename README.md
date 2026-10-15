@@ -1,4 +1,4 @@
-# Saheli — PCOS Symptom Understanding (Hackathon)
+# Sakhi — PCOS Symptom Understanding (Hackathon)
 
 Non-diagnostic women’s health tool: everyday / regional-language symptoms → clear education + care guidance, grounded in local Research docs.
 
@@ -8,13 +8,7 @@ Non-diagnostic women’s health tool: everyday / regional-language symptoms → 
 
 → **[docs/README.md](docs/README.md)**
 
-| Doc | Why |
-|-----|-----|
-| [Implementation plan](docs/implementation/IMPLEMENTATION_PLAN.md) | What we build in 5 hours |
-| [Tech stack](docs/tech-stack/TECH_STACK.md) | Local-first stack + GPU notes |
-| [Repo setup](docs/git/REPO_SETUP.md) | Create remote, 5 branches, protect `main` |
-| [Ownership](docs/contracts/DIRECTORY_OWNERS.md) | Prevent merge conflicts |
-| [Master agent prompt](docs/agents/MASTER_PROMPT.md) | Paste into every coding agent |
+Teammate prompts: [docs/agents/COPY_PASTE_FOR_TEAMMATES.md](docs/agents/COPY_PASTE_FOR_TEAMMATES.md)
 
 ## Branches
 
@@ -26,11 +20,25 @@ Non-diagnostic women’s health tool: everyday / regional-language symptoms → 
 | `ml` | ML |
 | `research` | Research corpus |
 
-## Folder ownership (short)
+## Run (Integration BFF)
+
+```powershell
+npm install
+npm run dev:api
+```
+
+API: `http://127.0.0.1:3001`  
+- `POST /api/chat` (proxies ML at `:8000`, safe fallback if ML is down)  
+- `GET /health`
+
+ML (when ready on `ml` branch): run `services/ml` on port **8000**.  
+UI (when ready on `ui` branch): point chat client at `http://127.0.0.1:3001/api/chat`.
+
+## Folder ownership
 
 - `apps/web` → UI  
 - `apps/api` → Integration  
 - `services/ml` → ML  
 - `research/corpus` → Research  
 
-Details: `docs/git/CONFLICT_AVOIDANCE.md`
+Details: `docs/contracts/DIRECTORY_OWNERS.md`

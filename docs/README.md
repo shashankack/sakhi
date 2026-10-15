@@ -6,11 +6,12 @@ This folder is the **source of truth** for the hackathon. Coding agents and huma
 
 | Role | Branch | Start here |
 |------|--------|------------|
-| Everyone | — | [git/BRANCH_OWNERSHIP.md](git/BRANCH_OWNERSHIP.md), [contracts/DIRECTORY_OWNERS.md](contracts/DIRECTORY_OWNERS.md), [agents/MASTER_PROMPT.md](agents/MASTER_PROMPT.md) |
-| Research | `research` | [research/README.md](research/README.md), [agents/prompts/research-agent.md](agents/prompts/research-agent.md) |
-| UI | `ui` | [ui/README.md](ui/README.md), [agents/prompts/ui-agent.md](agents/prompts/ui-agent.md) |
-| ML | `ml` | [ml/README.md](ml/README.md), [agents/prompts/ml-agent.md](agents/prompts/ml-agent.md) |
-| Integration | `dev` | [integration/README.md](integration/README.md), [agents/prompts/integration-agent.md](agents/prompts/integration-agent.md) |
+| Everyone (first) | any | **[agents/prompts/FULL_adce_setup.md](agents/prompts/FULL_adce_setup.md)** (`npm install -g adce-cli`) |
+| Everyone | — | [agents/COPY_PASTE_FOR_TEAMMATES.md](agents/COPY_PASTE_FOR_TEAMMATES.md), [contracts/DIRECTORY_OWNERS.md](contracts/DIRECTORY_OWNERS.md) |
+| Research | `research` | **[agents/prompts/FULL_research.md](agents/prompts/FULL_research.md)** |
+| UI | `ui` | **[agents/prompts/FULL_ui.md](agents/prompts/FULL_ui.md)** |
+| ML | `ml` | **[agents/prompts/FULL_ml.md](agents/prompts/FULL_ml.md)** |
+| Integration | `dev` | **[agents/prompts/FULL_integration.md](agents/prompts/FULL_integration.md)** |
 
 ## Doc map
 
@@ -19,19 +20,19 @@ docs/
   README.md                          ← you are here
   implementation/IMPLEMENTATION_PLAN.md
   tech-stack/TECH_STACK.md
-  git/
-    REPO_SETUP.md                    ← create repo, branches, protect main
-    BRANCH_OWNERSHIP.md
-    CONFLICT_AVOIDANCE.md
-  contracts/
-    DIRECTORY_OWNERS.md              ← hard ownership boundaries
-    API_CONTRACT.md
-    THEME_IDS.md
-  agents/
-    MASTER_PROMPT.md                 ← paste into every coding agent first
-    prompts/                         ← role-specific agent prompts
+  testing/                           ← test strategy
+  git/ | contracts/ | agents/
   research/ | ui/ | ml/ | integration/
 ```
+
+## ADCE knowledge (repo root, Integration-owned)
+
+Also maintained for ADCE `software-eng` structure:
+
+- `requirements/` · `design/` · `architecture/` · `decisions/`
+- `security/` · `schemas/` · `openapi.yaml`
+
+Before edits: `adce context --task "..." --format markdown` → MUST READ → CAUTION → TRUST ORDER.
 
 ## Non‑negotiables
 

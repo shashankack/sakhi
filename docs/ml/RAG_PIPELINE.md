@@ -1,26 +1,28 @@
-# RAG pipeline
+# RAG pipeline (implemented)
 
 ```text
 message
   → language hint (en/hi/hinglish)
-  → red-flag regex / rules
-  → embed query (MiniLM, CPU)
-  → retrieve top-k chunks from research/corpus index
-  → map chunks → THEME_IDS
-  → fill response templates (reply, themes, care, sources)
-  → optional: Ollama polish of `reply` only
-  → return API_CONTRACT JSON
+  → red-flag rules
+  → TF-IDF embed query (pure NumPy — Windows-safe; no sklearn/torch required)
+  → cosine top-k over index (research/corpus ∪ seed_corpus)
+  → map theme_ids + keyword boost → THEME_IDS
+  → fill reply / themes / care / sources / disclaimer
+  → optional Ollama polish of reply only
+  → AnalyzeResponse JSON
 ```
 
-## Indexing
+## Index files (gitignored)
 
-- Rebuild index when corpus files change (script under `services/ml/`).
-- Do not commit vector DB files; gitignore `.chroma/` / `data/`.
+- `services/ml/data/index.npz`
+- `services/ml/data/chunks.json`
+
+Rebuild: `POST /reindex` or `python scripts/rebuild_index.py`
 
 ## Failure modes
 
 | Failure | Behavior |
 |---------|----------|
-| Empty retrieval | Generic educational reply + “see a clinician”; empty or low-confidence themes |
-| Ollama down | `engine: "template"` |
-| Corpus missing | Clear error to Integration; Integration serves fallback |
+| Empty corpus | Startup/reindex error; BFF uses its own fallback |
+| Weak scores | Fewer themes + clinician guidance |
+| Ollama down | `engine: template` |

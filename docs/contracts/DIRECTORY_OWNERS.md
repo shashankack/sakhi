@@ -7,7 +7,8 @@
 |------|-------|-------|
 | `apps/web/**` | UI | Entire frontend app |
 | `apps/api/**` | Integration | Public HTTP API / BFF |
-| `services/ml/**` | ML | Local RAG + analysis service |
+| `services/ml/**` (except `stt/`) | RAG (Integration lead / RAG owner) | Local RAG + `/analyze` |
+| `services/ml/stt/**` | STT teammate (`ml` branch) | Speech-to-text only — do not edit RAG code |
 | `research/corpus/**` | Research | Markdown knowledge base |
 | `scripts/**` | Integration | Run/demo scripts |
 | `docs/ui/**` | UI | |
@@ -19,7 +20,16 @@
 | `docs/implementation/**` | Integration | |
 | `docs/tech-stack/**` | Integration | |
 | `docs/agents/**` | Integration | Agent prompts |
+| `docs/testing/**` | Integration | Testing strategy |
 | `docs/README.md` | Integration | |
+| `requirements/**` | Integration | ADCE product requirements |
+| `design/**` | Integration | ADCE UX / copy intent |
+| `architecture/**` | Integration | ADCE system architecture |
+| `decisions/**` | Integration | ADRs |
+| `security/**` | Integration | Safety / policy |
+| `schemas/**` | Integration | JSON schemas |
+| `openapi.yaml` | Integration | OpenAPI surface |
+| `AGENTS.md` | Integration | ADCE agent instructions |
 | Root config & root `README.md` | Integration | See CONFLICT_AVOIDANCE.md |
 
 ## Runtime read permissions (not write)

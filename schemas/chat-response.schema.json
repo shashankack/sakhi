@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saheli.local/schemas/chat-response.schema.json",
+  "title": "ChatResponse",
+  "type": "object",
+  "required": [
+    "reply",
+    "language",
+    "themes",
+    "care",
+    "sources",
+    "red_flags",
+    "disclaimer",
+    "engine"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "reply": { "type": "string" },
+    "language": { "type": "string", "enum": ["en", "hi"] },
+    "themes": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "summary", "pcos_context", "overlap"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "cycle_irregularity",
+              "hirsutism",
+              "acne",
+              "weight_insulin",
+              "mood",
+              "hair_loss",
+              "fatigue",
+              "fertility_concerns"
+            ]
+          },
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "pcos_context": { "type": "string" },
+          "overlap": { "type": "string" }
+        }
+      }
+    },
+    "care": {
+      "type": "object",
+      "required": ["urgency", "summary", "questions"],
+      "additionalProperties": false,
+      "properties": {
+        "urgency": { "type": "string", "enum": ["routine", "soon", "urgent"] },
+        "summary": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "section"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string" },
+          "section": { "type": "string" }
+        }
+      }
+    },
+    "red_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "guidance"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "guidance": { "type": "string" }
+        }
+      }
+    },
+    "disclaimer": { "type": "string" },
+    "engine": {
+      "type": "string",
+      "enum": ["template", "local_llm", "hybrid"]
+    }
+  }
+}
