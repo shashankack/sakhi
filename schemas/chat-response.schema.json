@@ -16,7 +16,7 @@
   "additionalProperties": false,
   "properties": {
     "reply": { "type": "string" },
-    "language": { "type": "string", "enum": ["en", "hi"] },
+    "language": { "type": "string", "enum": ["en", "hi", "kn"] },
     "themes": {
       "type": "array",
       "maxItems": 4,

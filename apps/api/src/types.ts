@@ -1,6 +1,7 @@
-export type Locale = "auto" | "en" | "hi";
+export type Locale = "auto" | "en" | "hi" | "kn";
 export type Urgency = "routine" | "soon" | "urgent";
 export type Engine = "template" | "local_llm" | "hybrid";
+export type Language = "en" | "hi" | "kn";
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -40,7 +41,7 @@ export interface RedFlag {
 
 export interface ChatResponse {
   reply: string;
-  language: "en" | "hi";
+  language: Language;
   themes: ThemeCard[];
   care: CareBlock;
   sources: SourceRef[];

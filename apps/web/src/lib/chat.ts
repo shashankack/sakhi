@@ -11,7 +11,7 @@ export type ThemeId =
 export type ChatRequest = {
   message: string;
   history?: { role: "user" | "assistant"; content: string }[];
-  locale?: "auto" | "en" | "hi";
+  locale?: "auto" | "en" | "hi" | "kn";
 };
 
 export type RedFlag = {

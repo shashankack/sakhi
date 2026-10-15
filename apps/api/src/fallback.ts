@@ -1,7 +1,7 @@
-import { DISCLAIMER_EN, DISCLAIMER_HI } from "./disclaimer.js";
+import { DISCLAIMER_EN, DISCLAIMER_HI, DISCLAIMER_KN } from "./disclaimer.js";
 import { detectLanguage } from "./language.js";
 import { detectRedFlags } from "./redFlags.js";
-import type { ChatRequest, ChatResponse, ThemeCard } from "./types.js";
+import type { ChatRequest, ChatResponse, Language, ThemeCard } from "./types.js";
 
 const THEME_HINTS: {
   id: string;
@@ -96,16 +96,18 @@ const THEME_HINTS: {
   },
 ];
 
-function pickThemes(text: string, language: "en" | "hi"): ThemeCard[] {
+function pickThemes(text: string, language: Language): ThemeCard[] {
+  // Fallback theme cards: Hindi when requested; English otherwise (incl. Kannada).
+  const hi = language === "hi";
   const matched: ThemeCard[] = [];
   for (const hint of THEME_HINTS) {
     if (hint.keywords.some((k) => k.test(text))) {
       matched.push({
         id: hint.id,
-        title: language === "hi" ? hint.title_hi : hint.title_en,
-        summary: language === "hi" ? hint.summary_hi : hint.summary_en,
-        pcos_context: language === "hi" ? hint.pcos_hi : hint.pcos_en,
-        overlap: language === "hi" ? hint.overlap_hi : hint.overlap_en,
+        title: hi ? hint.title_hi : hint.title_en,
+        summary: hi ? hint.summary_hi : hint.summary_en,
+        pcos_context: hi ? hint.pcos_hi : hint.pcos_en,
+        overlap: hi ? hint.overlap_hi : hint.overlap_en,
       });
     }
     if (matched.length >= 3) break;
@@ -116,30 +118,48 @@ function pickThemes(text: string, language: "en" | "hi"): ThemeCard[] {
 /** Safe Integration fallback when ML service is unreachable. */
 export function buildFallback(req: ChatRequest): ChatResponse {
   const language =
-    req.locale === "en" || req.locale === "hi"
+    req.locale === "en" || req.locale === "hi" || req.locale === "kn"
       ? req.locale
       : detectLanguage(req.message);
 
   const red_flags = detectRedFlags(req.message, language);
   const themes = red_flags.length > 0 ? [] : pickThemes(req.message, language);
   const snippet = req.message.trim().slice(0, 100);
+  const ellipsis = req.message.length > 100 ? "…" : "";
 
-  const reply =
+  let reply: string;
+  if (language === "hi") {
+    reply = `आपने बताया: “${snippet}${ellipsis}”. यह शैक्षिक जानकारी है, निदान नहीं। ${
+      red_flags.length
+        ? "पहले तात्कालिक मार्गदर्शन देखें।"
+        : themes.length
+          ? "नीचे संबंधित शिक्षा विषय हैं।"
+          : "कृपया चिकित्सक से बात करें।"
+    } ML सेवा अभी उपलब्ध नहीं थी, इसलिए सुरक्षित फ़ॉलबैक चल रहा है।`;
+  } else if (language === "kn") {
+    reply = `ನೀವು ಹೇಳಿದ್ದು: “${snippet}${ellipsis}”. ಇದು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ, ರೋಗನಿರ್ಣಯವಲ್ಲ. ${
+      red_flags.length
+        ? "ಮೊದಲು ತುರ್ತು ಮಾರ್ಗದರ್ಶನವನ್ನು ನೋಡಿ."
+        : themes.length
+          ? "ಕೆಳಗೆ ಸಂಬಂಧಿತ ಶಿಕ್ಷಣ ವಿಷಯಗಳಿವೆ."
+          : "ದಯವಿಟ್ಟು ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ."
+    } ML ಸೇವೆ ಲಭ್ಯವಿರಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಸುರಕ್ಷಿತ ಫಾಲ್‌ಬ್ಯಾಕ್ ಬಳಸಲಾಗಿದೆ.`;
+  } else {
+    reply = `You mentioned: “${snippet}${ellipsis}”. This is educational information, not a diagnosis. ${
+      red_flags.length
+        ? "Follow the urgent guidance first."
+        : themes.length
+          ? "Related education themes are below."
+          : "Please talk with a clinician for personal advice."
+    } The ML service was unavailable, so a safe fallback is in use.`;
+  }
+
+  const disclaimer =
     language === "hi"
-      ? `आपने बताया: “${snippet}${req.message.length > 100 ? "…" : ""}”. यह शैक्षिक जानकारी है, निदान नहीं। ${
-          red_flags.length
-            ? "पहले तात्कालिक मार्गदर्शन देखें।"
-            : themes.length
-              ? "नीचे संबंधित शिक्षा विषय हैं।"
-              : "कृपया चिकित्सक से बात करें।"
-        } ML सेवा अभी उपलब्ध नहीं थी, इसलिए सुरक्षित फ़ॉलबैक चल रहा है।`
-      : `You mentioned: “${snippet}${req.message.length > 100 ? "…" : ""}”. This is educational information, not a diagnosis. ${
-          red_flags.length
-            ? "Follow the urgent guidance first."
-            : themes.length
-              ? "Related education themes are below."
-              : "Please talk with a clinician for personal advice."
-        } The ML service was unavailable, so a safe fallback is in use.`;
+      ? DISCLAIMER_HI
+      : language === "kn"
+        ? DISCLAIMER_KN
+        : DISCLAIMER_EN;
 
   return {
     reply,
@@ -151,10 +171,14 @@ export function buildFallback(req: ChatRequest): ChatResponse {
         red_flags.length > 0
           ? language === "hi"
             ? "पहले लाल-झंडा मार्गदर्शन का पालन करें।"
-            : "Follow the red-flag guidance first."
+            : language === "kn"
+              ? "ಮೊದಲು ಕೆಂಪು ಧ್ವಜ ಮಾರ್ಗದರ್ಶನವನ್ನು ಅನುಸರಿಸಿ."
+              : "Follow the red-flag guidance first."
           : language === "hi"
             ? "नियमित रूप से GP या स्त्री रोग विशेषज्ञ से बात करने पर विचार करें। ML सेवा जुड़ने पर स्रोत और विवरण बेहतर होंगे।"
-            : "Consider talking with a GP or gynecologist. Richer sources will appear when the ML service is running.",
+            : language === "kn"
+              ? "GP ಅಥವಾ ಸ್ತ್ರೀರೋಗ ತಜ್ಞರನ್ನು ನೋಡಿ. ML ಸೇವೆ ಚಾಲು ಆದಾಗ ಹೆಚ್ಚು ಮೂಲಗಳು ಕಾಣಿಸುತ್ತವೆ."
+              : "Consider talking with a GP or gynecologist. Richer sources will appear when the ML service is running.",
       questions:
         language === "hi"
           ? [
@@ -162,15 +186,21 @@ export function buildFallback(req: ChatRequest): ChatResponse {
               "थायरॉइड या अन्य कारण कैसे अलग करें?",
               "मुझे कब विशेषज्ञ के पास जाना चाहिए?",
             ]
-          : [
-              "Which evaluations make sense for my symptom pattern?",
-              "How should we rule out thyroid or other causes?",
-              "When should I see a specialist?",
-            ],
+          : language === "kn"
+            ? [
+                "ನನ್ನ ಲಕ್ಷಣಗಳಿಗೆ ಯಾವ ಪರೀಕ್ಷೆಗಳು ಸೂಕ್ತ?",
+                "ಥೈರಾಯ್ಡ್ ಅಥವಾ ಇತರ ಕಾರಣಗಳನ್ನು ಹೇಗೆ ಪ್ರತ್ಯೇಕಿಸುವುದು?",
+                "ನಾನು ಯಾವಾಗ ತಜ್ಞರನ್ನು ನೋಡಬೇಕು?",
+              ]
+            : [
+                "Which evaluations make sense for my symptom pattern?",
+                "How should we rule out thyroid or other causes?",
+                "When should I see a specialist?",
+              ],
     },
     sources: [],
     red_flags,
-    disclaimer: language === "hi" ? DISCLAIMER_HI : DISCLAIMER_EN,
+    disclaimer,
     engine: "template",
   };
 }

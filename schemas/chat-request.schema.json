@@ -26,7 +26,7 @@
     },
     "locale": {
       "type": "string",
-      "enum": ["auto", "en", "hi"],
+      "enum": ["auto", "en", "hi", "kn"],
       "default": "auto"
     }
   }

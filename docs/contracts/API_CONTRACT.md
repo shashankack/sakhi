@@ -26,7 +26,7 @@ Change this file only on `dev` via Integration after team agreement. Propose cha
 |-------|------|-------|
 | `message` | string | Required, 3–4000 chars |
 | `history` | array | Optional; last 6 turns max recommended |
-| `locale` | `"auto"` \| `"en"` \| `"hi"` | Default `"auto"` |
+| `locale` | `"auto"` \| `"en"` \| `"hi"` \| `"kn"` | Default `"auto"` |
 
 ### Response `200`
 
@@ -61,6 +61,7 @@ Change this file only on `dev` via Integration after team agreement. Propose cha
 
 | Field | Notes |
 |-------|-------|
+| `language` | `"en"` \| `"hi"` \| `"kn"` |
 | `themes[].id` | Must be in `THEME_IDS.md` |
 | `care.urgency` | `routine` \| `soon` \| `urgent` |
 | `red_flags` | Non-empty ⇒ UI shows urgency panel first |

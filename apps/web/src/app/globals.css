@@ -1048,6 +1048,52 @@ main {
   padding: 7px 12px;
 }
 
+.voice-lang-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.voice-lang-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+.voice-lang-chip {
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--plum);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.voice-lang-chip:hover:not(:disabled) {
+  border-color: #d8b4c1;
+  background: #f9dde6;
+}
+
+.voice-lang-chip.is-active {
+  border-color: transparent;
+  background: var(--plum);
+  color: #ffffff;
+}
+
+.voice-lang-chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .composer-form {
   display: flex;
   align-items: flex-end;

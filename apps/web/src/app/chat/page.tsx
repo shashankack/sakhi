@@ -39,7 +39,10 @@ import {
 import {
   getSpeechRecognitionCtor,
   speechSupported,
+  voiceBcp47,
+  VOICE_LANG_OPTIONS,
   type SpeechRecognitionLike,
+  type VoiceLocale,
 } from "@/lib/speech";
 
 type Turn = {
@@ -48,26 +51,41 @@ type Turn = {
   response: ChatResponse;
 };
 
-const demos = [
+const demos: {
+  label: string;
+  hint: string;
+  text: string;
+  voice: VoiceLocale;
+}[] = [
   {
     label: "Periods, facial hair & weight",
     hint: "Hinglish",
     text: "periods 2 mahine se nahi aaye, chehre pe baal aa rahe hain, weight badh raha hai",
+    voice: "hi",
   },
   {
     label: "Heavy bleeding & feeling faint",
     hint: "Urgent",
     text: "I have heavy bleeding soaking through pads every hour and I feel dizzy and about to faint",
+    voice: "en",
   },
   {
     label: "Acne & mood changes",
     hint: "English",
     text: "I've had more acne lately and my mood has been changing",
+    voice: "en",
   },
   {
     label: "पीरियड्स में बदलाव",
     hint: "हिन्दी",
     text: "मेरे पीरियड्स अनियमित हैं और मुझे थकान रहती है",
+    voice: "hi",
+  },
+  {
+    label: "ಅನಿಯಮಿತ ಪೀರಿಯಡ್",
+    hint: "ಕನ್ನಡ",
+    text: "ನನ್ನ ಪೀರಿಯಡ್ ಅನಿಯಮಿತವಾಗಿದೆ ಮತ್ತು ನನಗೆ ತುಂಬಾ ಆಯಾಸವಾಗುತ್ತಿದೆ",
+    voice: "kn",
   },
 ];
 
@@ -232,7 +250,11 @@ function AssistantMessage({
         <div className="assistant-text">{response.reply}</div>
         <div className="response-meta" aria-label="Response details">
           <span className="meta-pill">
-            {response.language === "hi" ? "Hindi" : "English"}
+            {response.language === "hi"
+              ? "Hindi"
+              : response.language === "kn"
+                ? "Kannada"
+                : "English"}
           </span>
           {response.engine === "hybrid" ? (
             <span className="meta-pill meta-pill-soft">Polished locally</span>
@@ -268,13 +290,20 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [voiceReady, setVoiceReady] = useState(false);
+  // Default English — hi-IN was forcing English speech into Devanagari.
+  const [voiceLocale, setVoiceLocale] = useState<VoiceLocale>("en");
   const [error, setError] = useState("");
   const threadRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const baseMessageRef = useRef("");
+  const voiceLocaleRef = useRef<VoiceLocale>("en");
   const shouldReduceMotion = useReducedMotion();
   const animationDuration = shouldReduceMotion ? 0 : 0.32;
+
+  useEffect(() => {
+    voiceLocaleRef.current = voiceLocale;
+  }, [voiceLocale]);
 
   useEffect(() => {
     setVoiceReady(speechSupported());
@@ -324,8 +353,7 @@ export default function ChatPage() {
     const recognition = new Ctor();
     recognition.continuous = true;
     recognition.interimResults = true;
-    // hi-IN covers Hindi / much Hinglish; Chrome falls back gracefully.
-    recognition.lang = "hi-IN";
+    recognition.lang = voiceBcp47(voiceLocaleRef.current);
     recognition.onresult = (event) => {
       let interim = "";
       let finalChunk = "";
@@ -379,7 +407,8 @@ export default function ChatPage() {
       const payload: ChatRequest = {
         message: trimmed,
         history: toHistory(turns),
-        locale: "auto",
+        // Prefer the mic language the user chose; otherwise auto-detect.
+        locale: voiceLocale,
       };
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -518,6 +547,7 @@ export default function ChatPage() {
                         type="button"
                         onClick={() => {
                           setMessage(demo.text);
+                          setVoiceLocale(demo.voice);
                           setError("");
                         }}
                         initial={
@@ -615,6 +645,27 @@ export default function ChatPage() {
                 </Tooltip>
               ))}
             </div>
+            {voiceReady ? (
+              <div
+                className="voice-lang-row"
+                role="group"
+                aria-label="Voice and reply language"
+              >
+                <span className="voice-lang-label">Speak in</span>
+                {VOICE_LANG_OPTIONS.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={`voice-lang-chip${voiceLocale === option.id ? " is-active" : ""}`}
+                    aria-pressed={voiceLocale === option.id}
+                    disabled={isListening}
+                    onClick={() => setVoiceLocale(option.id)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            ) : null}
             <form
               className="composer-form"
               onSubmit={submitMessage}
@@ -628,7 +679,13 @@ export default function ChatPage() {
                 onKeyDown={handleComposerKeyDown}
                 placeholder={
                   isListening
-                    ? "Listening… speak in Hindi or English"
+                    ? `Listening… speak in ${
+                        voiceLocale === "hi"
+                          ? "Hindi"
+                          : voiceLocale === "kn"
+                            ? "Kannada"
+                            : "English"
+                      }`
                     : "Write in your own words, or use the mic…"
                 }
                 rows={2}
@@ -657,7 +714,13 @@ export default function ChatPage() {
                   <TooltipContent>
                     {isListening
                       ? "Stop listening"
-                      : "Speak in Hindi / Hinglish / English"}
+                      : `Mic language: ${
+                          voiceLocale === "hi"
+                            ? "Hindi"
+                            : voiceLocale === "kn"
+                              ? "Kannada"
+                              : "English"
+                        }`}
                   </TooltipContent>
                 </Tooltip>
               ) : null}

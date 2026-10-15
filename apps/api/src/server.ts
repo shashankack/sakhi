@@ -25,7 +25,10 @@ function validateRequest(body: unknown): { ok: true; data: ChatRequest } | { ok:
     return { ok: false, error: "Please keep your description under 4000 characters." };
   }
   const locale =
-    b.locale === "en" || b.locale === "hi" || b.locale === "auto"
+    b.locale === "en" ||
+    b.locale === "hi" ||
+    b.locale === "kn" ||
+    b.locale === "auto"
       ? b.locale
       : "auto";
   const history = Array.isArray(b.history) ? b.history : undefined;

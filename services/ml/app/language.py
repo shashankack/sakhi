@@ -1,18 +1,29 @@
 import re
 
+# Devanagari (Hindi) · Kannada
+_DEVANAGARI = re.compile(r"[\u0900-\u097F]")
+_KANNADA = re.compile(r"[\u0C80-\u0CFF]")
+
+_HI_PARTICLES = re.compile(
+    r"\b(nahi|aaye|baal|mahine|chehre|raha|hain|hai|mera|meri|mujhe|bahut|thakaan|muhase|munhase)\b",
+    flags=re.I,
+)
+_KN_PARTICLES = re.compile(
+    r"\b(illa|ide|iddene|nanna|nanage|bahala|thumba|kelasa|madtide|agtide|period\s*baralla|koodalu|thoo?ka)\b",
+    flags=re.I,
+)
+
 
 def detect_language(text: str) -> str:
-    if re.search(r"[\u0900-\u097F]", text):
+    if _KANNADA.search(text):
+        return "kn"
+    if _DEVANAGARI.search(text):
         return "hi"
-    hints = re.findall(
-        r"\b(nahi|aaye|baal|mahine|chehre|thakaan|muhase|munhase|badh|raha|hai|hain|mera|meri|mujhe|bahut|periods?)\b",
-        text,
-        flags=re.I,
-    )
-    # hinglish often mixes English symptom words with Hindi particles
-    hi_particles = re.findall(
-        r"\b(nahi|aaye|baal|mahine|chehre|raha|hain|hai|mera|meri|mujhe|bahut)\b",
-        text,
-        flags=re.I,
-    )
-    return "hi" if len(hi_particles) >= 2 or len(hints) >= 4 else "en"
+
+    kn_hits = len(_KN_PARTICLES.findall(text))
+    if kn_hits >= 2:
+        return "kn"
+
+    hi_hits = len(_HI_PARTICLES.findall(text))
+    # Hinglish: Hindi particles mixed with English symptom words
+    return "hi" if hi_hits >= 2 else "en"

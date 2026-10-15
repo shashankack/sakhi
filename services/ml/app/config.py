@@ -32,16 +32,46 @@ DISCLAIMER_HI = (
     "कई लक्षण अन्य कारणों से भी हो सकते हैं — योग्य चिकित्सक से बात करें। "
     "आपात स्थिति में स्थानीय आपातकालीन सेवाओं को कॉल करें।"
 )
+DISCLAIMER_KN = (
+    "ಇದು ವೈದ್ಯಕೀಯ ರೋಗನಿರ್ಣಯವಲ್ಲ. ಸಖಿ ಕೇವಲ ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ. "
+    "ಅನೇಕ ಲಕ್ಷಣಗಳು ಇತರ ಕಾರಣಗಳಿಂದಲೂ ಆಗಬಹುದು — ಅರ್ಹ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ. "
+    "ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಸ್ಥಳೀಯ ತುರ್ತು ಸೇವೆಗಳನ್ನು ಕರೆ ಮಾಡಿ."
+)
 
+# (English, Hindi, Kannada)
 THEME_TITLES = {
-    "cycle_irregularity": ("Menstrual cycle changes", "मासिक धर्म चक्र में बदलाव"),
-    "hirsutism": ("Unwanted facial or body hair", "अवांछित चेहरे / शरीर के बाल"),
-    "acne": ("Acne that is hard to clear", "मुंहासे"),
-    "weight_insulin": ("Weight and appetite changes", "वज़न और भूख में बदलाव"),
-    "mood": ("Mood and emotional wellbeing", "मूड और भावनात्मक स्वास्थ्य"),
-    "hair_loss": ("Hair thinning or hair fall", "बाल पतले होना या झड़ना"),
-    "fatigue": ("Ongoing tiredness", "लगातार थकान"),
-    "fertility_concerns": ("Trying to conceive", "गर्भधारण की कोशिश"),
+    "cycle_irregularity": (
+        "Menstrual cycle changes",
+        "मासिक धर्म चक्र में बदलाव",
+        "ಮಾಸಿಕ ಚಕ್ರದ ಬದಲಾವಣೆಗಳು",
+    ),
+    "hirsutism": (
+        "Unwanted facial or body hair",
+        "अवांछित चेहरे / शरीर के बाल",
+        "ಅನಪೇಕ್ಷಿತ ಮುಖ / ದೇಹದ ಕೂದಲು",
+    ),
+    "acne": ("Acne that is hard to clear", "मुंहासे", "ಮೊಡವೆ"),
+    "weight_insulin": (
+        "Weight and appetite changes",
+        "वज़न और भूख में बदलाव",
+        "ತೂಕ ಮತ್ತು ಹಸಿವಿನ ಬದಲಾವಣೆ",
+    ),
+    "mood": (
+        "Mood and emotional wellbeing",
+        "मूड और भावनात्मक स्वास्थ्य",
+        "ಮನೋಭಾವ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಆರೋಗ್ಯ",
+    ),
+    "hair_loss": (
+        "Hair thinning or hair fall",
+        "बाल पतले होना या झड़ना",
+        "ಕೂದಲು ತೆಳುವಾಗುವುದು ಅಥವಾ ಉದುರುವುದು",
+    ),
+    "fatigue": ("Ongoing tiredness", "लगातार थकान", "ನಿರಂತರ ಆಯಾಸ"),
+    "fertility_concerns": (
+        "Trying to conceive",
+        "गर्भधारण की कोशिश",
+        "ಗರ್ಭಧಾರಣೆಯ ಪ್ರಯತ್ನ",
+    ),
 }
 
 VALID_THEME_IDS = set(THEME_TITLES.keys())

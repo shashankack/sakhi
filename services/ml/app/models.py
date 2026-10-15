@@ -2,9 +2,10 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-Locale = Literal["auto", "en", "hi"]
+Locale = Literal["auto", "en", "hi", "kn"]
 Urgency = Literal["routine", "soon", "urgent"]
 Engine = Literal["template", "local_llm", "hybrid"]
+Language = Literal["en", "hi", "kn"]
 
 
 class ChatMessage(BaseModel):
@@ -45,7 +46,7 @@ class RedFlag(BaseModel):
 
 class AnalyzeResponse(BaseModel):
     reply: str
-    language: Literal["en", "hi"]
+    language: Language
     themes: list[ThemeCard]
     care: CareBlock
     sources: list[SourceRef]

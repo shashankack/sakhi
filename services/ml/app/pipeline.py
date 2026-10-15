@@ -3,7 +3,13 @@ from __future__ import annotations
 import re
 from collections import defaultdict
 
-from .config import DISCLAIMER_EN, DISCLAIMER_HI, THEME_TITLES, VALID_THEME_IDS
+from .config import (
+    DISCLAIMER_EN,
+    DISCLAIMER_HI,
+    DISCLAIMER_KN,
+    THEME_TITLES,
+    VALID_THEME_IDS,
+)
 from .indexer import retrieve
 from .language import detect_language
 from .models import (
@@ -62,8 +68,20 @@ def _section_blob(hits: list[tuple[float, dict]], needle: str) -> str:
     return ""
 
 
+def _t(language: str, en: str, hi: str, kn: str) -> str:
+    if language == "hi":
+        return hi
+    if language == "kn":
+        return kn
+    return en
+
+
+def _theme_title(theme_id: str, language: str) -> str:
+    title_en, title_hi, title_kn = THEME_TITLES[theme_id]
+    return _t(language, title_en, title_hi, title_kn)
+
+
 def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], language: str) -> ThemeCard:
-    title_en, title_hi = THEME_TITLES[theme_id]
     relevant = [h for h in hits if theme_id in (h[1].get("theme_ids") or [])] or hits
 
     summary = _section_blob(relevant, "overview") or _section_blob(relevant, "self-care")
@@ -82,27 +100,30 @@ def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], languag
             overlap = _clean_prose(meta["text"], 360)
 
     if not pcos:
-        pcos = (
-            "In PCOS education this theme is sometimes discussed as an association — not a diagnosis."
-            if language == "en"
-            else "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है — निदान नहीं।"
+        pcos = _t(
+            language,
+            "In PCOS education this theme is sometimes discussed as an association — not a diagnosis.",
+            "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है — निदान नहीं।",
+            "PCOS ಶಿಕ್ಷಣದಲ್ಲಿ ಈ ವಿಷಯವನ್ನು ಸಂಬಂಧವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ — ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
         )
     if not overlap:
-        overlap = (
-            "Other causes can include thyroid issues, stress, medicines, and lifestyle factors."
-            if language == "en"
-            else "अन्य कारणों में थायरॉइड, तनाव, दवाएँ और जीवनशैली शामिल हो सकते हैं।"
+        overlap = _t(
+            language,
+            "Other causes can include thyroid issues, stress, medicines, and lifestyle factors.",
+            "अन्य कारणों में थायरॉइड, तनाव, दवाएँ और जीवनशैली शामिल हो सकते हैं।",
+            "ಥೈರಾಯ್ಡ್, ಒತ್ತಡ, ಔಷಧಗಳು ಮತ್ತು ಜೀವನಶೈಲಿಯೂ ಕಾರಣವಾಗಬಹುದು.",
         )
     if not summary:
-        summary = (
-            "These symptoms are commonly discussed in women's health education."
-            if language == "en"
-            else "ये लक्षण महिला स्वास्थ्य शिक्षा में आम चर्चा के विषय हैं।"
+        summary = _t(
+            language,
+            "These symptoms are commonly discussed in women's health education.",
+            "ये लक्षण महिला स्वास्थ्य शिक्षा में आम चर्चा के विषय हैं।",
+            "ಈ ಲಕ್ಷಣಗಳು ಮಹಿಳಾ ಆರೋಗ್ಯ ಶಿಕ್ಷಣದಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ.",
         )
 
     return ThemeCard(
         id=theme_id,
-        title=title_hi if language == "hi" else title_en,
+        title=_theme_title(theme_id, language),
         summary=summary[:480],
         pcos_context=pcos[:480],
         overlap=overlap[:480],
@@ -138,6 +159,12 @@ def _questions(theme_ids: list[str], language: str, hits: list[tuple[float, dict
             "थायरॉइड या अन्य कारण कैसे अलग करें?",
             "मुझे कब विशेषज्ञ के पास जाना चाहिए?",
         ]
+    if language == "kn":
+        return [
+            "ನನ್ನ ಲಕ್ಷಣಗಳಿಗೆ ಯಾವ ಪರೀಕ್ಷೆಗಳು ಸೂಕ್ತ?",
+            "ಥೈರಾಯ್ಡ್ ಅಥವಾ ಇತರ ಕಾರಣಗಳನ್ನು ಹೇಗೆ ಪ್ರತ್ಯೇಕಿಸುವುದು?",
+            "ನಾನು ಯಾವಾಗ ತಜ್ಞರನ್ನು ನೋಡಬೇಕು?",
+        ]
     return [
         "Which evaluations make sense for my symptom pattern?",
         "How should we rule out thyroid or other causes?",
@@ -147,31 +174,34 @@ def _questions(theme_ids: list[str], language: str, hits: list[tuple[float, dict
 
 def _care_summary(language: str, urgent: bool, theme_ids: list[str], hits: list[tuple[float, dict]]) -> str:
     if urgent:
-        return (
-            "Follow the red-flag guidance first. Education cards are secondary."
-            if language == "en"
-            else "पहले लाल-झंडा मार्गदर्शन का पालन करें। शिक्षा कार्ड द्वितीयक हैं।"
+        return _t(
+            language,
+            "Follow the red-flag guidance first. Education cards are secondary.",
+            "पहले लाल-झंडा मार्गदर्शन का पालन करें। शिक्षा कार्ड द्वितीयक हैं।",
+            "ಮೊದಲು ಕೆಂಪು ಧ್ವಜ ಮಾರ್ಗದರ್ಶನವನ್ನು ಅನುಸರಿಸಿ. ಶಿಕ್ಷಣ ಕಾರ್ಡ್‌ಗಳು ದ್ವಿತೀಯ.",
         )
     for _, meta in hits:
         if "care pathway" in meta["section"].lower():
             return meta["text"][:400]
     if theme_ids:
-        return (
-            "Consider a soon appointment with a GP or gynecologist to discuss these educational themes — not as a diagnosis."
-            if language == "en"
-            else "इन शैक्षिक विषयों पर चर्चा के लिए GP या स्त्री रोग विशेषज्ञ से जल्द मिलने पर विचार करें — यह निदान नहीं है।"
+        return _t(
+            language,
+            "Consider a soon appointment with a GP or gynecologist to discuss these educational themes — not as a diagnosis.",
+            "इन शैक्षिक विषयों पर चर्चा के लिए GP या स्त्री रोग विशेषज्ञ से जल्द मिलने पर विचार करें — यह निदान नहीं है।",
+            "ಈ ಶೈಕ್ಷಣಿಕ ವಿಷಯಗಳನ್ನು ಚರ್ಚಿಸಲು GP ಅಥವಾ ಸ್ತ್ರೀರೋಗ ತಜ್ಞರನ್ನು ಶೀಘ್ರದಲ್ಲೇ ನೋಡಿ — ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
         )
-    return (
-        "Retrieval was weak. Please talk with a clinician for personal advice."
-        if language == "en"
-        else "मज़बूत जानकारी नहीं मिली। व्यक्तिगत सलाह के लिए चिकित्सक से बात करें।"
+    return _t(
+        language,
+        "Retrieval was weak. Please talk with a clinician for personal advice.",
+        "मज़बूत जानकारी नहीं मिली। व्यक्तिगत सलाह के लिए चिकित्सक से बात करें।",
+        "ಸಾಕಷ್ಟು ಮಾಹಿತಿ ಸಿಗಲಿಲ್ಲ. ವೈಯಕ್ತಿಕ ಸಲಹೆಗಾಗಿ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
     )
 
 
 def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
     language = (
         req.locale
-        if req.locale in ("en", "hi")
+        if req.locale in ("en", "hi", "kn")
         else detect_language(req.message)
     )
     red_flags = detect_red_flags(req.message, language)
@@ -198,9 +228,10 @@ def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
             uniq_sources.append(s)
 
     snippet = req.message.strip()[:110]
+    ellipsis = "…" if len(req.message) > 110 else ""
     if language == "hi":
         reply = (
-            f"आपने बताया: “{snippet}{'…' if len(req.message) > 110 else ''}”. "
+            f"आपने बताया: “{snippet}{ellipsis}”. "
             "यह शैक्षिक जानकारी है, निदान नहीं। "
         )
         if red_flags:
@@ -210,9 +241,21 @@ def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
             reply += f"संबंधित शिक्षा विषय: {titles}।"
         else:
             reply += "कृपया चिकित्सक से बात करें।"
+    elif language == "kn":
+        reply = (
+            f"ನೀವು ಹೇಳಿದ್ದು: “{snippet}{ellipsis}”. "
+            "ಇದು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ, ರೋಗನಿರ್ಣಯವಲ್ಲ. "
+        )
+        if red_flags:
+            reply += "ಮೊದಲು ತುರ್ತು ಮಾರ್ಗದರ್ಶನವನ್ನು ನೋಡಿ."
+        elif themes:
+            titles = ", ".join(t.title for t in themes)
+            reply += f"ಸಂಬಂಧಿತ ಶಿಕ್ಷಣ ವಿಷಯಗಳು: {titles}."
+        else:
+            reply += "ದಯವಿಟ್ಟು ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ."
     else:
         reply = (
-            f"You mentioned: “{snippet}{'…' if len(req.message) > 110 else ''}”. "
+            f"You mentioned: “{snippet}{ellipsis}”. "
             "This is educational information, not a diagnosis. "
         )
         if red_flags:
@@ -230,6 +273,12 @@ def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
         engine = "hybrid"
 
     urgency = "urgent" if red_flags else ("soon" if themes else "routine")
+    if language == "hi":
+        disclaimer = DISCLAIMER_HI
+    elif language == "kn":
+        disclaimer = DISCLAIMER_KN
+    else:
+        disclaimer = DISCLAIMER_EN
 
     return AnalyzeResponse(
         reply=reply,
@@ -242,6 +291,6 @@ def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
         ),
         sources=uniq_sources,
         red_flags=red_flags,
-        disclaimer=DISCLAIMER_HI if language == "hi" else DISCLAIMER_EN,
+        disclaimer=disclaimer,
         engine=engine,  # type: ignore[arg-type]
     )
