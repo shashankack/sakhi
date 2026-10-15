@@ -28,6 +28,16 @@ Educational markdown for local RAG. Not medical advice. Not diagnosis criteria f
 | `red-flags-when-urgent.md` | cycle_irregularity, mood, fertility_concerns (+ `red_flag_file: true`) | urgent |
 | `care-pathways.md` | all 8 | routine |
 | `glossary-lay-aliases.md` | all 8 (alias map) | routine |
+| `glossary-tamil-aliases.md` | all 8 (Tamil / Tanglish alias map) | routine |
+| `pcod-vs-pcos.md` | cycle_irregularity, hirsutism, acne, weight_insulin | routine |
+| `painful-periods.md` | cycle_irregularity, fatigue, mood | routine |
+| `endometriosis.md` | fertility_concerns, fatigue, cycle_irregularity | soon |
+| `heavy-periods.md` | cycle_irregularity, fatigue, hair_loss | soon |
+| `pms-pmdd.md` | mood, fatigue, acne, weight_insulin | routine |
+| `diet-lifestyle-pcos.md` | weight_insulin, fatigue, mood, cycle_irregularity | routine |
+| `adolescent-pcos.md` | cycle_irregularity, acne, hirsutism, weight_insulin, mood | routine |
+| `pregnancy-and-pcos.md` | fertility_concerns, weight_insulin | soon |
+| `myths-and-facts.md` | all 8 | routine |
 
 ### Frontmatter
 

@@ -1,5 +1,13 @@
 # Research changelog
 
+## 2026-10-15
+
+- Added 10 corpus files: `pcod-vs-pcos.md`, `painful-periods.md`, `endometriosis.md`, `heavy-periods.md`,
+  `pms-pmdd.md`, `diet-lifestyle-pcos.md`, `adolescent-pcos.md`, `pregnancy-and-pcos.md`, `myths-and-facts.md`,
+  `glossary-tamil-aliases.md`. Corpus is now 21 files.
+- New files add Tamil / Tanglish lay aliases (Tamil script + romanised, with plain-English meanings). Tamil phrases still need a native-speaker check.
+- Period pain and heavy bleeding have no theme id yet; they are tagged with the closest existing ids.
+
 ## Unreleased
 
 - Added minimum demo corpus (11 files) under `research/corpus/`:
