@@ -5,15 +5,27 @@ Ports like `62903` / `62641` are internal `llama-server` children — **do not t
 
 ## On his Mac
 
-Terminal A (keep running):
+Ollama rejects Cloudflare’s Host/Origin by default → **403** through the tunnel.
+Must set `OLLAMA_ORIGINS=*`.
+
+**Both steps required.** Restarting only cloudflared still returns HTTP 403.
+
+Terminal A — fully quit Ollama (menu bar → Quit), then:
 ```bash
+killall Ollama 2>/dev/null; killall ollama 2>/dev/null
+export OLLAMA_ORIGINS="*"
+export OLLAMA_HOST="127.0.0.1:11434"
 ollama serve
-# model already loaded: llama3.2
 ```
 
-Terminal B:
+Confirm local still works:
 ```bash
-cloudflared tunnel --url http://127.0.0.1:11434
+curl -s http://127.0.0.1:11434/api/tags | head -c 200
+```
+
+Terminal B — **must rewrite Host** or Ollama returns 403 (DNS-rebinding guard):
+```bash
+cloudflared tunnel --protocol http2 --http-host-header "127.0.0.1:11434" --url http://127.0.0.1:11434
 ```
 
 Send us the printed `https://….trycloudflare.com` URL.
@@ -22,6 +34,12 @@ Local check:
 ```bash
 curl -s http://127.0.0.1:11434/api/tags
 ```
+
+Tunnel check (from our PC):
+```powershell
+curl.exe -s https://HIS.trycloudflare.com/api/tags
+```
+Must return JSON models, not HTTP 403.
 
 ## On our Windows PC (RAG)
 

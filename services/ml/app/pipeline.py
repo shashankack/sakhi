@@ -28,28 +28,58 @@ KEYWORD_THEMES: list[tuple[str, re.Pattern[str]]] = [
 ]
 
 
+def _is_alias_chunk(meta: dict) -> bool:
+    sec = (meta.get("section") or "").lower()
+    text = (meta.get("text") or "").lower()
+    if any(tok in sec for tok in ("alias", "phrase map", "glossary")):
+        return True
+    if text.startswith("english:") and "hindi" in text[:200]:
+        return True
+    if "key demo phrases" in text:
+        return True
+    return False
+
+
+def _clean_prose(text: str, limit: int = 320) -> str:
+    cleaned = re.sub(r"\s+", " ", (text or "").strip())
+    if _is_alias_chunk({"section": "", "text": cleaned}):
+        return ""
+    if cleaned.startswith("#"):
+        cleaned = cleaned.lstrip("# ").strip()
+    return cleaned[:limit]
+
+
 def _section_blob(hits: list[tuple[float, dict]], needle: str) -> str:
     needle_l = needle.lower()
     for _, meta in hits:
+        if _is_alias_chunk(meta):
+            continue
         if needle_l in meta["section"].lower() or needle_l in meta["text"].lower()[:80]:
-            return meta["text"][:500]
-    return hits[0][1]["text"][:500] if hits else ""
+            return _clean_prose(meta["text"], 420)
+    for _, meta in hits:
+        if not _is_alias_chunk(meta):
+            return _clean_prose(meta["text"], 420)
+    return ""
 
 
 def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], language: str) -> ThemeCard:
     title_en, title_hi = THEME_TITLES[theme_id]
     relevant = [h for h in hits if theme_id in (h[1].get("theme_ids") or [])] or hits
 
-    summary = _section_blob(relevant, "overview") or _section_blob(relevant, theme_id)
+    summary = _section_blob(relevant, "overview") or _section_blob(relevant, "self-care")
+    if not summary:
+        summary = _section_blob(relevant, theme_id)
     # Prefer named sections when present across corpus
     pcos = ""
     overlap = ""
     for _, meta in relevant:
+        if _is_alias_chunk(meta):
+            continue
         sec = meta["section"].lower()
         if "pcos" in sec and not pcos:
-            pcos = meta["text"][:420]
+            pcos = _clean_prose(meta["text"], 360)
         if "other possible" in sec or "overlap" in sec:
-            overlap = meta["text"][:420]
+            overlap = _clean_prose(meta["text"], 360)
 
     if not pcos:
         pcos = (

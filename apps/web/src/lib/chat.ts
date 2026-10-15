@@ -67,6 +67,38 @@ export function getThemeLabel(id: ThemeId) {
   return themeOptions.find((theme) => theme.id === id)?.label ?? id;
 }
 
+/** Drop alias-map dumps so theme cards stay readable. */
+export function readableProse(text: string, limit = 280): string {
+  const cleaned = text.replace(/\s+/g, " ").trim();
+  if (!cleaned) return "";
+  const lower = cleaned.toLowerCase();
+  if (
+    lower.startsWith("english:") ||
+    lower.includes("key demo phrases") ||
+    lower.includes("hindi / hinglish") ||
+    (lower.includes('"periods nahi') && lower.includes("alias"))
+  ) {
+    return "";
+  }
+  const withoutHeading = cleaned.replace(/^#+\s*/, "");
+  return withoutHeading.length > limit
+    ? `${withoutHeading.slice(0, limit - 1).trimEnd()}…`
+    : withoutHeading;
+}
+
+export function themeCardCopy(theme: ChatResponse["themes"][number]) {
+  const summary = readableProse(theme.summary);
+  const context = readableProse(theme.pcos_context, 220);
+  const overlap = readableProse(theme.overlap, 220);
+  return {
+    summary:
+      summary ||
+      "This theme often comes up in PCOS education conversations — it is not a diagnosis.",
+    context,
+    overlap,
+  };
+}
+
 function normalizeRedFlags(value: unknown): RedFlag[] {
   if (!Array.isArray(value)) return [];
   return value
