@@ -14,8 +14,8 @@ Each person pastes **only the fenced `text` block** from the file.
 |--------|------|-----------------|
 | `research` | Research corpus | [prompts/FULL_research.md](prompts/FULL_research.md) |
 | `ui` | UI developer | [prompts/FULL_ui.md](prompts/FULL_ui.md) |
-| `ml` | ML developer | [prompts/FULL_ml.md](prompts/FULL_ml.md) |
-| `dev` | Integration / system | [prompts/FULL_integration.md](prompts/FULL_integration.md) |
+| `ml` | STT teammate only | [prompts/FULL_ml.md](prompts/FULL_ml.md) |
+| `dev` | Integration + RAG lead | [prompts/FULL_integration.md](prompts/FULL_integration.md) + [prompts/FULL_rag.md](prompts/FULL_rag.md) |
 
 ### Steps for each teammate
 

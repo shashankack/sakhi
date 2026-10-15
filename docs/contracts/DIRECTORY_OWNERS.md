@@ -7,7 +7,8 @@
 |------|-------|-------|
 | `apps/web/**` | UI | Entire frontend app |
 | `apps/api/**` | Integration | Public HTTP API / BFF |
-| `services/ml/**` | ML | Local RAG + analysis service |
+| `services/ml/**` (except `stt/`) | RAG (Integration lead / RAG owner) | Local RAG + `/analyze` |
+| `services/ml/stt/**` | STT teammate (`ml` branch) | Speech-to-text only — do not edit RAG code |
 | `research/corpus/**` | Research | Markdown knowledge base |
 | `scripts/**` | Integration | Run/demo scripts |
 | `docs/ui/**` | UI | |
