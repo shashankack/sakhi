@@ -5,11 +5,19 @@ import {
   ArrowUp,
   HeartHandshake,
   MessageCircleHeart,
+  Mic,
   Plus,
   ShieldAlert,
   Sparkles,
+  Square,
 } from "lucide-react";
-import { FormEvent, KeyboardEvent, useRef, useState } from "react";
+import {
+  FormEvent,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,6 +36,11 @@ import {
   ThemeId,
   type RedFlag,
 } from "@/lib/chat";
+import {
+  getSpeechRecognitionCtor,
+  speechSupported,
+  type SpeechRecognitionLike,
+} from "@/lib/speech";
 
 type Turn = {
   id: number;
@@ -253,11 +266,23 @@ export default function ChatPage() {
   const [message, setMessage] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceReady, setVoiceReady] = useState(false);
   const [error, setError] = useState("");
   const threadRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const baseMessageRef = useRef("");
   const shouldReduceMotion = useReducedMotion();
   const animationDuration = shouldReduceMotion ? 0 : 0.32;
+
+  useEffect(() => {
+    setVoiceReady(speechSupported());
+    return () => {
+      recognitionRef.current?.abort();
+      recognitionRef.current = null;
+    };
+  }, []);
 
   function handleComposerKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
     if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
@@ -271,6 +296,76 @@ export default function ChatPage() {
     setMessage((current) =>
       current ? `${current}, ${label.toLowerCase()}` : label,
     );
+  }
+
+  function stopListening() {
+    recognitionRef.current?.stop();
+    setIsListening(false);
+  }
+
+  function toggleListening() {
+    if (isLoading) return;
+
+    if (isListening) {
+      stopListening();
+      return;
+    }
+
+    const Ctor = getSpeechRecognitionCtor();
+    if (!Ctor) {
+      setError(
+        "Voice input needs Chrome or Edge on this device. You can still type.",
+      );
+      return;
+    }
+
+    setError("");
+    baseMessageRef.current = message.trim();
+    const recognition = new Ctor();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    // hi-IN covers Hindi / much Hinglish; Chrome falls back gracefully.
+    recognition.lang = "hi-IN";
+    recognition.onresult = (event) => {
+      let interim = "";
+      let finalChunk = "";
+      for (let i = event.resultIndex; i < event.results.length; i += 1) {
+        const piece = event.results[i][0].transcript;
+        if (event.results[i].isFinal) finalChunk += piece;
+        else interim += piece;
+      }
+      if (finalChunk) {
+        baseMessageRef.current = [baseMessageRef.current, finalChunk.trim()]
+          .filter(Boolean)
+          .join(" ")
+          .trim();
+      }
+      const next = [baseMessageRef.current, interim.trim()]
+        .filter(Boolean)
+        .join(" ")
+        .trim();
+      setMessage(next.slice(0, 4000));
+    };
+    recognition.onerror = (event) => {
+      setIsListening(false);
+      if (event.error === "not-allowed") {
+        setError("Microphone permission is needed for voice input.");
+      } else if (event.error !== "aborted" && event.error !== "no-speech") {
+        setError("Voice input paused. Try again, or type your message.");
+      }
+    };
+    recognition.onend = () => {
+      setIsListening(false);
+      recognitionRef.current = null;
+    };
+    recognitionRef.current = recognition;
+    try {
+      recognition.start();
+      setIsListening(true);
+    } catch {
+      setError("Could not start the microphone. Try again or type instead.");
+      setIsListening(false);
+    }
   }
 
   async function sendPrompt(prompt: string) {
@@ -531,10 +626,41 @@ export default function ChatPage() {
                 maxLength={4000}
                 onChange={(event) => setMessage(event.target.value)}
                 onKeyDown={handleComposerKeyDown}
-                placeholder="Write in your own words…"
+                placeholder={
+                  isListening
+                    ? "Listening… speak in Hindi or English"
+                    : "Write in your own words, or use the mic…"
+                }
                 rows={2}
                 value={message}
               />
+              {voiceReady ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      aria-label={isListening ? "Stop listening" : "Start voice input"}
+                      aria-pressed={isListening}
+                      className={`mic-button${isListening ? " mic-button-live" : ""}`}
+                      disabled={isLoading}
+                      onClick={toggleListening}
+                      size="lg"
+                      type="button"
+                      variant="outline"
+                    >
+                      {isListening ? (
+                        <Square aria-hidden="true" size={15} />
+                      ) : (
+                        <Mic aria-hidden="true" size={16} />
+                      )}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    {isListening
+                      ? "Stop listening"
+                      : "Speak in Hindi / Hinglish / English"}
+                  </TooltipContent>
+                </Tooltip>
+              ) : null}
               <Button
                 className="send-button"
                 disabled={isLoading || message.trim().length < 3}
@@ -565,7 +691,11 @@ export default function ChatPage() {
               )}
             </AnimatePresence>
             <div className="composer-caption">
-              <span>Only share what you feel comfortable sharing.</span>
+              <span>
+                {isListening
+                  ? "Listening — tap the square when you’re done."
+                  : "Only share what you feel comfortable sharing."}
+              </span>
               <span className="composer-hints">
                 <span>{message.length}/4000</span>
                 <span aria-hidden="true">·</span>

@@ -1,11 +1,13 @@
-# STT layer — dropped
+# Voice input (browser)
 
-Voice / Whisper / `STT_API_URL` are **out of scope** for this hackathon build.
+Whisper / `STT_API_URL` is **not** required.
 
-Stack is chat-only:
+Chat uses the **browser Speech Recognition API** (Chrome / Edge):
 
-- RAG: `services/ml` on `:8001` (`:8000` free for teammate model)
-- BFF: `apps/api` on `:3001`
-- Frontend: Vercel → `CHAT_API_URL` → cloudflared → `:3001`
+1. Tap the mic next to Send
+2. Speak Hindi / Hinglish / English
+3. Tap stop, edit if needed, Send
 
-See [VERCEL.md](./VERCEL.md).
+Safari/Firefox may not support it — typing still works.
+
+Stack otherwise unchanged: Vercel → BFF tunnel → RAG `:8001` → optional Ollama polish.

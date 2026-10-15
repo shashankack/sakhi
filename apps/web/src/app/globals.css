@@ -1085,6 +1085,52 @@ main {
   outline: 0;
 }
 
+.mic-button {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--plum);
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.mic-button:hover:not(:disabled) {
+  border-color: #d8b4c1;
+  background: #f9dde6;
+}
+
+.mic-button-live {
+  border-color: transparent;
+  background: #a33c2d;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(163, 60, 45, 0.18);
+  animation: mic-pulse 1.2s ease-in-out infinite;
+}
+
+.mic-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+@keyframes mic-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px rgba(163, 60, 45, 0.16);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(163, 60, 45, 0.08);
+  }
+}
+
 .send-button {
   display: inline-flex;
   min-width: 96px;
