@@ -1,0 +1,17 @@
+{
+  "name": "sakhi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sakhi — non-diagnostic PCOS symptom education (hackathon)",
+  "workspaces": [
+    "apps/api"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w @sakhi/api",
+    "start:api": "npm run start -w @sakhi/api",
+    "health:api": "node scripts/health-api.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

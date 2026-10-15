@@ -1,7 +1,9 @@
 # scripts
 
 **Owner:** Integration  
-**Branch:** `dev`  
-Do not edit if you are not Integration.
+**Branch:** `dev`
 
-Demo / bootstrap scripts for running UI + ML together.
+| Script | Purpose |
+|--------|---------|
+| `dev-api.ps1` | Install if needed + start BFF |
+| `health-api.mjs` | `GET /health` smoke check (`npm run health:api`) |
