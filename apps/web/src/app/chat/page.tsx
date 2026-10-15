@@ -69,7 +69,7 @@ function RedFlagPanel({ flags, summary }: { flags: RedFlag[]; summary: string })
       </div>
       <p>{summary}</p>
       <p className="alert-panel-note">
-        Saheli cannot assess an emergency. If you may faint, ask someone nearby
+        Sakhi cannot assess an emergency. If you may faint, ask someone nearby
         to help you get care.
       </p>
       <ul>
@@ -299,13 +299,13 @@ export default function ChatPage() {
           "error" in result &&
           typeof result.error === "string"
             ? result.error
-            : "Saheli could not respond. Please try again.";
+            : "Sakhi could not respond. Please try again.";
         throw new Error(detail);
       }
       const normalized = normalizeChatResponse(result);
       if (!normalized) {
         throw new Error(
-          "Saheli returned a response that did not match the chat contract.",
+          "Sakhi returned a response that did not match the chat contract.",
         );
       }
       const nextTurn: Turn = {
@@ -325,7 +325,7 @@ export default function ChatPage() {
       setError(
         caught instanceof Error
           ? caught.message
-          : "Saheli could not respond. Please try again.",
+          : "Sakhi could not respond. Please try again.",
       );
     } finally {
       setIsLoading(false);

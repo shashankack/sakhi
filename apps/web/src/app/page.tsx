@@ -33,7 +33,7 @@ export default function HomePage() {
       <section className="home-band">
         <h2>Made for questions that don&apos;t always come easily.</h2>
         <p>
-          Share symptoms in everyday language. Saheli can offer general
+          Share symptoms in everyday language. Sakhi can offer general
           education and care conversation starters—not a diagnosis or a
           replacement for a health professional.
         </p>

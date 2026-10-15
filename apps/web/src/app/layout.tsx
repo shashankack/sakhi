@@ -18,8 +18,8 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Saheli — understand your symptoms",
-    template: "%s | Saheli",
+    default: "Sakhi — understand your symptoms",
+    template: "%s | Sakhi",
   },
   description:
     "A calm place to learn about PCOS-related symptoms and prepare for a care conversation.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 const navigation = [
   { href: "/", label: "Home" },
-  { href: "/chat", label: "Ask Saheli" },
+  { href: "/chat", label: "Ask Sakhi" },
   { href: "/learn", label: "Learn" },
   { href: "/about", label: "About" },
 ];
@@ -50,12 +50,12 @@ export default function RootLayout({
             </span>
             <span>This is not a medical diagnosis.</span>
             <span className="disclaimer-detail">
-              Saheli shares education, not a substitute for care.
+              Sakhi shares education, not a substitute for care.
             </span>
           </div>
           <header className="site-header">
-            <Link className="wordmark" href="/" aria-label="Saheli home">
-              saheli<span className="wordmark-dot">.</span>
+            <Link className="wordmark" href="/" aria-label="Sakhi home">
+              Sakhi<span className="wordmark-dot">.</span>
             </Link>
             <nav className="site-nav" aria-label="Main navigation">
               {navigation.map((item) => (
@@ -71,7 +71,7 @@ export default function RootLayout({
           <main>{children}</main>
           <footer className="site-footer">
             <Link className="footer-wordmark" href="/">
-              saheli.
+              Sakhi.
             </Link>
             <p>Small steps toward feeling more informed.</p>
             <span>Education only · Not a diagnosis</span>

@@ -1,4 +1,4 @@
-# Deploy Saheli frontend on Vercel (chat + RAG only)
+# Deploy Sakhi frontend on Vercel (chat + RAG only)
 
 Frontend on Vercel. Your laptop runs **RAG + BFF** behind one Cloudflare tunnel.  
 STT / Whisper is **not** used.

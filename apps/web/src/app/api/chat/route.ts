@@ -155,7 +155,7 @@ function createFallbackResponse(message: string): ChatResponse {
         ]
       : [],
     disclaimer:
-      "This is not a medical diagnosis. Saheli provides general education and cannot replace care from a qualified health professional.",
+      "This is not a medical diagnosis. Sakhi provides general education and cannot replace care from a qualified health professional.",
     engine: "template",
   };
 }
