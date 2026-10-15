@@ -7,65 +7,50 @@ urgency_default: routine
 
 ## Plain-language explanation
 
-Cramps in the lower belly during a period are very common. Doctors call period pain **dysmenorrhoea**.
+The NHS says period pain happens when the **womb tightens** during a period. It says period pain usually lasts **up to 3 days** and can affect daily activities.
 
-During a period, the womb tightens to push out its lining. Natural chemicals called **prostaglandins** cause these squeezes. Higher levels can mean stronger cramps.
-
-Period pain often:
-
-- starts just before or on the first day of bleeding
-- is worst in the first 1–2 days
-- feels like cramping or aching in the lower belly
-- may spread to the lower back or thighs
-- may come with tiredness, loose stools, nausea, or headache
-
-There are two broad kinds:
-
-- **Primary period pain**: common in teens and young adults. No other condition is found. It often eases with age.
-- **Secondary period pain**: caused by another condition, such as endometriosis, adenomyosis, fibroids, or infection. It often starts later in life, gets worse over time, or lasts beyond the bleeding days.
-
-Pain that stops someone from going to school, college, or work is **not something they just have to put up with**. It is worth checking.
+Pain that stops someone from doing their normal daily activities is **not something they just have to put up with**. The NHS says this is a reason to see a GP.
 
 ## PCOS education context
 
-Painful periods are not one of the main signs used to describe PCOS. Some people with PCOS have painful periods, and some do not.
-
-When periods are very irregular, a period that comes after a long gap can sometimes be heavier and more painful, because more lining has built up.
-
-If pain is severe, getting worse, or happens outside periods, a clinician will usually think about other causes such as endometriosis, rather than PCOS.
+WHO says some women with PCOS have **heavy or painful periods**, but painful periods are not one of the three features used to diagnose PCOS. If pain is severe or getting worse, a clinician will think about other causes, such as endometriosis.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-- **Endometriosis**: tissue like the womb lining grows outside the womb. See `endometriosis.md`.
-- **Adenomyosis**: lining tissue grows into the muscle wall of the womb; often heavy, painful periods.
-- **Fibroids**: non-cancer growths in the womb; can cause heavy bleeding and pressure.
-- **Pelvic infection** (pelvic inflammatory disease): may cause fever, unusual discharge, or pain during sex.
-- **Copper IUD (Copper-T)**: can make periods heavier and crampier for some people.
-- **Ovarian cyst**: may cause one-sided pain.
-- **Pregnancy-related pain**, including ectopic pregnancy, which is an emergency.
+The NHS lists these conditions that can cause period pain:
+
+- **Endometriosis** and **adenomyosis**, where womb-like tissue grows in other places. See `endometriosis.md`.
+- **Fibroids**: growths in and around the womb.
+- **Pelvic inflammatory disease**: an infection of the womb, fallopian tubes, and ovaries.
+- **An intrauterine device (IUD)**, especially in the first 3 to 6 months after it is fitted.
 
 ## Self-care notes
 
-- **Heat** on the lower belly or back (a hot water bottle or warm pad) helps many people.
-- **Gentle movement** such as walking, stretching, or yoga may ease cramps.
-- Rest, enough water, and regular meals can help with tiredness.
-- **Over-the-counter pain relief** can help. Ask a pharmacist or doctor which one is safe for you, especially if you have asthma, stomach ulcers, or kidney problems, or might be pregnant. Do not take more than the packet says.
-- Keep a **pain diary**: which days hurt, how bad (0–10), and what helped. This helps a clinician a lot.
-- Do not rely on pain relief every month without talking to a clinician if pain is severe or getting worse.
+The NHS suggests:
+
+- warm baths or showers
+- a **heat pad or hot water bottle** wrapped in a tea towel on your tummy
+- **massaging** your tummy and back
+- **gentle exercise** such as yoga, swimming, walking, or cycling
+- painkillers from a pharmacy. Ask a pharmacist which one is safe for you, and follow the packet instructions.
+
+Keeping a **pain diary** (which days hurt, how bad, and what helped) can help a clinician.
 
 ## Care pathway
 
-- **Routine (book in the next few weeks)**: cramps that are bothersome but manageable, or a wish to discuss options.
-- **Soon (within 1–2 weeks)**:
-  - pain that makes you miss school, college, or work
-  - pain that does not improve with usual self-care
-  - pain that is getting worse over months, or new pain after years of easy periods
-  - pain during or after sex, pain when passing stools or urine during periods
-  - pain with very heavy bleeding
-  - trouble getting pregnant along with painful periods
-- **Urgent (same day / emergency)**: sudden severe belly or pelvic pain; pain with fever or fainting; pain or bleeding with a possible pregnancy. See `red-flags-when-urgent.md`.
+The NHS advises seeing a GP if:
+
+- your periods become more painful, heavier, or irregular
+- you bleed between periods
+- pain stops you doing normal daily activities
+- there is pain during sex, or when peeing or pooing
+- there is a swollen tummy, loss of appetite, or unexplained weight loss
+
+- **Routine**: the reasons above.
+- **Soon**: the NHS advises urgent help if pelvic or period pain is **severe or worse than usual, and painkillers have not helped**.
+- **Urgent (emergency)**: pelvic pain that is severe or getting worse, or pelvic pain with heavy bleeding, fainting, shoulder-tip pain, or difficulty breathing. See `red-flags-when-urgent.md`.
 
 Who to see: a **GP** or **gynaecologist**.
 
@@ -73,14 +58,13 @@ Who to see: a **GP** or **gynaecologist**.
 
 - Is my level of period pain normal, or should it be checked?
 - Could something like endometriosis, adenomyosis, or fibroids be causing it?
-- Do I need a pelvic exam or an ultrasound?
+- Do I need an examination or a scan?
 - Which pain relief options are safe for me?
-- Are there hormonal or non-hormonal options that could reduce the pain?
-- What should I write in my pain diary before the next visit?
+- Are there other options that could reduce the pain?
 
 ## Lay aliases
 
-English: period pain, period cramps, painful periods, cramps, stomach pain during periods, lower back pain during periods, menstrual cramps, dysmenorrhoea, period pain so bad I can't go to work, leg pain during periods
+English: period pain, period cramps, painful periods, cramps, stomach pain during periods, lower back pain during periods, menstrual cramps, dysmenorrhoea, period pain so bad I can't go to work
 
 Hindi / Hinglish:
 - "periods mein bahut dard hota hai"
@@ -88,13 +72,12 @@ Hindi / Hinglish:
 - "kamar dard periods mein"
 - "periods ke pehle din bahut pain"
 - "dard ki goli leni padti hai"
-- "periods mein ulti jaisa lagta hai"
 - "माहवारी में दर्द"
 - "पीरियड्स में पेट दर्द"
 
-Tamil (romanised / Tamil script):
-- "period time la vayiru vali"
-- "maadhavidai vali"
-- "idupu vali period la"
-- "மாதவிடாய் வலி"
-- "வயிற்று வலி"
+Tamil / Tanglish:
+- "period time la vayiru vali" (belly pain during periods)
+- "maadhavidai vali" (period pain)
+- "idupu vali period la" (lower back pain during periods)
+- "மாதவிடாய் வலி" (period pain)
+- "வயிற்று வலி" (stomach pain)

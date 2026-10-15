@@ -7,63 +7,50 @@ urgency_default: routine
 
 ## Plain-language explanation
 
-There are many beliefs about periods and PCOS (often called PCOD in India). Some come from family, some from social media, and some from advertisements. Some are harmless, but others stop people from getting care or make them feel blamed.
+There are many beliefs about periods and PCOS (now also called PMOS, and often called PCOD in India). Some come from family, some from social media, and some from advertisements. Some can stop people from getting care.
 
-This file lists common myths and what current evidence says instead.
+This file lists common myths and what trusted health sources say.
 
 ## PCOS education context
 
-**Myth: "PCOD and PCOS are two different diseases."**
-Fact: In everyday Indian use, PCOD usually means the same condition that guidelines call PCOS. See `pcod-vs-pcos.md`.
-
 **Myth: "Cysts on the scan prove it is PCOS."**
-Fact: Many healthy people have ovaries that look "polycystic" on ultrasound. PCOS is considered only when other signs are also present and other causes are ruled out.
+Fact: WHO says ovarian cysts are **not required** for diagnosis. Diagnosis needs at least two of three features (high androgens, irregular or absent periods, polycystic ovaries on ultrasound), after other causes are ruled out. See `pcod-vs-pcos.md`.
 
-**Myth: "PCOS is caused by eating junk food or being lazy."**
-Fact: PCOS is strongly linked to **genes and hormones**. It often runs in families. Lifestyle can affect symptoms, but it does not "cause" PCOS on its own. Blame does not help.
+**Myth: "PCOS is caused by eating junk food."**
+Fact: WHO says the cause of PCOS is **unknown**, and women with a family history of PCOS or type 2 diabetes are at higher risk.
 
-**Myth: "Only overweight women get PCOS."**
-Fact: People of **any body size**, including thin people, can have PCOS.
-
-**Myth: "With PCOS you can never get pregnant."**
-Fact: Many people with PCOS get pregnant, on their own or with help. See `fertility-pcos.md`.
+**Myth: "Healthy habits only matter if you lose weight."**
+Fact: WHO recommends healthy eating and physical activity for all women with PCOS, **even without weight loss**.
 
 **Myth: "PCOS can be fully cured in 30 days with this product."**
-Fact: There is no quick cure. PCOS is long-term, but symptoms can be **managed well**. Be careful with products promising fast cures.
-
-**Myth: "Marriage or pregnancy will fix irregular periods."**
-Fact: Marriage does not treat any hormone condition. Irregular periods should be checked for their cause.
+Fact: WHO and the NHS both say there is **no cure** for PCOS. WHO says treatments can improve quality of life, support fertility, and reduce long-term risks.
 
 **Myth: "Missing periods is fine, it's less trouble."**
-Fact: Going **3 months or more** without a period (when not pregnant) is worth checking. The womb lining needs to shed regularly for long-term health.
+Fact: The NHS advises seeing a GP after missing **3 periods in a row**. The 2023 guideline says women with PCOS have a higher risk of thickening of the womb lining and womb cancer. See `cycles-irregular.md`.
 
-**Myth: "Period pain that stops you working is normal."**
-Fact: Severe pain is **not** something to just put up with. It can have causes such as endometriosis. See `painful-periods.md`.
+**Myth: "Period pain that stops you from doing normal things is normal."**
+Fact: The NHS says to see a GP if period pain stops you doing normal daily activities. It can have causes such as endometriosis. See `painful-periods.md`.
 
 **Myth: "PMS is all in your head."**
-Fact: PMS and PMDD are real and linked to how the body responds to hormone changes. See `pms-pmdd.md`.
+Fact: The NHS describes PMS as symptoms women can have in the weeks before a period. It says a small number have more severe symptoms, called PMDD. See `pms-pmdd.md`.
 
 **Myth: "Teen girls with irregular periods have PCOS."**
-Fact: Irregular cycles are normal for the first few years after periods start. See `adolescent-pcos.md`.
+Fact: The 2023 guideline says irregular cycles are **normal in the first year** after periods start, as part of puberty. See `first-period-puberty.md` and `adolescent-pcos.md`.
 
-**Myth: "Threading or shaving makes hair grow back thicker."**
-Fact: Removing hair does not make it grow thicker or faster. It may feel coarser as it regrows.
+**Myth: "Thyroid and PCOD are the same thing."**
+Fact: They are different conditions. The NHS lists thyroid problems as a separate cause of missed periods. A blood test can check thyroid. See `overlap-thyroid-prolactin.md`.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-Many symptoms linked to PCOS in popular talk, such as tiredness, weight gain, hair fall, or acne, can have other causes, including thyroid problems, anaemia, stress, or medicines. See `overlap-thyroid-prolactin.md`.
-
-**Myth: "Thyroid and PCOD are the same."**
-Fact: They are different conditions, though both can affect periods and weight. A simple blood test can check thyroid.
+Many symptoms linked to PCOS in popular talk, such as tiredness, weight gain, hair fall, or acne, can have other causes. The NHS lists stress, illness, weight loss, and iron deficiency among temporary causes of hair loss. Low iron (anaemia) can cause tiredness. See `anaemia-and-periods.md`.
 
 ## Self-care notes
 
-- Check where health advice comes from. Trust trained clinicians, government health services, and recognised medical organisations over advertisements.
-- Be careful with products that promise "permanent cure", "100% results", or "no side effects".
+- Check where health advice comes from. Trust clinicians and recognised health organisations over advertisements.
+- Be careful with products that promise a "permanent cure".
 - Do not stop medicines a clinician gave you because of a social media post. Talk to your clinician first.
-- Talk openly about periods at home. Myths last longer when the topic is kept quiet.
 
 ## Care pathway
 
@@ -73,24 +60,22 @@ Fact: They are different conditions, though both can affect periods and weight. 
 ## Questions for a clinician
 
 - I read that [claim]. Is that true for me?
-- Is this home remedy or supplement safe to try with my current treatment?
-- Which sources of information do you trust and recommend?
+- Is this home remedy or supplement safe with my current treatment?
+- Which sources of information do you trust?
 - What is the main thing I should focus on for my health?
 
 ## Lay aliases
 
-English: PCOS myths, PCOD myths, is PCOD curable, PCOD permanent cure, can I get pregnant with PCOD, PCOS only fat people, PCOD after marriage, thin PCOS, lean PCOS, fact check
+English: PCOS myths, PCOD myths, is PCOD curable, PCOD permanent cure, can I get pregnant with PCOD, PCOD after marriage, fact check
 
 Hindi / Hinglish:
 - "kya PCOD theek ho sakta hai"
 - "PCOD ka permanent ilaaj"
 - "shaadi ke baad periods theek ho jayenge"
-- "patli ladki ko PCOD ho sakta hai?"
 - "PCOD mein baby nahi hoga?"
 - "क्या पीसीओडी ठीक हो सकता है"
 
-Tamil (romanised / Tamil script):
-- "PCOD sari aagumaa"
-- "kalyanam aana period sari aagidum"
-- "olliya irundhaalum PCOD varumaa" (can thin people get PCOD)
-- "பிசிஓடி குணமாகுமா"
+Tamil / Tanglish:
+- "PCOD sari aagumaa" (can PCOD be cured?)
+- "kalyanam aana period sari aagidum" (periods will be fine after marriage)
+- "பிசிஓடி குணமாகுமா" (can PCOD be cured?)

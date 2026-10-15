@@ -3,30 +3,29 @@ theme_ids: [cycle_irregularity, hirsutism, acne, weight_insulin]
 urgency_default: routine
 ---
 
-# PCOD and PCOS: what the two names mean
+# PCOS, PMOS and PCOD: the different names
 
 ## Plain-language explanation
 
-In India, people often hear two names: **PCOD** and **PCOS**. This can be confusing.
+People may hear several names for the same group of signs:
 
-- **PCOS** stands for **polycystic ovary syndrome**. It is the name used in medical guidelines around the world.
-- **PCOD** usually stands for **polycystic ovarian disease**. It is an older name. In India, many people, and some doctors, still use it in everyday talk.
+- **PCOS**: polycystic ovary syndrome. This is the name WHO uses.
+- **PMOS**: polyendocrine metabolic ovarian syndrome. This is the **new name** from 2026. The NHS says "PMOS used to be called polycystic ovary syndrome (PCOS)". MedlinePlus also uses the name PMOS.
+- **PCOD**: a term many people in India use in everyday talk. If a report or a doctor uses "PCOD", it is fine to ask what exactly they mean and which signs it was based on.
 
-There is no separate "PCOD test" and no official guideline that treats PCOD as a different condition. When people say PCOD, they usually mean the same group of hormone and ovary changes that guidelines call PCOS.
-
-Some websites say "PCOD is mild and PCOS is serious" or "PCOD is common and PCOS is rare." These ideas are popular, but they are not how international guidelines describe it. What matters is **which signs a person has and how much they affect health**, not which of the two words is used.
+The name does not change the care someone needs. What matters is **which signs a person has** and how they affect health.
 
 ## PCOS education context
 
-The word "polycystic" makes many people think the ovaries are full of harmful cysts. In fact, the small round shapes seen on an ultrasound are usually **egg sacs (follicles) that paused while growing**. They are not tumours and are not the same as a large ovarian cyst.
+The old name "polycystic" makes many people think the ovaries are full of harmful cysts. WHO says ovarian cysts are **not required** for a diagnosis of PCOS.
 
-Guidelines describe PCOS using three kinds of signs:
+WHO says diagnosis needs at least two of these three features, after other causes are ruled out:
 
-1. Periods that are irregular or missing (ovulation happens less often)
-2. Signs of higher "male-type" hormones, such as extra facial or body hair, acne, or hormone blood tests
-3. Many follicles on ultrasound, or a raised AMH blood test in adults
+1. signs of high androgens ("male-type" hormones), such as extra hair growth, or high testosterone on a blood test
+2. irregular or absent periods
+3. polycystic ovaries on an ultrasound
 
-A clinician also rules out other causes first. Having an ultrasound that "shows cysts" on its own does **not** mean someone has PCOS. Many people with healthy cycles have ovaries that look this way. In teenagers, ultrasound is usually not used to judge PCOS because young ovaries naturally have many follicles.
+So an ultrasound report that mentions "cysts" or "polycystic ovaries" **on its own** is not enough for a diagnosis. The NHS says an ultrasound for this purpose is only done if someone is over 18. The 2023 international guideline says there are no clear ultrasound criteria for teenagers.
 
 This information is educational. It is not a diagnosis.
 
@@ -34,57 +33,54 @@ This information is educational. It is not a diagnosis.
 
 Signs that people link to "PCOD" can also come from:
 
-- **Thyroid problems** (underactive or overactive)
-- **High prolactin** hormone
-- **Recently starting periods** (cycles are often irregular for 1–3 years)
-- **Stress, illness, big weight change, or very intense exercise**
-- **Starting or stopping hormonal contraception**
-- Rarer adrenal gland conditions that also raise male-type hormones
-- A single **ovarian cyst**, which is a different thing from "polycystic" ovaries
+- pregnancy
+- thyroid problems
+- high prolactin hormone
+- puberty (periods can take some months to settle)
+- stress, big weight change, or exercising too much
+- hormonal contraception
+- an ovarian cyst, which is a different thing from "polycystic" ovaries
 
 See `overlap-thyroid-prolactin.md` and `cycles-irregular.md`.
 
 ## Self-care notes
 
-- If a report says "PCOD" or "polycystic ovaries", ask what signs it was based on. Bring the report to a clinician rather than reading it alone.
-- Keep a **cycle log** for a few months (start date, number of bleeding days, heaviness, pain).
+- If a report says "PCOD", "PCOS" or "polycystic ovaries", take it to a clinician rather than reading it alone.
+- Keep a **cycle log** for a few months: start date, number of bleeding days, and any pain.
 - Note other changes such as new hair growth, acne, hair thinning, or weight change, and when they started.
-- Regular meals, movement you enjoy, and good sleep support health whatever the label.
-- Be careful with products online or in shops that promise to "cure PCOD in 30 days". There is no quick cure, and some of these products are not safe.
+- WHO says there is no cure for PCOS, so be careful with products that promise to "cure PCOD".
 
 ## Care pathway
 
-- **Routine (book in the next few weeks)**: someone has been told they have "PCOD" or "cysts" and wants to understand it, with no worrying signs.
-- **Soon (within 1–2 weeks)**: no period for 3 months or more with a negative pregnancy test; irregular cycles while trying to conceive; fast-growing hair, a deepening voice, or other quick body changes.
-- **Urgent (same day / emergency)**: sudden severe one-sided pelvic pain, fainting, or very heavy bleeding. See `red-flags-when-urgent.md`.
+- **Routine**: someone has been told about "PCOD", "PCOS" or "cysts" and wants to understand it. The NHS advises seeing a GP if you think you might have PMOS.
+- **Soon**: missed 3 periods in a row; sudden thick hair growth, a lower voice, or bigger muscles.
+- **Urgent**: severe pelvic pain, or heavy bleeding with dizziness or fainting. See `red-flags-when-urgent.md`.
 
-Who to see: a **GP** or **gynaecologist** first. An **endocrinologist** (hormone specialist) may also help.
+Who to see: a **GP** or **gynaecologist**. An **endocrinologist** (hormone specialist) may also be involved.
 
 ## Questions for a clinician
 
-- My report says PCOD. Is that the same as PCOS in my case?
-- Which signs were used to reach this, and were other causes checked?
-- Do I need blood tests such as thyroid or prolactin?
-- What does the ultrasound finding mean, and does it need follow-up?
+- My report says PCOD. What does that mean in my case?
+- Which signs were used, and were other causes checked?
+- Do I need blood tests, such as thyroid or prolactin?
+- What does the ultrasound finding mean?
 - Which of my symptoms should I focus on first?
-- What should I track before my next visit?
 
 ## Lay aliases
 
-English: PCOD, PCOS, polycystic ovaries, polycystic ovarian disease, polycystic ovary syndrome, cysts in ovary, ovary cyst problem, cystic ovaries, PCOD problem, PCOD report, hormone problem
+English: PCOD, PCOS, PMOS, new name for PCOS, polycystic ovaries, polycystic ovarian disease, polycystic ovary syndrome, polyendocrine metabolic ovarian syndrome, cysts in ovary, PCOD report
 
 Hindi / Hinglish:
 - "PCOD aur PCOS mein kya fark hai?"
+- "PMOS kya hai?"
 - "doctor ne PCOD bola"
 - "report mein cyst aaya hai"
 - "ovary mein gaanth hai"
-- "ovary mein paani ki thaili"
-- "PCOD ka ilaaj"
 - "PCOD theek hoga kya?"
 - "पीसीओडी और पीसीओएस में क्या फर्क है"
 - "अंडाशय में सिस्ट"
 
-Tamil (romanised / Tamil script):
-- "PCOD irukku nu sonnanga"
-- "karumuttai pai la neer katti" (cysts in the ovary)
-- "சினைப்பை நீர்க்கட்டி"
+Tamil / Tanglish:
+- "PCOD irukku nu sonnanga" (they said I have PCOD)
+- "report la cyst irukku" (the report shows a cyst)
+- "சினைப்பை நீர்க்கட்டி" (sinaipai neerkatti, cysts in the ovary)

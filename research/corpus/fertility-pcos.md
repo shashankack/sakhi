@@ -7,25 +7,26 @@ urgency_default: soon
 
 ## Plain-language explanation
 
-Getting pregnant often takes time. Many couples conceive within a year of regular unprotected sex, but it can take longer, and that does not always mean something is wrong.
+Getting pregnant often takes time. The NHS says **more than 8 out of 10 couples**, where the woman is under 40, will conceive naturally **within a year** if they have regular unprotected sex.
 
-Doctors generally suggest seeking a fertility check:
+The NHS advises:
 
-- after **12 months** of trying, if the woman is **under 35**
-- after **6 months** of trying, if she is **35 or older**
-- **sooner** if periods are irregular or absent, there is known pelvic disease, or there are concerns about the male partner
+- having regular unprotected sex **every 2 or 3 days**
+- seeing a GP if there is no pregnancy after **a year of trying**
+- women **aged 36 and over** should see a GP **sooner**, as should anyone who already knows of possible fertility problems
 
-Fertility involves **both partners**. Male factors contribute in a large share of couples having difficulty, so both partners are usually checked.
+The NHS lists these common causes of fertility problems:
+
+- in women: lack of regular **ovulation** (the monthly release of an egg), **blocked or damaged fallopian tubes**, and **endometriosis**
+- in men: **poor quality semen**
+
+So fertility checks usually involve **both partners**.
 
 ## PCOS education context
 
-PCOS is one of the most common reasons for **ovulation problems**, meaning an egg is released less often or unpredictably. With fewer ovulations, there are fewer chances to conceive each year, and timing is harder to predict.
+The NHS says PMOS (the new name for PCOS) can sometimes cause problems getting pregnant, and the main cause is that the ovaries **do not release an egg each month**. WHO lists infertility among the symptoms of PCOS, and says treatments can support fertility.
 
-Important things to know:
-
-- **Many people with PCOS do get pregnant**, some naturally and some with support.
-- Ovulation problems linked to PCOS are often **treatable**, and clinicians have several options.
-- PCOS is associated with higher chances of some pregnancy complications, such as diabetes in pregnancy and high blood pressure. Planning ahead with a clinician can help.
+The 2023 international guideline says a sugar test called an **oral glucose tolerance test (OGTT)** should be offered to all women with PCOS when **planning pregnancy** or seeking fertility treatment.
 
 Difficulty conceiving does **not** mean someone has PCOS. There are many possible causes.
 
@@ -33,41 +34,36 @@ This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-- Ovulation problems from thyroid conditions, high prolactin, weight changes, intense exercise, or stress
-- Blocked fallopian tubes (for example after past pelvic infections)
-- Endometriosis (often painful periods or pain during sex)
-- Fibroids or other changes in the womb
-- **Male factors**: sperm count, movement, or shape
-- Age-related decline in egg numbers, especially after mid-30s
-- Timing of sex relative to ovulation
-- Smoking, alcohol, and some medicines (in either partner)
+- Ovulation problems from other causes, such as thyroid problems or high prolactin. See `overlap-thyroid-prolactin.md`.
+- **Endometriosis**. See `endometriosis.md`.
+- Blocked or damaged fallopian tubes.
+- **Male factors**: poor quality semen.
+- The NHS says **smoking** (including passive smoking) affects the chance of conceiving, and being overweight or obese reduces fertility.
 
 ## Self-care notes
 
-General preconception ideas, not treatment:
+General ideas, not treatment:
 
-- **Track cycles** so you and your clinician understand your pattern.
-- Sex every 2–3 days across the cycle covers the fertile window without needing exact timing, which is especially useful when cycles are irregular.
-- Ovulation kits can be **less reliable** in PCOS, because some hormone levels may be raised all the time. Don't be discouraged by confusing results.
-- Ask a clinician about **folic acid** before trying to conceive; it is commonly recommended before and in early pregnancy. Ask about the right amount for you.
-- Support general health: balanced meals, activity, sleep, and avoiding smoking and alcohol (both partners).
-- Fertility stress is real and can strain relationships. Talking with each other, friends, or a counsellor can help.
-- Be wary of clinics or products promising guaranteed results.
+- **Track your cycles** so you and your clinician understand your pattern.
+- The NHS says the safest approach is **not to drink alcohol at all** when trying to conceive.
+- Get support to **stop smoking**.
+- The NHS lists taking vitamins and supplements, including **folic acid** and vitamin D, as part of preparing for pregnancy. Ask a clinician which supplement is right for you.
+- If you take any medicines, speak to a GP before trying. The NHS says not to stop prescribed medicine before talking to your GP or specialist.
+- Fertility stress is real. Talking with each other, friends, or a counsellor can help.
 
 ## Care pathway
 
-- **Soon (within a few weeks)**: trying to conceive **and** periods are irregular or absent; trying for 12 months (under 35) or 6 months (35+).
-- **Who to see**: a **gynaecologist** first; they may refer to a **fertility specialist** (reproductive endocrinologist / IVF clinic). The male partner may see a **urologist / andrologist** or have a semen test.
-- **Urgent**: positive pregnancy test with belly pain, shoulder-tip pain, bleeding, or dizziness. See `red-flags-when-urgent.md`.
+- **Soon**: trying for a year without success; trying at age 36 or over; trying with irregular or absent periods or known fertility problems.
+- **Who to see**: a **GP** or **gynaecologist** first; they may refer to a **fertility specialist**. The male partner may also be checked.
+- **Urgent**: a possible pregnancy with tummy pain, shoulder-tip pain, bleeding, or dizziness. See `red-flags-when-urgent.md`.
 
 ## Questions for a clinician
 
 - Am I ovulating regularly, and how can we find out?
 - Could my irregular cycles be affecting my chances of conceiving?
 - What tests should my partner and I both have?
+- Should I have a sugar test before trying to get pregnant?
 - What are the options if ovulation is not happening regularly?
-- Is there anything I should do before pregnancy to lower the risk of complications?
-- Should I have my blood sugar checked before trying?
 - When should we see a fertility specialist?
 
 ## Lay aliases
@@ -82,8 +78,12 @@ Hindi / Hinglish:
 - "shaadi ko 2 saal ho gaye, baby nahi hua"
 - "ovulation nahi hota"
 - "anda nahi banta"
-- "egg nahi banta"
-- "pregnancy plan kar rahe hain"
 - "बच्चा नहीं हो रहा"
 - "गर्भधारण नहीं हो रहा"
-- "अंडा नहीं बनता"
+
+Tamil / Tanglish:
+- "kuzhandhai illa" (we do not have a child yet)
+- "karbam aagala" (I am not getting pregnant)
+- "baby try panrom" (we are trying for a baby)
+- "karumuttai valaradhu illa" (the egg is not growing)
+- "கர்ப்பம் ஆகவில்லை" (not getting pregnant)

@@ -7,82 +7,76 @@ urgency_default: soon
 
 ## Plain-language explanation
 
-Many people with PCOS **do get pregnant**, some on their own and some with help. PCOS is one of the most common reasons for irregular ovulation, but it is also one of the most **treatable** causes of trouble getting pregnant.
+WHO says women with PCOS have a **higher risk of pregnancy complications** that warrants **extra monitoring**. WHO lists:
 
-During pregnancy, people with PCOS have a **higher chance** of some problems, such as:
+- **gestational diabetes** (high blood sugar that develops during pregnancy)
+- **high blood pressure** in pregnancy
 
-- **diabetes in pregnancy** (gestational diabetes)
-- **high blood pressure** in pregnancy, including pre-eclampsia
-- **miscarriage** in some groups
-- **baby born early**
-
-Higher chance does **not** mean these will happen. Good care before and during pregnancy lowers the risk.
+A higher risk does **not** mean these will happen. Good care before and during pregnancy helps.
 
 This file is about health **during** pregnancy. For trying to conceive, see `fertility-pcos.md`.
 
 ## PCOS education context
 
-Insulin resistance, which is common in PCOS, is one reason for the higher chance of diabetes in pregnancy. This is why clinicians may suggest **earlier or extra sugar tests** during pregnancy for people with PCOS. See `weight-insulin.md`.
+The 2023 international guideline says:
 
-Getting healthy **before** pregnancy helps: checking blood sugar and blood pressure, eating well, being active, and starting a **folic acid** supplement as advised by a clinician.
+- a sugar test called an **oral glucose tolerance test (OGTT)** should be offered to all women with PCOS when **planning pregnancy** or seeking fertility treatment
+- all women with PCOS should be offered this test at **24 to 28 weeks** of pregnancy
+
+The NHS describes gestational diabetes as high blood sugar that develops during pregnancy and usually goes away after giving birth. It says the OGTT is done between 24 and 28 weeks.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-- **Diabetes in pregnancy** can happen without PCOS, especially with a family history of diabetes. South Asian women have a higher risk in general.
-- **Thyroid problems** also affect pregnancy and are often checked early.
-- **Anaemia** is common in pregnancy in India.
-- **High blood pressure** can come from other causes.
-- A positive pregnancy test with pain or bleeding needs **same-day** checking, whatever the cause.
+The NHS says gestational diabetes is more likely if someone:
+
+- is of **south Asian**, Black, African-Caribbean, or Middle Eastern origin
+- has a BMI above 30
+- has a parent or sibling with diabetes
+- is over 40, or had gestational diabetes before
+
+The NHS says gestational diabetes can raise the risk of pre-eclampsia for the mother, and of the baby growing larger than usual or being born early.
 
 ## Self-care notes
 
-- **Plan ahead if possible**: see a clinician before trying, to check blood sugar, blood pressure, thyroid, and iron.
-- **Folic acid** before and in early pregnancy helps prevent some birth defects. Ask a clinician which supplement and amount is right for you.
-- **Book antenatal care early** (as soon as the test is positive), and mention PCOS.
-- Keep up **gentle activity** like walking, unless told otherwise.
-- Eat balanced meals with vegetables, protein, and whole grains. Limit sweets and sugary drinks.
-- **Do not stop or start any medicine** on your own when you find out you are pregnant; ask your clinician first.
+- **Plan ahead if possible**: see a clinician before trying, to talk about blood sugar, blood pressure, and any medicines.
+- The NHS lists taking vitamins and supplements, including **folic acid** and vitamin D, as part of preparing for pregnancy. Ask a clinician which supplement is right for you.
+- The NHS says **not to stop prescribed medicine** before talking to your GP or specialist.
+- The NHS advises not drinking alcohol and getting support to stop smoking.
+- **Book pregnancy care early** and mention PCOS.
 - Go to every planned check-up, including blood pressure and sugar tests.
 
 ## Care pathway
 
-- **Soon (within 1–2 weeks)**: positive pregnancy test and PCOS; planning pregnancy with PCOS; taking any regular medicine and now pregnant.
-- **Routine**: regular antenatal visits as planned.
-- **Urgent (same day / emergency)**:
-  - bleeding or belly pain in pregnancy, or with a possible pregnancy
-  - severe headache, blurred vision, or sudden swelling of face or hands
-  - fainting, chest pain, or breathlessness
-  - baby moving less than usual later in pregnancy
-  Call **108** or **112** or go to the nearest hospital. See `red-flags-when-urgent.md`.
+- **Soon**: positive pregnancy test with PCOS; planning a pregnancy with PCOS; taking regular medicine and now pregnant.
+- **Routine**: regular pregnancy check-ups as planned.
+- **Urgent (emergency)**: the NHS says to get emergency help if you are pregnant and bleeding with severe tummy pain, shoulder pain, feeling sick, faint or dizzy, or heavy bleeding that soaks a pad soon after putting it on. In India, dial **108**. See `red-flags-when-urgent.md`.
 
-Who to see: a **gynaecologist / obstetrician**, or the nearest government **antenatal clinic** or **PHC**.
+Who to see: a **gynaecologist / obstetrician**, or the nearest government pregnancy clinic.
 
 ## Questions for a clinician
 
 - Does having PCOS change my pregnancy care plan?
-- When and how often should my blood sugar be tested?
-- Which supplements should I take, and how much?
+- When should my blood sugar be tested?
+- Which supplements should I take?
 - Are my current medicines safe to continue?
 - What warning signs should make me come in straight away?
-- What can I do to lower my risk of diabetes or high blood pressure in pregnancy?
 
 ## Lay aliases
 
-English: PCOS and pregnancy, pregnant with PCOS, PCOD pregnancy, gestational diabetes, sugar in pregnancy, BP in pregnancy, miscarriage risk PCOS, planning pregnancy with PCOS
+English: PCOS and pregnancy, pregnant with PCOS, PCOD pregnancy, gestational diabetes, sugar in pregnancy, BP in pregnancy, planning pregnancy with PCOS
 
 Hindi / Hinglish:
 - "PCOD ke saath pregnancy"
 - "PCOD hai, pregnant hoon"
 - "pregnancy mein sugar badh gayi"
 - "pregnancy mein BP high"
-- "PCOD mein miscarriage ka darr"
 - "गर्भावस्था में शुगर"
 - "पीसीओडी के साथ प्रेगनेंसी"
 
-Tamil (romanised / Tamil script):
-- "PCOD irundhum karbam aagumaa"
-- "karbama irukken, PCOD irukku"
-- "karbathula sugar"
-- "கர்ப்ப காலத்தில் சர்க்கரை"
+Tamil / Tanglish:
+- "PCOD irundhum karbam aagumaa" (can I get pregnant with PCOD?)
+- "karbama irukken, PCOD irukku" (I am pregnant and have PCOD)
+- "karbathula sugar" (sugar during pregnancy)
+- "கர்ப்ப காலத்தில் சர்க்கரை" (sugar during pregnancy)

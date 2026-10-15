@@ -7,74 +7,63 @@ urgency_default: soon
 
 ## Plain-language explanation
 
-A period is called **heavy** when the bleeding gets in the way of daily life. Doctors call this **heavy menstrual bleeding** (older term: menorrhagia).
+The NHS says periods may be heavy if you:
 
-Signs that a period may be heavy:
+- need to change your pad or tampon **every 1 to 2 hours**
+- have periods lasting **more than 7 days**
+- pass **blood clots larger than about 2.5cm** (about the size of a small coin)
 
-- changing a pad or tampon **every 1–2 hours**
-- needing to use **two pads at once**, or waking at night to change
-- passing **blood clots larger than a coin**
-- bleeding for **more than 7 days**
-- leaking through clothes or bedsheets often
-- avoiding school, work, or going out because of bleeding
+The NHS says heavy periods do not always need treatment, but you should see a GP if they are affecting your life.
 
-Heavy periods are common, and help is available. Losing a lot of blood every month can lead to **low iron (anaemia)**, which is very common in India. Anaemia can cause tiredness, breathlessness on stairs, pale skin, dizziness, and hair fall.
+Losing a lot of blood every month can lead to **iron deficiency anaemia**. The NHS says heavy periods are a very common cause. See `anaemia-and-periods.md`.
 
 ## PCOS education context
 
-In PCOS, ovulation may happen less often. When this happens, the womb lining can build up for a long time. When a period finally comes after a long gap, it can be **heavier or last longer**.
-
-Heavy periods are not one of the main signs used to describe PCOS. Many people with heavy periods do not have PCOS, and a clinician checks other causes.
+WHO says some women with PCOS have **heavy or painful periods**. Heavy periods are not one of the three features used to diagnose PCOS (now also called PMOS), and they have many other causes.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-- **Fibroids**: non-cancer growths in the womb; very common, may also cause pressure or frequent urination
-- **Adenomyosis**: lining tissue inside the womb muscle; often heavy and painful periods
-- **Polyps** in the womb lining
-- **Thyroid problems**, especially underactive thyroid
-- **Copper IUD (Copper-T)**
-- **Bleeding disorders**: think of these if heavy periods began from the first period, or if there is easy bruising or long bleeding after cuts or dental work
-- **Blood-thinning medicines**
-- **Perimenopause** (often in the 40s)
-- **Pregnancy-related bleeding**, including miscarriage
-- Less commonly, changes in the womb lining that need checking, especially after age 40 or with long gaps between periods
+The NHS lists:
+
+- **conditions affecting the womb or ovaries**, such as **fibroids** or **endometriosis**
+- **some medicines and treatments**, including some anticoagulant (blood-thinning) medicines and chemotherapy medicines
+- rarely, **womb cancer**
+
+The NHS also lists irregular or heavy periods as a symptom of **underactive thyroid**.
 
 ## Self-care notes
 
-- **Track your bleeding**: how many days, how many pads per day, size of clots, and any leaking. A simple chart is very useful to a clinician.
-- **Eat iron-rich foods**, such as green leafy vegetables, dals, chana, rajma, jaggery, dates, eggs, fish, or meat. Foods rich in vitamin C (amla, lemon, guava, oranges) help the body absorb iron.
-- Tea or coffee with meals can reduce iron absorption; try having them between meals.
-- Do not start iron tablets or hormone medicines on your own; a blood test helps decide what is needed.
-- Rest when tired, and stand up slowly if you feel light-headed.
+- **Track your bleeding**: how many days, how often you change pads, size of any clots, and any leaking. This helps a clinician.
+- **Eat iron-rich foods**. See `indian-diet-pcos.md` and `anaemia-and-periods.md`.
+- Do not start iron tablets or hormone medicines on your own. A blood test helps decide what is needed.
+- Stand up slowly if you feel light-headed.
 
 ## Care pathway
 
-- **Soon (within 1–2 weeks)**:
-  - periods that often soak through pads in 1–2 hours or last more than 7 days
-  - large clots
-  - tiredness, breathlessness, or pale skin along with heavy periods
-  - bleeding between periods or after sex
-  - heavy periods that started from the first period, or with easy bruising
-  - any bleeding after menopause
-- **Routine (book in the next few weeks)**: periods that feel heavy but manageable, with no other signs.
-- **Urgent (same day / emergency)**: soaking a pad every hour for several hours, fainting or feeling very dizzy, chest pain or breathlessness at rest, or heavy bleeding with a possible pregnancy. See `red-flags-when-urgent.md`.
+The NHS advises seeing a GP if:
 
-Who to see: a **GP** or **gynaecologist**. A blood test for haemoglobin is often a first step.
+- heavy periods are affecting your life
+- you bleed between periods or after sex
+
+- **Routine**: heavy periods affecting daily life.
+- **Soon**: bleeding between periods or after sex; heavy periods with tiredness, shortness of breath, or paler skin (possible anaemia).
+- **Urgent (emergency)**: pelvic pain with heavy bleeding, or feeling faint, dizzy or lightheaded, or passing out. If pregnant and bleeding heavily (soaking a pad soon after putting it on). See `red-flags-when-urgent.md`.
+
+Who to see: a **GP** or **gynaecologist**. The NHS says you may be referred for tests or to a specialist if first treatments do not work.
 
 ## Questions for a clinician
 
 - Is my bleeding heavy enough to need treatment?
 - Should I have a blood test for anaemia or thyroid?
-- Could fibroids, polyps, or adenomyosis be causing it? Do I need an ultrasound?
+- Could fibroids or another condition be causing it? Do I need a scan?
 - What options are there to make periods lighter?
 - How can I safely improve my iron levels?
-- What should I track before my next visit?
 
 ## Lay aliases
 
-English: heavy periods, heavy bleeding, heavy flow, too much bleeding, blood clots, clots in period, bleeding for more than a week, changing pad every hour, leaking through clothes, period flooding, anaemia, low haemoglobin
+English: heavy periods, heavy bleeding, heavy flow, too much bleeding, blood clots, clots in period, bleeding for more than a week, changing pad every hour, leaking through clothes, anaemia, low haemoglobin
 
 Hindi / Hinglish:
 - "periods mein bahut zyada bleeding"
@@ -87,10 +76,9 @@ Hindi / Hinglish:
 - "माहवारी में बहुत ज़्यादा खून"
 - "खून के थक्के"
 
-Tamil (romanised / Tamil script):
-- "period la romba blood pogudhu"
-- "athigama udhiram pogudhu"
-- "rattham kattiya varudhu" (clots)
+Tamil / Tanglish:
+- "period la romba blood pogudhu" (a lot of bleeding during periods)
+- "rattham kattiya varudhu" (blood is coming in clots)
 - "ratha sogai" (anaemia)
-- "அதிக உதிரப்போக்கு"
-- "இரத்த சோகை"
+- "அதிக உதிரப்போக்கு" (heavy bleeding)
+- "இரத்த சோகை" (anaemia)

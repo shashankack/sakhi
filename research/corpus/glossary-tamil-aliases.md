@@ -17,7 +17,7 @@ Spelling of romanised Tamil varies a lot (for example "vali" / "valli", "romba" 
 
 ## PCOS education context
 
-In Tamil Nadu, PCOS is often called **PCOD** in everyday speech. It is also described as **"சினைப்பை நீர்க்கட்டி"** (sinaipai neerkatti, "water cysts in the ovary"). See `pcod-vs-pcos.md`. The phrases below are often heard in conversations about PCOS, but they also apply to many other causes.
+PCOS is often called **PCOD** in everyday speech, and also described as **"சினைப்பை நீர்க்கட்டி"** (sinaipai neerkatti, "water cysts in the ovary"). The condition now has a new name, **PMOS** (polyendocrine metabolic ovarian syndrome). See `pcod-vs-pcos.md`. The phrases below are often heard in conversations about PCOS, but they also apply to many other causes.
 
 This information is educational. It is not a diagnosis.
 
@@ -135,10 +135,10 @@ This information is educational. It is not a diagnosis.
 - **மாதவிடாய் / மாதவிலக்கு (maadhavidai / maadhavilakku)**: menstrual period.
 - **சினைப்பை (sinaipai)**: ovary.
 - **கருமுட்டை (karumuttai)**: egg (ovum).
-- **நீர்க்கட்டி (neerkatti)**: a fluid-filled cyst. In PCOS, the small "cysts" are usually paused egg sacs (follicles), not harmful cysts.
+- **நீர்க்கட்டி (neerkatti)**: a fluid-filled cyst. WHO says ovarian cysts are not required for a diagnosis of PCOS.
 - **கருப்பை (karuppai)**: womb (uterus).
 - **இரத்த சோகை (ratha sogai)**: anaemia, low haemoglobin.
-- **தைராய்டு (thyroid)**: a gland in the neck that controls how the body uses energy; often called by the English word.
+- **தைராய்டு (thyroid)**: a gland in the neck; often called by the English word. A blood test (TSH) can check it.
 - **சர்க்கரை நோய் (sarkkarai noi)**: diabetes; often just called "sugar".
 
 ## Other possible causes and overlaps
@@ -151,7 +151,7 @@ It is fine to describe symptoms to a clinician in Tamil or Tanglish. Writing dow
 
 ## Care pathway
 
-Use the care pathway in the topic file each phrase points to. Any **urgent phrase** above should lead to `red-flags-when-urgent.md` first. In India, emergency numbers are **112** and **108**. Mental health support is **Tele-MANAS 14416** or **1-800-891-4416** (free, 24×7, Tamil available).
+Use the care pathway in the topic file each phrase points to. Any **urgent phrase** above should lead to `red-flags-when-urgent.md` first. In India, dial **108** for an emergency ambulance. Mental health support is **Tele-MANAS 14416** or **1800-89-14416** (toll-free, 24x7).
 
 See `care-pathways.md` for who to see and how soon.
 
