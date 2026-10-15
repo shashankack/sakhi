@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Saheli Chat API
+  description: >
+    Non-diagnostic women’s health symptom education API (PCOS-focused).
+    Local RAG only — no cloud LLM backends required.
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000
+    description: Integration BFF (dev)
+paths:
+  /api/chat:
+    post:
+      summary: Analyze symptom description
+      operationId: chatAnalyze
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./schemas/chat-request.schema.json
+            example:
+              message: periods 2 mahine se nahi aaye, chehre pe baal aa rahe hain
+              locale: auto
+      responses:
+        "200":
+          description: Educational guidance response
+          content:
+            application/json:
+              schema:
+                $ref: ./schemas/chat-response.schema.json
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string

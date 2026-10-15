@@ -19,7 +19,16 @@
 | `docs/implementation/**` | Integration | |
 | `docs/tech-stack/**` | Integration | |
 | `docs/agents/**` | Integration | Agent prompts |
+| `docs/testing/**` | Integration | Testing strategy |
 | `docs/README.md` | Integration | |
+| `requirements/**` | Integration | ADCE product requirements |
+| `design/**` | Integration | ADCE UX / copy intent |
+| `architecture/**` | Integration | ADCE system architecture |
+| `decisions/**` | Integration | ADRs |
+| `security/**` | Integration | Safety / policy |
+| `schemas/**` | Integration | JSON schemas |
+| `openapi.yaml` | Integration | OpenAPI surface |
+| `AGENTS.md` | Integration | ADCE agent instructions |
 | Root config & root `README.md` | Integration | See CONFLICT_AVOIDANCE.md |
 
 ## Runtime read permissions (not write)

@@ -22,3 +22,6 @@ Thumbs.db
 *.egg-info/
 .coverage
 htmlcov/
+
+# ADCE local project intelligence (regenerable via adce scan)
+.adce/
