@@ -1,55 +1,72 @@
-# Deploy Saheli frontend on Vercel
+# Deploy Saheli frontend on Vercel (chat + RAG only)
 
-Only the Next.js app in `apps/web` is deployed. Chat/STT backends stay on laptops via tunnels.
+Frontend on Vercel. Your laptop runs **RAG + BFF** behind one Cloudflare tunnel.  
+STT / Whisper is **not** used.
 
-## Project settings (Vercel dashboard)
+```text
+Browser (*.vercel.app)
+  → POST /api/chat  (Next.js on Vercel)
+  → CHAT_API_URL    (cloudflared → your :3001)
+  → RAG             (your :8000)
+```
+
+## Vercel project settings
 
 | Setting | Value |
 |---------|--------|
-| Framework Preset | **Next.js** |
+| Framework | **Next.js** |
 | Root Directory | **`apps/web`** |
 | Build Command | `npm run build` (default) |
 | Install Command | `npm install` (default) |
-| Output | default Next.js |
-| Node.js Version | **20.x** or **22.x** |
+| Node.js | **20.x** or **22.x** |
 
-> Prefer setting **Root Directory = `apps/web`** in the Vercel UI.  
-> If you leave root at repo root, use the repo `vercel.json` instead.
+## Environment variable (only one)
 
-## Environment variables
+| Name | Example |
+|------|---------|
+| `CHAT_API_URL` | `https://brilliant-shirts-director-pixel.trycloudflare.com/api/chat` |
 
-Add under **Settings → Environment Variables** for **Production** (and Preview if you want):
+- Server-only (not `NEXT_PUBLIC_*`)
+- After changing: **Redeploy**
+- If cloudflared restarts, URL changes → update env → Redeploy
 
-| Name | Required | Example | Notes |
-|------|----------|---------|--------|
-| `CHAT_API_URL` | **Yes** for live RAG | `https://xxxx.trycloudflare.com/api/chat` | Server-only. Your laptop BFF tunnel. |
-| `STT_API_URL` | No (voice) | `https://yyyy.trycloudflare.com` | Server-only. Whisper tunnel **base** URL (no `/transcribe`). |
+Do **not** set `STT_API_URL`.
 
-Do **not** put secrets in `NEXT_PUBLIC_*` for these — the browser calls same-origin `/api/chat` and `/api/stt`, which proxy server-side.
+## Your PC (before / during demo)
 
-After changing env vars: **Deployments → … → Redeploy**.
-
-## Local UI against your API
-
+**Terminal 1 — RAG**
 ```powershell
-cd apps/web
-copy .env.example .env.local
-# edit CHAT_API_URL=http://127.0.0.1:3001/api/chat
-npm install
-npm run dev
+cd C:\crucifer\Hackathons\chaos\services\ml
+.\.venv\Scripts\Activate.ps1
+uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
-Open http://localhost:3000/chat
+**Terminal 2 — BFF**
+```powershell
+cd C:\crucifer\Hackathons\chaos
+npm run dev:api
+```
 
-## Demo day
+**Terminal 3 — tunnel**
+```powershell
+cloudflared tunnel --url http://127.0.0.1:3001
+```
 
-1. Your PC: RAG `:8000` + BFF `:3001` + `cloudflared tunnel --url http://127.0.0.1:3001`  
-2. Copy tunnel URL → set `CHAT_API_URL=https://…/api/chat` on Vercel → Redeploy  
-3. (Optional) His PC: Whisper + cloudflared → set `STT_API_URL` → Redeploy  
-4. Open the `*.vercel.app` URL  
+Copy the `https://….trycloudflare.com` URL and set:
 
-If tunnels restart, URLs change — update Vercel env and redeploy (or use named Cloudflare tunnels).
+```text
+CHAT_API_URL=https://….trycloudflare.com/api/chat
+```
 
-## Without tunnels
+## Deploy steps
 
-Leave `CHAT_API_URL` unset → UI uses built-in **template fallback** (still demoable, weaker than RAG).
+1. Push is already on `main` / `dev` (pull latest if needed).
+2. Vercel → Import `shashankack/sakhi` (or existing project).
+3. Root Directory = `apps/web`.
+4. Add `CHAT_API_URL`.
+5. Deploy.
+6. Open `https://<project>.vercel.app/chat` and send a Hinglish test message.
+
+## Without tunnel
+
+Leave `CHAT_API_URL` unset → built-in template fallback (site still works, weaker answers).

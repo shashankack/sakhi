@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUp, Mic, Plus, Sparkles, Square } from "lucide-react";
+import { ArrowUp, Plus, Sparkles } from "lucide-react";
 import { FormEvent, KeyboardEvent, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -182,12 +182,9 @@ export default function ChatPage() {
   const [message, setMessage] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
   const [error, setError] = useState("");
   const threadRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
   const shouldReduceMotion = useReducedMotion();
   const animationDuration = shouldReduceMotion ? 0 : 0.24;
 
@@ -265,72 +262,6 @@ export default function ChatPage() {
   async function submitMessage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     await sendPrompt(message);
-  }
-
-  async function toggleRecording() {
-    if (isRecording && mediaRecorderRef.current) {
-      mediaRecorderRef.current.stop();
-      setIsRecording(false);
-      return;
-    }
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-      chunksRef.current = [];
-      recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) chunksRef.current.push(event.data);
-      };
-      recorder.onstop = async () => {
-        stream.getTracks().forEach((track) => track.stop());
-        const blob = new Blob(chunksRef.current, {
-          type: recorder.mimeType || "audio/webm",
-        });
-        const form = new FormData();
-        form.append("audio", blob, "recording.webm");
-        setError("");
-        setIsLoading(true);
-        try {
-          const res = await fetch("/api/stt", { method: "POST", body: form });
-          const data: unknown = await res.json();
-          if (!res.ok) {
-            const detail =
-              typeof data === "object" &&
-              data !== null &&
-              "error" in data &&
-              typeof data.error === "string"
-                ? data.error
-                : "Speech recognition is unavailable. Set STT_API_URL on the server, or type instead.";
-            throw new Error(detail);
-          }
-          const text =
-            typeof data === "object" &&
-            data !== null &&
-            "text" in data &&
-            typeof data.text === "string"
-              ? data.text.trim()
-              : "";
-          if (text.length < 3) {
-            throw new Error("Could not understand the recording. Try again or type.");
-          }
-          setIsLoading(false);
-          setMessage(text);
-          await sendPrompt(text);
-        } catch (caught) {
-          setError(
-            caught instanceof Error
-              ? caught.message
-              : "Speech recognition failed.",
-          );
-          setIsLoading(false);
-        }
-      };
-      mediaRecorderRef.current = recorder;
-      recorder.start();
-      setIsRecording(true);
-    } catch {
-      setError("Microphone permission is required for voice input.");
-    }
   }
 
   return (
@@ -503,21 +434,6 @@ export default function ChatPage() {
                 rows={1}
                 value={message}
               />
-              <Button
-                aria-label={isRecording ? "Stop recording" : "Record voice"}
-                className="send-button"
-                disabled={isLoading}
-                onClick={() => void toggleRecording()}
-                size="lg"
-                type="button"
-                variant={isRecording ? "destructive" : "outline"}
-              >
-                {isRecording ? (
-                  <Square aria-hidden="true" size={16} />
-                ) : (
-                  <Mic aria-hidden="true" size={16} />
-                )}
-              </Button>
               <Button
                 className="send-button"
                 disabled={isLoading || message.trim().length < 3}
