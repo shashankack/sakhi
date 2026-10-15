@@ -9,6 +9,8 @@
   "scripts": {
     "dev:api": "npm run dev -w @sakhi/api",
     "start:api": "npm run start -w @sakhi/api",
+    "dev:web": "npm run dev --prefix apps/web",
+    "build:web": "npm run build --prefix apps/web",
     "health:api": "node scripts/health-api.mjs"
   },
   "engines": {

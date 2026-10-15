@@ -14,6 +14,12 @@ export type ChatRequest = {
   locale?: "auto" | "en" | "hi";
 };
 
+export type RedFlag = {
+  id: string;
+  label: string;
+  guidance: string;
+};
+
 export type ChatResponse = {
   reply: string;
   language: string;
@@ -30,7 +36,7 @@ export type ChatResponse = {
     questions: string[];
   };
   sources: { title: string; section: string }[];
-  red_flags: string[];
+  red_flags: RedFlag[];
   disclaimer: string;
   engine: "template" | "local_llm" | "hybrid";
 };
@@ -61,8 +67,38 @@ export function getThemeLabel(id: ThemeId) {
   return themeOptions.find((theme) => theme.id === id)?.label ?? id;
 }
 
-export function isChatResponse(value: unknown): value is ChatResponse {
-  if (typeof value !== "object" || value === null) return false;
+function normalizeRedFlags(value: unknown): RedFlag[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item, index) => {
+      if (typeof item === "string") {
+        return {
+          id: `flag_${index}`,
+          label: item,
+          guidance: item,
+        };
+      }
+      if (typeof item !== "object" || item === null) return null;
+      const flag = item as Record<string, unknown>;
+      const label =
+        typeof flag.label === "string"
+          ? flag.label
+          : typeof flag.id === "string"
+            ? flag.id
+            : null;
+      if (!label) return null;
+      return {
+        id: typeof flag.id === "string" ? flag.id : `flag_${index}`,
+        label,
+        guidance:
+          typeof flag.guidance === "string" ? flag.guidance : label,
+      };
+    })
+    .filter((flag): flag is RedFlag => flag !== null);
+}
+
+export function normalizeChatResponse(value: unknown): ChatResponse | null {
+  if (typeof value !== "object" || value === null) return null;
   const candidate = value as Record<string, unknown>;
   if (
     typeof candidate.reply !== "string" ||
@@ -71,44 +107,66 @@ export function isChatResponse(value: unknown): value is ChatResponse {
     !["template", "local_llm", "hybrid"].includes(String(candidate.engine)) ||
     !Array.isArray(candidate.themes) ||
     !Array.isArray(candidate.sources) ||
-    !Array.isArray(candidate.red_flags) ||
     typeof candidate.care !== "object" ||
     candidate.care === null
   ) {
-    return false;
+    return null;
   }
 
   const care = candidate.care as Record<string, unknown>;
-  return (
-    ["routine", "soon", "urgent"].includes(String(care.urgency)) &&
-    typeof care.summary === "string" &&
-    Array.isArray(care.questions) &&
-    care.questions.every((question) => typeof question === "string") &&
-    candidate.red_flags.every((flag) => typeof flag === "string") &&
-    candidate.sources.every(
-      (source) =>
-        typeof source === "object" &&
-        source !== null &&
-        "title" in source &&
-        typeof source.title === "string" &&
-        "section" in source &&
-        typeof source.section === "string",
-    ) &&
-    candidate.themes.every(
-      (theme) =>
-        typeof theme === "object" &&
-        theme !== null &&
-        "id" in theme &&
-        typeof theme.id === "string" &&
-        themeIds.includes(theme.id as ThemeId) &&
-        "title" in theme &&
-        typeof theme.title === "string" &&
-        "summary" in theme &&
-        typeof theme.summary === "string" &&
-        "pcos_context" in theme &&
-        typeof theme.pcos_context === "string" &&
-        "overlap" in theme &&
-        typeof theme.overlap === "string",
-    )
+  if (
+    !["routine", "soon", "urgent"].includes(String(care.urgency)) ||
+    typeof care.summary !== "string" ||
+    !Array.isArray(care.questions) ||
+    !care.questions.every((question) => typeof question === "string")
+  ) {
+    return null;
+  }
+
+  const themesOk = candidate.themes.every(
+    (theme) =>
+      typeof theme === "object" &&
+      theme !== null &&
+      "id" in theme &&
+      typeof theme.id === "string" &&
+      themeIds.includes(theme.id as ThemeId) &&
+      "title" in theme &&
+      typeof theme.title === "string" &&
+      "summary" in theme &&
+      typeof theme.summary === "string" &&
+      "pcos_context" in theme &&
+      typeof theme.pcos_context === "string" &&
+      "overlap" in theme &&
+      typeof theme.overlap === "string",
   );
+  const sourcesOk = candidate.sources.every(
+    (source) =>
+      typeof source === "object" &&
+      source !== null &&
+      "title" in source &&
+      typeof source.title === "string" &&
+      "section" in source &&
+      typeof source.section === "string",
+  );
+  if (!themesOk || !sourcesOk) return null;
+
+  return {
+    reply: candidate.reply,
+    language: candidate.language,
+    themes: candidate.themes as ChatResponse["themes"],
+    care: {
+      urgency: care.urgency as ChatResponse["care"]["urgency"],
+      summary: care.summary,
+      questions: care.questions as string[],
+    },
+    sources: candidate.sources as ChatResponse["sources"],
+    red_flags: normalizeRedFlags(candidate.red_flags),
+    disclaimer: candidate.disclaimer,
+    engine: candidate.engine as ChatResponse["engine"],
+  };
+}
+
+/** @deprecated use normalizeChatResponse */
+export function isChatResponse(value: unknown): value is ChatResponse {
+  return normalizeChatResponse(value) !== null;
 }

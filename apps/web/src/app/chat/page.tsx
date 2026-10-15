@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUp, Plus, Sparkles } from "lucide-react";
+import { ArrowUp, Mic, Plus, Sparkles, Square } from "lucide-react";
 import { FormEvent, KeyboardEvent, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,9 +16,10 @@ import {
   ChatRequest,
   ChatResponse,
   getThemeLabel,
-  isChatResponse,
+  normalizeChatResponse,
   themeOptions,
   ThemeId,
+  type RedFlag,
 } from "@/lib/chat";
 
 type Turn = {
@@ -54,7 +55,7 @@ function AssistantText({ children }: { children: string }) {
   return <div className="assistant-text">{children}</div>;
 }
 
-function RedFlagPanel({ flags, summary }: { flags: string[]; summary: string }) {
+function RedFlagPanel({ flags, summary }: { flags: RedFlag[]; summary: string }) {
   return (
     <section className="red-flag-panel" aria-live="assertive" aria-label="Urgent care guidance">
       <h3>Urgent symptoms — get help now</h3>
@@ -65,7 +66,12 @@ function RedFlagPanel({ flags, summary }: { flags: string[]; summary: string }) 
       </p>
       <ul>
         {flags.map((flag) => (
-          <li key={flag}>{flag}</li>
+          <li key={flag.id}>
+            <strong>{flag.label}</strong>
+            {flag.guidance && flag.guidance !== flag.label ? (
+              <> — {flag.guidance}</>
+            ) : null}
+          </li>
         ))}
       </ul>
     </section>
@@ -176,9 +182,12 @@ export default function ChatPage() {
   const [message, setMessage] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
   const [error, setError] = useState("");
   const threadRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
   const shouldReduceMotion = useReducedMotion();
   const animationDuration = shouldReduceMotion ? 0 : 0.24;
 
@@ -194,17 +203,16 @@ export default function ChatPage() {
     setMessage((current) => (current ? `${current}, ${label.toLowerCase()}` : label));
   }
 
-  async function submitMessage(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const prompt = message.trim();
-    if (prompt.length < 3 || prompt.length > 4000 || isLoading) return;
+  async function sendPrompt(prompt: string) {
+    const trimmed = prompt.trim();
+    if (trimmed.length < 3 || trimmed.length > 4000 || isLoading) return;
 
     setIsLoading(true);
     setError("");
     setMessage("");
     try {
       const payload: ChatRequest = {
-        message: prompt,
+        message: trimmed,
         history: toHistory(turns),
         locale: "auto",
       };
@@ -224,13 +232,16 @@ export default function ChatPage() {
             : "Saheli could not respond. Please try again.";
         throw new Error(detail);
       }
-      if (!isChatResponse(result)) {
-        throw new Error("Saheli returned a response that did not match the chat contract.");
+      const normalized = normalizeChatResponse(result);
+      if (!normalized) {
+        throw new Error(
+          "Saheli returned a response that did not match the chat contract.",
+        );
       }
       const nextTurn: Turn = {
         id: Date.now(),
-        prompt,
-        response: result,
+        prompt: trimmed,
+        response: normalized,
       };
       setTurns((current) => [...current, nextTurn]);
       requestAnimationFrame(() => {
@@ -240,7 +251,7 @@ export default function ChatPage() {
         });
       });
     } catch (caught) {
-      setMessage(prompt);
+      setMessage(trimmed);
       setError(
         caught instanceof Error
           ? caught.message
@@ -248,6 +259,77 @@ export default function ChatPage() {
       );
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function submitMessage(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await sendPrompt(message);
+  }
+
+  async function toggleRecording() {
+    if (isRecording && mediaRecorderRef.current) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+      return;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      chunksRef.current = [];
+      recorder.ondataavailable = (event) => {
+        if (event.data.size > 0) chunksRef.current.push(event.data);
+      };
+      recorder.onstop = async () => {
+        stream.getTracks().forEach((track) => track.stop());
+        const blob = new Blob(chunksRef.current, {
+          type: recorder.mimeType || "audio/webm",
+        });
+        const form = new FormData();
+        form.append("audio", blob, "recording.webm");
+        setError("");
+        setIsLoading(true);
+        try {
+          const res = await fetch("/api/stt", { method: "POST", body: form });
+          const data: unknown = await res.json();
+          if (!res.ok) {
+            const detail =
+              typeof data === "object" &&
+              data !== null &&
+              "error" in data &&
+              typeof data.error === "string"
+                ? data.error
+                : "Speech recognition is unavailable. Set STT_API_URL on the server, or type instead.";
+            throw new Error(detail);
+          }
+          const text =
+            typeof data === "object" &&
+            data !== null &&
+            "text" in data &&
+            typeof data.text === "string"
+              ? data.text.trim()
+              : "";
+          if (text.length < 3) {
+            throw new Error("Could not understand the recording. Try again or type.");
+          }
+          setIsLoading(false);
+          setMessage(text);
+          await sendPrompt(text);
+        } catch (caught) {
+          setError(
+            caught instanceof Error
+              ? caught.message
+              : "Speech recognition failed.",
+          );
+          setIsLoading(false);
+        }
+      };
+      mediaRecorderRef.current = recorder;
+      recorder.start();
+      setIsRecording(true);
+    } catch {
+      setError("Microphone permission is required for voice input.");
     }
   }
 
@@ -422,12 +504,33 @@ export default function ChatPage() {
                 value={message}
               />
               <Button
+                aria-label={isRecording ? "Stop recording" : "Record voice"}
+                className="send-button"
+                disabled={isLoading}
+                onClick={() => void toggleRecording()}
+                size="lg"
+                type="button"
+                variant={isRecording ? "destructive" : "outline"}
+              >
+                {isRecording ? (
+                  <Square aria-hidden="true" size={16} />
+                ) : (
+                  <Mic aria-hidden="true" size={16} />
+                )}
+              </Button>
+              <Button
                 className="send-button"
                 disabled={isLoading || message.trim().length < 3}
                 size="lg"
                 type="submit"
               >
-                {isLoading ? "Sending…" : <>Send <ArrowUp aria-hidden="true" size={16} /></>}
+                {isLoading ? (
+                  "Sending…"
+                ) : (
+                  <>
+                    Send <ArrowUp aria-hidden="true" size={16} />
+                  </>
+                )}
               </Button>
             </form>
             <AnimatePresence>
