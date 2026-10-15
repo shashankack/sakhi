@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import httpx
 
-from .config import OLLAMA_ENABLED, OLLAMA_MODEL, OLLAMA_URL
+from .config import OLLAMA_ENABLED, OLLAMA_MODEL, OLLAMA_TIMEOUT_S, OLLAMA_URL
 
 
 def polish_reply(reply: str, user_message: str, language: str) -> str | None:
@@ -15,7 +15,7 @@ def polish_reply(reply: str, user_message: str, language: str) -> str | None:
         f"User said: {user_message[:500]}\n\nDraft:\n{reply}\n\nRewritten:"
     )
     try:
-        with httpx.Client(timeout=8.0) as client:
+        with httpx.Client(timeout=OLLAMA_TIMEOUT_S) as client:
             res = client.post(
                 OLLAMA_URL,
                 json={

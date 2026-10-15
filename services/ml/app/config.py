@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 SERVICE_ROOT = Path(__file__).resolve().parents[1]
@@ -13,9 +14,13 @@ EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 TOP_K = 4
 MIN_SCORE = 0.22
 
-OLLAMA_ENABLED = False  # set True + OLLAMA_MODEL to polish reply
-OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
-OLLAMA_MODEL = "qwen2.5:1.5b"
+# Teammate Ollama (tunnel to their :11434). Internal llama-server ports (62xxx) change — never tunnel those.
+OLLAMA_ENABLED = os.getenv("OLLAMA_ENABLED", "0").strip().lower() in {"1", "true", "yes"}
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434/api/generate").rstrip("/")
+if not OLLAMA_URL.endswith("/api/generate"):
+    OLLAMA_URL = f"{OLLAMA_URL.rstrip('/')}/api/generate"
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
+OLLAMA_TIMEOUT_S = float(os.getenv("OLLAMA_TIMEOUT_S", "45"))
 
 DISCLAIMER_EN = (
     "This is not a medical diagnosis. Sakhi shares educational information only. "
