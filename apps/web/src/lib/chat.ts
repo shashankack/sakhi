@@ -81,19 +81,27 @@ export function readableProse(text: string, limit = 280): string {
     return "";
   }
   const withoutHeading = cleaned.replace(/^#+\s*/, "");
-  return withoutHeading.length > limit
-    ? `${withoutHeading.slice(0, limit - 1).trimEnd()}…`
-    : withoutHeading;
+  // Prefer ending on a sentence when truncating.
+  if (withoutHeading.length <= limit) return withoutHeading;
+  const sliced = withoutHeading.slice(0, limit - 1);
+  const sentenceEnd = Math.max(
+    sliced.lastIndexOf(". "),
+    sliced.lastIndexOf("। "),
+    sliced.lastIndexOf("? "),
+  );
+  const cut =
+    sentenceEnd > limit * 0.45 ? sliced.slice(0, sentenceEnd + 1).trim() : sliced.trimEnd();
+  return `${cut}…`;
 }
 
 export function themeCardCopy(theme: ChatResponse["themes"][number]) {
-  const summary = readableProse(theme.summary);
-  const context = readableProse(theme.pcos_context, 220);
-  const overlap = readableProse(theme.overlap, 220);
+  const summary = readableProse(theme.summary, 200);
+  const context = readableProse(theme.pcos_context, 140);
+  const overlap = readableProse(theme.overlap, 140);
   return {
     summary:
       summary ||
-      "This theme often comes up in PCOS education conversations — it is not a diagnosis.",
+      "This theme often comes up in PCOS education conversations  it is not a diagnosis.",
     context,
     overlap,
   };

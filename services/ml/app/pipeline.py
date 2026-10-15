@@ -23,14 +23,38 @@ from .ollama_polish import polish_reply
 from .red_flags import detect_red_flags
 
 KEYWORD_THEMES: list[tuple[str, re.Pattern[str]]] = [
-    ("cycle_irregularity", re.compile(r"period|cycle|mahine|पीरियड|अनियमित|महीन", re.I)),
-    ("hirsutism", re.compile(r"facial\s+hair|baal|hirsut|चेहरे पर बाल|chin\s+hair", re.I)),
-    ("acne", re.compile(r"acne|pimple|munhase|muhase|मुंहासे", re.I)),
-    ("weight_insulin", re.compile(r"weight|badh|insulin|वज़न|vazan|vajan", re.I)),
-    ("mood", re.compile(r"mood|anxiety|depress|tension|pareshaan|मूड", re.I)),
-    ("hair_loss", re.compile(r"hair\s+fall|hair\s+loss|baal\s+jhad|बाल झड़", re.I)),
-    ("fatigue", re.compile(r"fatigue|tired|thakaan|थकान", re.I)),
-    ("fertility_concerns", re.compile(r"conceive|fertility|pregnant\s+nahi|गर्भधारण|ovulation", re.I)),
+    (
+        "cycle_irregularity",
+        re.compile(
+            r"period|cycle|mahine|पीरियड|अनियमित|महीन|ಪೀರಿಯಡ್|ಅನಿಯಮಿತ|ಮಾಸಿಕ",
+            re.I,
+        ),
+    ),
+    (
+        "hirsutism",
+        re.compile(
+            r"facial\s+hair|baal|hirsut|चेहरे पर बाल|chin\s+hair|ಕೂದಲು|ಮುಖದ\s*ಕೂದಲು",
+            re.I,
+        ),
+    ),
+    ("acne", re.compile(r"acne|pimple|munhase|muhase|मुंहासे|ಮೊಡವೆ", re.I)),
+    (
+        "weight_insulin",
+        re.compile(r"weight|badh|insulin|वज़न|vazan|vajan|ತೂಕ|ಹಸಿವು", re.I),
+    ),
+    ("mood", re.compile(r"mood|anxiety|depress|tension|pareshaan|मूड|ಮನೋಭಾವ", re.I)),
+    (
+        "hair_loss",
+        re.compile(r"hair\s+fall|hair\s+loss|baal\s+jhad|बाल झड़|ಕೂದಲು\s*ಉದುರ", re.I),
+    ),
+    ("fatigue", re.compile(r"fatigue|tired|thakaan|थकान|ಆಯಾಸ|ದಣಿವು", re.I)),
+    (
+        "fertility_concerns",
+        re.compile(
+            r"conceive|fertility|pregnant\s+nahi|गर्भधारण|ovulation|ಗರ್ಭಧಾರಣೆ",
+            re.I,
+        ),
+    ),
 ]
 
 
@@ -47,12 +71,26 @@ def _is_alias_chunk(meta: dict) -> bool:
 
 
 def _clean_prose(text: str, limit: int = 320) -> str:
-    cleaned = re.sub(r"\s+", " ", (text or "").strip())
+    cleaned = (text or "").strip()
     if _is_alias_chunk({"section": "", "text": cleaned}):
         return ""
-    if cleaned.startswith("#"):
-        cleaned = cleaned.lstrip("# ").strip()
+    # Drop markdown noise so cards/replies stay conversational.
+    cleaned = re.sub(r"^#+\s*", "", cleaned, flags=re.M)
+    cleaned = re.sub(r"\*\*([^*]+)\*\*", r"\1", cleaned)
+    cleaned = re.sub(r"(?m)^\s*[-*•]\s+", "", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    lower = cleaned.lower()
+    # Skip checklist / bullet dumps — they read poorly in chat cards.
+    if cleaned.count(":") >= 2 and cleaned.count(".") <= 1:
+        return ""
+    if lower.startswith(("the nhs advises", "the nhs says see", "- routine", "- urgent")):
+        return ""
+    if len(re.findall(r"\byour periods\b", lower)) >= 2:
+        return ""
     return cleaned[:limit]
+
+
+_SUMMARY_SKIP_SECTIONS = ("care pathway", "red flag", "alias", "phrase map", "glossary")
 
 
 def _section_blob(hits: list[tuple[float, dict]], needle: str) -> str:
@@ -60,11 +98,22 @@ def _section_blob(hits: list[tuple[float, dict]], needle: str) -> str:
     for _, meta in hits:
         if _is_alias_chunk(meta):
             continue
-        if needle_l in meta["section"].lower() or needle_l in meta["text"].lower()[:80]:
-            return _clean_prose(meta["text"], 420)
+        sec = meta["section"].lower()
+        if any(skip in sec for skip in _SUMMARY_SKIP_SECTIONS):
+            continue
+        if needle_l in sec or needle_l in meta["text"].lower()[:80]:
+            prose = _clean_prose(meta["text"], 420)
+            if prose:
+                return prose
     for _, meta in hits:
-        if not _is_alias_chunk(meta):
-            return _clean_prose(meta["text"], 420)
+        if _is_alias_chunk(meta):
+            continue
+        sec = meta["section"].lower()
+        if any(skip in sec for skip in _SUMMARY_SKIP_SECTIONS):
+            continue
+        prose = _clean_prose(meta["text"], 420)
+        if prose:
+            return prose
     return ""
 
 
@@ -84,9 +133,13 @@ def _theme_title(theme_id: str, language: str) -> str:
 def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], language: str) -> ThemeCard:
     relevant = [h for h in hits if theme_id in (h[1].get("theme_ids") or [])] or hits
 
-    summary = _section_blob(relevant, "overview") or _section_blob(relevant, "self-care")
-    if not summary:
-        summary = _section_blob(relevant, theme_id)
+    summary = (
+        _section_blob(relevant, "overview")
+        or _section_blob(relevant, "pcos education")
+        or _section_blob(relevant, "other possible")
+        or _section_blob(relevant, "self-care")
+        or _section_blob(relevant, theme_id)
+    )
     # Prefer named sections when present across corpus
     pcos = ""
     overlap = ""
@@ -113,6 +166,26 @@ def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], languag
             "अन्य कारणों में थायरॉइड, तनाव, दवाएँ और जीवनशैली शामिल हो सकते हैं।",
             "ಥೈರಾಯ್ಡ್, ಒತ್ತಡ, ಔಷಧಗಳು ಮತ್ತು ಜೀವನಶೈಲಿಯೂ ಕಾರಣವಾಗಬಹುದು.",
         )
+    # Corpus is mostly English — for HI/KN use short localized card copy.
+    if language in ("hi", "kn"):
+        summary = _t(
+            language,
+            summary,
+            "ये लक्षण महिला स्वास्थ्य शिक्षा में आम चर्चा के विषय हैं — कई कारण हो सकते हैं।",
+            "ಈ ಲಕ್ಷಣಗಳು ಮಹಿಳಾ ಆರೋಗ್ಯ ಶಿಕ್ಷಣದಲ್ಲಿ ಸಾಮಾನ್ಯ — ಹಲವು ಕಾರಣಗಳಿರಬಹುದು.",
+        )
+        pcos = _t(
+            language,
+            pcos,
+            "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है — निदान नहीं।",
+            "PCOS ಶಿಕ್ಷಣದಲ್ಲಿ ಈ ವಿಷಯವನ್ನು ಸಂಬಂಧವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ — ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+        )
+        overlap = _t(
+            language,
+            overlap,
+            "अन्य कारणों में थायरॉइड, तनाव, दवाएँ और जीवनशैली शामिल हो सकते हैं।",
+            "ಥೈರಾಯ್ಡ್, ಒತ್ತಡ, ಔಷಧಗಳು ಮತ್ತು ಜೀವನಶೈಲಿಯೂ ಕಾರಣವಾಗಬಹುದು.",
+        )
     if not summary:
         summary = _t(
             language,
@@ -124,9 +197,9 @@ def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], languag
     return ThemeCard(
         id=theme_id,
         title=_theme_title(theme_id, language),
-        summary=summary[:480],
-        pcos_context=pcos[:480],
-        overlap=overlap[:480],
+        summary=_first_sentence(summary, 280) or summary[:280],
+        pcos_context=_first_sentence(pcos, 220) or pcos[:220],
+        overlap=_first_sentence(overlap, 220) or overlap[:220],
     )
 
 
@@ -180,9 +253,6 @@ def _care_summary(language: str, urgent: bool, theme_ids: list[str], hits: list[
             "पहले लाल-झंडा मार्गदर्शन का पालन करें। शिक्षा कार्ड द्वितीयक हैं।",
             "ಮೊದಲು ಕೆಂಪು ಧ್ವಜ ಮಾರ್ಗದರ್ಶನವನ್ನು ಅನುಸರಿಸಿ. ಶಿಕ್ಷಣ ಕಾರ್ಡ್‌ಗಳು ದ್ವಿತೀಯ.",
         )
-    for _, meta in hits:
-        if "care pathway" in meta["section"].lower():
-            return meta["text"][:400]
     if theme_ids:
         return _t(
             language,
@@ -196,6 +266,77 @@ def _care_summary(language: str, urgent: bool, theme_ids: list[str], hits: list[
         "मज़बूत जानकारी नहीं मिली। व्यक्तिगत सलाह के लिए चिकित्सक से बात करें।",
         "ಸಾಕಷ್ಟು ಮಾಹಿತಿ ಸಿಗಲಿಲ್ಲ. ವೈಯಕ್ತಿಕ ಸಲಹೆಗಾಗಿ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
     )
+
+
+def _first_sentence(text: str, limit: int = 220) -> str:
+    cleaned = re.sub(r"\s+", " ", (text or "").strip())
+    if not cleaned:
+        return ""
+    match = re.search(r"(.+?[.!?।॥])(\s|$)", cleaned)
+    sentence = match.group(1).strip() if match else cleaned
+    if len(sentence) > limit:
+        return sentence[: limit - 1].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
+    return sentence
+
+
+def _build_reply(
+    message: str,
+    language: str,
+    urgent: bool,
+    themes: list[ThemeCard],
+) -> str:
+    """Warm educational opener; includes one retrieved insight when available."""
+    lead = _t(
+        language,
+        "Thanks for sharing what you’ve noticed — this is educational information, not a diagnosis.",
+        "आपने जो बताया उसके लिए धन्यवाद — यह शैक्षिक जानकारी है, निदान नहीं।",
+        "ನೀವು ಹಂಚಿಕೊಂಡಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು — ಇದು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ, ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+    )
+    if urgent:
+        return (
+            lead
+            + " "
+            + _t(
+                language,
+                "Some of what you described needs urgent care first — follow the guidance above, then talk with a clinician.",
+                "आपके कुछ लक्षणों के लिए पहले तात्कालिक देखभाल ज़रूरी है — ऊपर दिए मार्गदर्शन का पालन करें, फिर चिकित्सक से बात करें।",
+                "ನೀವು ಹೇಳಿದ ಕೆಲವು ಲಕ್ಷಣಗಳಿಗೆ ಮೊದಲು ತುರ್ತು ಆರೈಕೆ ಬೇಕು — ಮೇಲಿನ ಮಾರ್ಗದರ್ಶನವನ್ನು ಅನುಸರಿಸಿ, ನಂತರ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+            )
+        )
+
+    if not themes:
+        return (
+            lead
+            + " "
+            + _t(
+                language,
+                "I could not match a clear education theme yet. A GP or gynecologist can help you sort through next steps.",
+                "अभी कोई स्पष्ट शिक्षा विषय नहीं मिला। GP या स्त्री रोग विशेषज्ञ अगले कदम तय करने में मदद कर सकते हैं।",
+                "ಸ್ಪಷ್ಟ ಶಿಕ್ಷಣ ವಿಷಯ ಇನ್ನೂ ಸಿಗಲಿಲ್ಲ. GP ಅಥವಾ ಸ್ತ್ರೀರೋಗ ತಜ್ಞರು ಮುಂದಿನ ಹಂತಗಳನ್ನು ಸ್ಪಷ್ಟಪಡಿಸಬಹುದು.",
+            )
+        )
+
+    titles = ", ".join(t.title for t in themes[:3])
+    # Only weave retrieved English prose into English replies.
+    insight = ""
+    if language == "en":
+        insight = _first_sentence(themes[0].summary)
+        if insight and (
+            insight.lower().startswith(("the nhs", "- "))
+            or insight.count("- ") >= 2
+        ):
+            insight = ""
+
+    if insight:
+        body = f"{insight} Related topics below: {titles}."
+    else:
+        body = _t(
+            language,
+            f"Related education topics below: {titles}. A clinician can help you decide what to check next.",
+            f"नीचे संबंधित शिक्षा विषय हैं: {titles}। आगे क्या जाँचें, चिकित्सक बता सकते हैं।",
+            f"ಕೆಳಗೆ ಸಂಬಂಧಿತ ಶಿಕ್ಷಣ ವಿಷಯಗಳಿವೆ: {titles}. ಮುಂದೆ ಏನು ಪರೀಕ್ಷಿಸಬೇಕು ಎನ್ನುವುದನ್ನು ವೈದ್ಯರು ಸೂಚಿಸಬಹುದು.",
+        )
+    return f"{lead} {body}"
 
 
 def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
@@ -227,44 +368,7 @@ def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
             seen.add(key)
             uniq_sources.append(s)
 
-    snippet = req.message.strip()[:110]
-    ellipsis = "…" if len(req.message) > 110 else ""
-    if language == "hi":
-        reply = (
-            f"आपने बताया: “{snippet}{ellipsis}”. "
-            "यह शैक्षिक जानकारी है, निदान नहीं। "
-        )
-        if red_flags:
-            reply += "पहले तात्कालिक मार्गदर्शन देखें।"
-        elif themes:
-            titles = ", ".join(t.title for t in themes)
-            reply += f"संबंधित शिक्षा विषय: {titles}।"
-        else:
-            reply += "कृपया चिकित्सक से बात करें।"
-    elif language == "kn":
-        reply = (
-            f"ನೀವು ಹೇಳಿದ್ದು: “{snippet}{ellipsis}”. "
-            "ಇದು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ, ರೋಗನಿರ್ಣಯವಲ್ಲ. "
-        )
-        if red_flags:
-            reply += "ಮೊದಲು ತುರ್ತು ಮಾರ್ಗದರ್ಶನವನ್ನು ನೋಡಿ."
-        elif themes:
-            titles = ", ".join(t.title for t in themes)
-            reply += f"ಸಂಬಂಧಿತ ಶಿಕ್ಷಣ ವಿಷಯಗಳು: {titles}."
-        else:
-            reply += "ದಯವಿಟ್ಟು ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ."
-    else:
-        reply = (
-            f"You mentioned: “{snippet}{ellipsis}”. "
-            "This is educational information, not a diagnosis. "
-        )
-        if red_flags:
-            reply += "Follow the urgent guidance first."
-        elif themes:
-            titles = ", ".join(t.title for t in themes)
-            reply += f"Related education themes: {titles}."
-        else:
-            reply += "Please talk with a clinician for personal advice."
+    reply = _build_reply(req.message, language, bool(red_flags), themes)
 
     engine = "template"
     polished = polish_reply(reply, req.message, language)

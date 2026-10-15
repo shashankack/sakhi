@@ -1094,6 +1094,12 @@ main {
   cursor: not-allowed;
 }
 
+.voice-lang-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
 .composer-form {
   display: flex;
   align-items: flex-end;

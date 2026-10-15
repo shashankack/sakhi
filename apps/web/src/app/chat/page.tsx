@@ -38,7 +38,10 @@ import {
 } from "@/lib/chat";
 import {
   getSpeechRecognitionCtor,
+  readStoredVoiceLocale,
   speechSupported,
+  storeVoiceLocale,
+  transcriptMismatchesLocale,
   voiceBcp47,
   VOICE_LANG_OPTIONS,
   type SpeechRecognitionLike,
@@ -55,37 +58,31 @@ const demos: {
   label: string;
   hint: string;
   text: string;
-  voice: VoiceLocale;
 }[] = [
   {
     label: "Periods, facial hair & weight",
     hint: "Hinglish",
     text: "periods 2 mahine se nahi aaye, chehre pe baal aa rahe hain, weight badh raha hai",
-    voice: "hi",
   },
   {
     label: "Heavy bleeding & feeling faint",
     hint: "Urgent",
     text: "I have heavy bleeding soaking through pads every hour and I feel dizzy and about to faint",
-    voice: "en",
   },
   {
     label: "Acne & mood changes",
     hint: "English",
     text: "I've had more acne lately and my mood has been changing",
-    voice: "en",
   },
   {
     label: "पीरियड्स में बदलाव",
     hint: "हिन्दी",
     text: "मेरे पीरियड्स अनियमित हैं और मुझे थकान रहती है",
-    voice: "hi",
   },
   {
     label: "ಅನಿಯಮಿತ ಪೀರಿಯಡ್",
     hint: "ಕನ್ನಡ",
     text: "ನನ್ನ ಪೀರಿಯಡ್ ಅನಿಯಮಿತವಾಗಿದೆ ಮತ್ತು ನನಗೆ ತುಂಬಾ ಆಯಾಸವಾಗುತ್ತಿದೆ",
-    voice: "kn",
   },
 ];
 
@@ -96,7 +93,7 @@ function RedFlagPanel({ flags, summary }: { flags: RedFlag[]; summary: string })
     <section className="alert-panel" aria-live="assertive" aria-label="Urgent care guidance">
       <div className="alert-panel-head">
         <ShieldAlert aria-hidden="true" size={18} />
-        <h3>Urgent symptoms — get help now</h3>
+        <h3>Urgent symptoms  get help now</h3>
       </div>
       <p>{summary}</p>
       <p className="alert-panel-note">
@@ -108,7 +105,7 @@ function RedFlagPanel({ flags, summary }: { flags: RedFlag[]; summary: string })
           <li key={flag.id}>
             <strong>{flag.label}</strong>
             {flag.guidance && flag.guidance !== flag.label ? (
-              <> — {flag.guidance}</>
+              <>  {flag.guidance}</>
             ) : null}
           </li>
         ))}
@@ -134,6 +131,7 @@ function ThemeCards({
       <div className="theme-grid">
         {themes.map((theme, index) => {
           const copy = themeCardCopy(theme);
+          const softLine = [copy.context, copy.overlap].filter(Boolean)[0];
           return (
             <motion.article
               className="theme-card"
@@ -149,16 +147,10 @@ function ThemeCards({
               <span className="theme-kicker">{getThemeLabel(theme.id)}</span>
               <h3>{theme.title}</h3>
               <p>{copy.summary}</p>
-              {copy.context ? (
+              {softLine ? (
                 <p className="theme-soft">
-                  <span>PCOS context</span>
-                  {copy.context}
-                </p>
-              ) : null}
-              {copy.overlap ? (
-                <p className="theme-soft">
-                  <span>Also consider</span>
-                  {copy.overlap}
+                  <span>Also useful to know</span>
+                  {softLine}
                 </p>
               ) : null}
             </motion.article>
@@ -256,9 +248,6 @@ function AssistantMessage({
                 ? "Kannada"
                 : "English"}
           </span>
-          {response.engine === "hybrid" ? (
-            <span className="meta-pill meta-pill-soft">Polished locally</span>
-          ) : null}
         </div>
       </motion.div>
       <ThemeCards themes={response.themes} reduceMotion={reduceMotion} />
@@ -290,7 +279,7 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [voiceReady, setVoiceReady] = useState(false);
-  // Default English — hi-IN was forcing English speech into Devanagari.
+  // Default English (en-US). Do not use en-IN  Chrome often types Devanagari.
   const [voiceLocale, setVoiceLocale] = useState<VoiceLocale>("en");
   const [error, setError] = useState("");
   const threadRef = useRef<HTMLDivElement>(null);
@@ -302,7 +291,14 @@ export default function ChatPage() {
   const animationDuration = shouldReduceMotion ? 0 : 0.32;
 
   useEffect(() => {
+    const stored = readStoredVoiceLocale();
+    setVoiceLocale(stored);
+    voiceLocaleRef.current = stored;
+  }, []);
+
+  useEffect(() => {
     voiceLocaleRef.current = voiceLocale;
+    storeVoiceLocale(voiceLocale);
   }, [voiceLocale]);
 
   useEffect(() => {
@@ -312,6 +308,12 @@ export default function ChatPage() {
       recognitionRef.current = null;
     };
   }, []);
+
+  function selectVoiceLocale(next: VoiceLocale) {
+    if (next === voiceLocale) return;
+    if (isListening) stopListening();
+    setVoiceLocale(next);
+  }
 
   function handleComposerKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
     if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
@@ -353,7 +355,10 @@ export default function ChatPage() {
     const recognition = new Ctor();
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.lang = voiceBcp47(voiceLocaleRef.current);
+    recognition.maxAlternatives = 1;
+    // Must be set before start(). en-US avoids Devanagari for English speech.
+    const micLang = voiceBcp47(voiceLocaleRef.current);
+    recognition.lang = micLang;
     recognition.onresult = (event) => {
       let interim = "";
       let finalChunk = "";
@@ -361,6 +366,20 @@ export default function ChatPage() {
         const piece = event.results[i][0].transcript;
         if (event.results[i].isFinal) finalChunk += piece;
         else interim += piece;
+      }
+      const probe = `${finalChunk} ${interim}`.trim();
+      if (
+        probe &&
+        transcriptMismatchesLocale(probe, voiceLocaleRef.current)
+      ) {
+        recognition.stop();
+        setIsListening(false);
+        setError(
+          voiceLocaleRef.current === "en"
+            ? "Mic is typing Hindi/Kannada script. Keep Speak in → English selected, stop, and try again  or switch to Hindi / ಕನ್ನಡ if that is what you are speaking."
+            : "Mic language does not match the script it typed. Switch Speak in to match your language, then try again.",
+        );
+        return;
       }
       if (finalChunk) {
         baseMessageRef.current = [baseMessageRef.current, finalChunk.trim()]
@@ -407,8 +426,8 @@ export default function ChatPage() {
       const payload: ChatRequest = {
         message: trimmed,
         history: toHistory(turns),
-        // Prefer the mic language the user chose; otherwise auto-detect.
-        locale: voiceLocale,
+        // Detect reply language from the text (not the mic chip).
+        locale: "auto",
       };
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -547,7 +566,6 @@ export default function ChatPage() {
                         type="button"
                         onClick={() => {
                           setMessage(demo.text);
-                          setVoiceLocale(demo.voice);
                           setError("");
                         }}
                         initial={
@@ -649,7 +667,7 @@ export default function ChatPage() {
               <div
                 className="voice-lang-row"
                 role="group"
-                aria-label="Voice and reply language"
+                aria-label="Microphone language"
               >
                 <span className="voice-lang-label">Speak in</span>
                 {VOICE_LANG_OPTIONS.map((option) => (
@@ -659,11 +677,14 @@ export default function ChatPage() {
                     className={`voice-lang-chip${voiceLocale === option.id ? " is-active" : ""}`}
                     aria-pressed={voiceLocale === option.id}
                     disabled={isListening}
-                    onClick={() => setVoiceLocale(option.id)}
+                    onClick={() => selectVoiceLocale(option.id)}
                   >
                     {option.label}
                   </button>
                 ))}
+                <span className="voice-lang-hint">
+                  {voiceBcp47(voiceLocale)} · pick before using the mic
+                </span>
               </div>
             ) : null}
             <form
@@ -756,7 +777,7 @@ export default function ChatPage() {
             <div className="composer-caption">
               <span>
                 {isListening
-                  ? "Listening — tap the square when you’re done."
+                  ? "Listening  tap the square when you’re done."
                   : "Only share what you feel comfortable sharing."}
               </span>
               <span className="composer-hints">

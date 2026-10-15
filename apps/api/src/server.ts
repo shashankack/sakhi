@@ -6,7 +6,8 @@ import type { ChatRequest, ChatResponse } from "./types.js";
 const PORT = Number(process.env.API_PORT || 3001);
 // RAG lives on :8001 so a teammate model can keep :8000
 const ML_URL = process.env.ML_ANALYZE_URL || "http://127.0.0.1:8001/analyze";
-const ML_TIMEOUT_MS = Number(process.env.ML_TIMEOUT_MS || 8000);
+// Ollama polish often needs ~7–15s over the teammate tunnel.
+const ML_TIMEOUT_MS = Number(process.env.ML_TIMEOUT_MS || 25000);
 
 const app = express();
 app.use(cors({ origin: true }));

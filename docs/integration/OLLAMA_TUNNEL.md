@@ -1,7 +1,7 @@
 # Teammate Ollama (Mac) → our RAG polish
 
 His **Ollama API** listens on **`127.0.0.1:11434`**.  
-Ports like `62903` / `62641` are internal `llama-server` children — **do not tunnel those**.
+Ports like `62903` / `62641` are internal `llama-server` children  **do not tunnel those**.
 
 ## On his Mac
 
@@ -10,7 +10,7 @@ Must set `OLLAMA_ORIGINS=*`.
 
 **Both steps required.** Restarting only cloudflared still returns HTTP 403.
 
-Terminal A — fully quit Ollama (menu bar → Quit), then:
+Terminal A  fully quit Ollama (menu bar → Quit), then:
 ```bash
 killall Ollama 2>/dev/null; killall ollama 2>/dev/null
 export OLLAMA_ORIGINS="*"
@@ -23,7 +23,7 @@ Confirm local still works:
 curl -s http://127.0.0.1:11434/api/tags | head -c 200
 ```
 
-Terminal B — **must rewrite Host** or Ollama returns 403 (DNS-rebinding guard):
+Terminal B  **must rewrite Host** or Ollama returns 403 (DNS-rebinding guard):
 ```bash
 cloudflared tunnel --protocol http2 --http-host-header "127.0.0.1:11434" --url http://127.0.0.1:11434
 ```
@@ -49,7 +49,8 @@ Restart RAG with:
 cd C:\crucifer\Hackathons\chaos\services\ml
 .\.venv\Scripts\Activate.ps1
 $env:OLLAMA_ENABLED="1"
-$env:OLLAMA_URL="https://HIS-TUNNEL.trycloudflare.com/api/generate"
+# Current (15 Oct 2026): miniature-quarter-circuit-obviously
+$env:OLLAMA_URL="https://miniature-quarter-circuit-obviously.trycloudflare.com/api/generate"
 $env:OLLAMA_MODEL="llama3.2"
 uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
