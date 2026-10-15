@@ -9,7 +9,7 @@
 | Web UI | **Next.js (App Router) + TypeScript + Tailwind** | Fast pages, simple API routes for Integration |
 | API / glue | **Next.js Route Handlers** in `apps/api` *or* thin FastAPI sidecar owned by Integration | One process for demo is easiest |
 | Research corpus | **Markdown files** in `research/corpus/` | Human-editable, git-friendly, RAG-ready |
-| Retrieval | **Chroma** (local) or flat **FAISS** + **sentence-transformers** `all-MiniLM-L6-v2` | Runs on **CPU**, ~80–120 MB model, fits 16 GB RAM easily |
+| Retrieval | **Pure NumPy TF-IDF** over markdown chunks (default) | No torch/sklearn — reliable on locked-down Windows; swap to MiniLM later if desired |
 | Answer generation | **Template composer** (primary) + optional **Ollama** small model | Templates never fail at demo time |
 | Optional local LLM | **Ollama** + `qwen2.5:1.5b` or `phi3:mini` (Q4) | See GPU notes below |
 | Package mgr | **npm** (UI/Integration) + **Python 3.11+ venv** (ML) | Clear split by ownership |
