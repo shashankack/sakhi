@@ -19,8 +19,10 @@ pip install -r requirements.txt
 ```powershell
 cd services/ml
 .\.venv\Scripts\Activate.ps1
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
+
+Port **8001** by default so a teammate model can use **8000**. BFF expects `http://127.0.0.1:8001/analyze`.
 
 - `GET /health`
 - `POST /analyze` — same JSON as `docs/contracts/API_CONTRACT.md`

@@ -4,7 +4,7 @@
 **Branch:** `dev`  
 Do not edit if you are not Integration. See `docs/contracts/DIRECTORY_OWNERS.md`.
 
-BFF for Sakhi. Public `POST /api/chat` proxies to ML `POST http://127.0.0.1:8000/analyze`. If ML is down, returns a safe template fallback (never diagnoses).
+BFF for Sakhi. Public `POST /api/chat` proxies to ML `POST http://127.0.0.1:8001/analyze`. If ML is down, returns a safe template fallback (never diagnoses).
 
 ## Run
 
@@ -25,7 +25,7 @@ Listens on **http://127.0.0.1:3001**
 | Variable | Default |
 |----------|---------|
 | `API_PORT` | `3001` |
-| `ML_ANALYZE_URL` | `http://127.0.0.1:8000/analyze` |
+| `ML_ANALYZE_URL` | `http://127.0.0.1:8001/analyze` |
 | `ML_TIMEOUT_MS` | `8000` |
 
 ## UI note

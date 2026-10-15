@@ -7,7 +7,7 @@ STT / Whisper is **not** used.
 Browser (*.vercel.app)
   → POST /api/chat  (Next.js on Vercel)
   → CHAT_API_URL    (cloudflared → your :3001)
-  → RAG             (your :8000)
+  → RAG             (your :8001; leave :8000 for teammate model)
 ```
 
 ## Vercel project settings
@@ -34,11 +34,11 @@ Do **not** set `STT_API_URL`.
 
 ## Your PC (before / during demo)
 
-**Terminal 1 — RAG**
+**Terminal 1 — RAG** (port **8001**; `:8000` reserved for teammate model)
 ```powershell
 cd C:\crucifer\Hackathons\chaos\services\ml
 .\.venv\Scripts\Activate.ps1
-uvicorn app.main:app --host 127.0.0.1 --port 8000
+uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
 **Terminal 2 — BFF**
