@@ -55,7 +55,7 @@ export default function RootLayout({
           </div>
           <header className="site-header">
             <Link className="wordmark" href="/" aria-label="Sakhi home">
-              Sakhi<span className="wordmark-dot">.</span>
+              sakhi<span className="wordmark-dot">.</span>
             </Link>
             <nav className="site-nav" aria-label="Main navigation">
               {navigation.map((item) => (
@@ -71,7 +71,7 @@ export default function RootLayout({
           <main>{children}</main>
           <footer className="site-footer">
             <Link className="footer-wordmark" href="/">
-              Sakhi.
+              sakhi.
             </Link>
             <p>Small steps toward feeling more informed.</p>
             <span>Education only · Not a diagnosis</span>
