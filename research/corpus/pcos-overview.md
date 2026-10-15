@@ -3,99 +3,101 @@ theme_ids: [cycle_irregularity, hirsutism, acne, weight_insulin, mood, hair_loss
 urgency_default: routine
 ---
 
-# PCOS overview (polycystic ovary syndrome)
+# PCOS / PMOS overview
 
 ## Plain-language explanation
 
-PCOS stands for **polycystic ovary syndrome**. It is a common hormone-related condition that affects many women and people with ovaries during their reproductive years. Large health organisations estimate that roughly 1 in 10 (about 8–13%) of women of reproductive age are affected, and many of them do not know it.
+**PCOS** stands for **polycystic ovary syndrome**. In 2026 the condition was given a new name: **PMOS**, which stands for **polyendocrine metabolic ovarian syndrome**. The NHS now says "PMOS used to be called polycystic ovary syndrome (PCOS)". Both names describe the same condition, and many people and doctors still say PCOS.
 
-PCOS is called a "syndrome" because it is a **group of signs** that tend to show up together, not one single symptom. Commonly discussed signs include:
+The World Health Organization (WHO) says PCOS "affects an estimated 10–13% of reproductive-aged women". WHO also estimates that up to 70% of women with PCOS worldwide do not know they have the condition.
 
-- Periods that are irregular, far apart, or missing for months
-- Extra hair on the face, chin, chest, or belly
-- Acne that lasts beyond the teenage years
-- Thinning hair on the scalp
-- Weight gain or finding it hard to manage weight
-- Dark, velvety skin patches (often on the neck or underarms)
-- Difficulty getting pregnant
+Common signs listed by the NHS and WHO include:
 
-Having one or more of these signs **does not mean someone has PCOS**. Each of them has many possible causes. Only a qualified clinician, after taking a history, examining, and usually doing some tests, can decide whether PCOS or something else explains a person's symptoms.
+- irregular periods, or long gaps between periods
+- extra hair growth on the face or body (hirsutism)
+- hair thinning or hair loss on the scalp
+- oily skin and acne
+- weight gain or difficulty losing weight
+- difficulty getting pregnant
+- feeling very tired
+- depression or anxiety
+- thick, dark patches of skin on the neck or armpits (acanthosis nigricans)
 
-Despite the name, PCOS is **not** mainly about "cysts". The small follicles seen on some ultrasounds are partly developed egg sacs, not harmful cysts, and some people with PCOS do not have them at all.
+The NHS says symptoms usually start at puberty and can be mild, severe, or absent.
+
+Having one or more of these signs **does not mean someone has PCOS**. Each sign has other possible causes. Only a clinician can check what is causing them.
 
 ## PCOS education context
 
-Clinicians usually think about three broad areas when they consider PCOS:
+WHO says diagnosis needs at least **two of three** features, after other causes are ruled out:
 
-1. **Ovulation changes**: the ovaries may release an egg less often, which can show up as irregular or missing periods.
-2. **Higher androgen effects**: androgens are hormones present in everyone, and higher levels or stronger effects can show up as extra hair growth, acne, or scalp hair thinning, or be seen on a blood test.
-3. **Ovary appearance on ultrasound**: many small follicles. (Ultrasound is generally *not* used for this purpose in the first several years after periods start, because young ovaries often look like this normally.)
+1. signs of high androgens ("male-type" hormones), such as extra hair growth, or high testosterone on a blood test
+2. irregular or absent periods
+3. polycystic ovaries on an ultrasound
 
-Clinicians also check that **other conditions** (for example thyroid problems, high prolactin, or pregnancy) are not the real explanation before using the word PCOS.
+WHO also says ovarian cysts are **not required** for diagnosis. The 2023 international guideline says a blood test called AMH could be used instead of ultrasound in **adults**, but should not yet be used in teenagers.
 
-PCOS is also linked with **insulin resistance**, where the body has to work harder to manage blood sugar. This is one reason PCOS is associated with a higher long-term chance of type 2 diabetes, diabetes in pregnancy, and heart-health risk factors. It is also associated with higher rates of low mood and anxiety. These are *associations*, which means more common on average, not certain for any one person.
+The cause is **unknown**. WHO says women with a **family history** of PCOS or type 2 diabetes are at higher risk. The NHS says risk is higher if a close relative has it or if someone is from an **Asian background**. It may involve insulin and testosterone not working properly.
 
-PCOS is **long-term but manageable**. Many people live well with it, and many with PCOS do get pregnant, sometimes with support.
+WHO describes PCOS as a long-term (chronic) condition with **no cure**, but says treatments can improve quality of life, support fertility, and reduce long-term risks. See `pcos-long-term-health.md`.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-Symptoms that sound like PCOS can also come from:
+The signs above can also come from other causes. Sources mention:
 
-- Pregnancy (always worth ruling out when a period is late)
-- Thyroid conditions (underactive or overactive thyroid)
-- High prolactin (a hormone from the pituitary gland)
-- Large weight changes, intense exercise, eating too little, or major stress
-- Starting, stopping, or changing hormonal contraception
-- Breastfeeding
-- Perimenopause (the years leading up to menopause)
-- Less common hormone conditions of the adrenal glands or pituitary
-- Some medicines
+- pregnancy
+- thyroid problems (underactive thyroid can cause irregular or heavy periods)
+- high prolactin hormone
+- stress, losing or gaining a lot of weight, or exercising too much
+- hormonal contraception
+- puberty or the start of menopause
+- other hormone conditions such as Cushing's syndrome
 
-See `overlap-thyroid-prolactin.md` for more detail.
+See `overlap-thyroid-prolactin.md` and `cycles-irregular.md`.
 
 ## Self-care notes
 
-These are general wellbeing ideas, not treatment instructions:
+General ideas, not treatment:
 
-- **Track your cycle**: note the first day of each period, how heavy it is, and any symptoms. A simple notes app or calendar works.
-- **Notice patterns**: write down when symptoms started and whether they are changing quickly or slowly.
-- **Regular movement** that you enjoy, such as walking, yoga, dancing, or cycling, supports general and metabolic health.
-- **Balanced meals** with vegetables, dal and other proteins, whole grains, and fewer sugary drinks support steady energy.
-- **Sleep and stress**: consistent sleep and ways to unwind help mood and energy.
-- Be cautious with "PCOS cures" sold online. No product cures PCOS.
+- **Track your cycle**: write down the first day of each period and how long it lasts. Bring this to an appointment.
+- WHO recommends **healthy eating and physical activity** for all women with PCOS, even without weight loss. See `diet-lifestyle-pcos.md` and `exercise-and-yoga-pcos.md`.
+- The NHS suggests considering **talking therapy** for depression or anxiety.
+- For unwanted hair, the NHS lists options such as shaving, waxing, creams, electrolysis, or laser treatment.
+- WHO says there is no cure, so be careful with products that promise one.
 
 ## Care pathway
 
-- **Routine**: if you have ongoing irregular periods, unwanted hair growth, persistent acne, or hair thinning, book a visit with a **general physician (GP)** or a **gynaecologist** in the coming weeks.
-- **Soon (within days to a couple of weeks)**: if periods have stopped for 3 months or more and you are not pregnant, if you are trying to conceive and cycles are irregular, or if symptoms are changing quickly.
-- **Urgent (same day / emergency)**: very heavy bleeding with dizziness, severe pelvic or belly pain, chest pain or breathlessness, or thoughts of self-harm. See `red-flags-when-urgent.md`.
+- **Routine**: the NHS advises seeing a GP if you think you might have PMOS/PCOS, or if symptoms affect your everyday life, work, or relationships.
+- **Soon**: missing 3 periods in a row, or hair growth, voice changes, or muscle changes are appearing suddenly. See `hirsutism-acne.md`.
+- **Urgent**: severe pelvic pain, heavy bleeding with dizziness or fainting, chest pain, or thoughts of self-harm. See `red-flags-when-urgent.md`.
 
-Specialists who may be involved: gynaecologist, endocrinologist (hormone specialist), dermatologist (skin/hair), dietitian, and mental health professional.
+A GP may refer to a **gynaecologist** or **endocrinologist** (hormone specialist).
 
 ## Questions for a clinician
 
-- Could my symptoms be related to PCOS, or could something else explain them?
-- What other conditions should be ruled out first?
+- Could my symptoms be related to PCOS (PMOS), or could something else explain them?
+- Which other conditions should be ruled out first?
 - Which blood tests or scans make sense for me, and why?
-- Should my blood sugar, cholesterol, or blood pressure be checked?
+- Should my blood sugar, blood pressure, or cholesterol be checked?
 - What can I do day to day that may help my symptoms?
-- If I want to get pregnant in the future, should I plan anything now?
-- How often should I come back for follow-up?
+- How often should I come back for check-ups?
 
 ## Lay aliases
 
-English: PCOS, PCOD, polycystic ovaries, cysts in ovaries, hormone imbalance, hormonal problem, irregular periods and facial hair, ovary problem
+English: PCOS, PMOS, PCOD, polyendocrine metabolic ovarian syndrome, polycystic ovary syndrome, polycystic ovaries, cysts in ovaries, hormone imbalance, hormonal problem, ovary problem
 
 Hindi / Hinglish:
 - "PCOD hai kya?"
+- "PCOS / PMOS kya hota hai?"
 - "ovary mein cyst / gaanth"
 - "hormone imbalance ho gaya"
-- "hormonal problem lag rahi hai"
 - "periods bhi late, baal bhi aa rahe"
-- "बच्चेदानी / अंडाशय में गांठ"
 - "हार्मोन की गड़बड़ी"
 - "पीसीओडी / पीसीओएस"
 
-Note: in India, many people say **PCOD** when they mean PCOS. Treat both terms as the same topic for education purposes.
+Tamil / Tanglish:
+- "PCOD irukka?"
+- "hormone problem irukku"
+- "சினைப்பை நீர்க்கட்டி" (sinaipai neerkatti)

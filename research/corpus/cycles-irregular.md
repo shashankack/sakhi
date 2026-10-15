@@ -7,72 +7,75 @@ urgency_default: soon
 
 ## Plain-language explanation
 
-A menstrual cycle is counted from the first day of one period to the first day of the next. For most adults, cycles fall somewhere between **21 and 35 days**, and small changes of a few days from month to month are normal.
+A menstrual cycle is counted from the first day of one period to the first day of the next. The NHS says the average cycle is **around 28 days**, and periods are irregular if the gap between them is **less than 21 days or more than 35 days**.
 
-Cycles are often called **irregular** when:
+The 2023 international guideline defines irregular cycles by how long ago periods started:
 
-- they are usually **shorter than 21 days** or **longer than 35 days**
-- there are **fewer than about 8 periods a year**
-- the length changes a lot and unpredictably from month to month
-- periods stop for **3 months or more** (when someone is not pregnant, breastfeeding, or in menopause)
-
-In the **first 1–3 years after periods begin**, irregular cycles are very common and often settle by themselves. Around the years before menopause, cycles also commonly change.
+- **First year** after the first period: irregular cycles are **normal** as part of puberty.
+- **1 to 3 years** after the first period: cycles shorter than 21 days or longer than 45 days.
+- **More than 3 years** after the first period, until the years before menopause: cycles shorter than 21 days, longer than 35 days, or **fewer than 8 cycles a year**.
+- **More than 1 year** after the first period: any single cycle longer than **90 days**.
 
 ## PCOS education context
 
-Irregular or missing periods are one of the most common reasons people start asking about PCOS. In PCOS, the ovaries may release an egg less often. When ovulation does not happen regularly, periods can come late, come rarely, or skip for months.
+Irregular or absent periods are one of the three features used to describe PCOS (now also called PMOS). The NHS says the main cause of PMOS-related fertility problems is that the ovaries do not release an egg each month.
 
-Irregular cycles are only **one** piece. A clinician looks at the full picture, including other signs like extra hair growth or acne, blood tests, and sometimes ultrasound, and checks for other causes before considering PCOS. Many people with irregular cycles do **not** have PCOS.
+Irregular cycles are only **one** feature. WHO says diagnosis needs at least two of three features, after other causes are ruled out. Many people with irregular cycles do **not** have PCOS.
 
-Long gaps without a period can matter for health even when they feel convenient. When periods are absent for a long time, the womb lining may not shed regularly. This is one reason clinicians like to review cycles that are often 3 months or more apart.
+The 2023 guideline says premenopausal women with PCOS have a markedly higher risk of endometrial hyperplasia (thickening of the womb lining) and endometrial cancer. The NHS also lists womb cancer among the long-term risks of PMOS. This is one reason long gaps between periods are worth checking.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-- **Pregnancy**: the most common reason for a missed period. A home pregnancy test is a sensible first step if pregnancy is possible.
-- **Thyroid conditions**: both underactive and overactive thyroid can change cycles.
-- **High prolactin**: may also cause milky nipple discharge when not breastfeeding.
-- **Stress, illness, travel, or sleep disruption**
-- **Big weight changes**, eating too little, or very intense exercise
-- **Hormonal contraception**: starting, stopping, or changing a method
-- **Breastfeeding**
-- **Perimenopause** (often in the 40s)
-- **Recently starting periods** (teenage years)
-- Some medicines
+The NHS lists these causes of irregular or missed periods:
+
+- **pregnancy**: a missed period is often an early sign
+- **puberty**, when periods first start
+- **the start of menopause** (usually between the ages of 45 and 55)
+- **hormonal contraception**, such as the pill, injection, or IUS
+- **breastfeeding**
+- **losing or gaining a lot of weight**
+- **stress and anxiety**
+- **exercising too much**
+- **PMOS (PCOS)**
+- **thyroid** and other medical conditions
 
 ## Self-care notes
 
-- **Keep a cycle log**: first day of each period, number of bleeding days, heaviness (how many pads per day), pain level, and any spotting in between. Bring this to an appointment; it is very useful.
-- If a period is late and pregnancy is possible, **take a home pregnancy test**.
-- Support general health with regular meals, movement you enjoy, and enough sleep.
-- Avoid crash diets or extreme exercise, which can themselves disturb cycles.
-- Do not start or stop hormone medicines on your own to "fix" a cycle; discuss it with a clinician.
+- **Keep a cycle log**: the first day of each period, how many days it lasts, and any bleeding between periods. Bring it to an appointment.
+- If a period is late and pregnancy is possible, consider a home pregnancy test.
+- Support general health with regular meals, activity you enjoy, and enough sleep.
+- Do not start or stop hormone medicines on your own; talk to a clinician.
 
 ## Care pathway
 
-- **Routine (book in the next few weeks)**: cycles are often longer than 35 days or unpredictable, with no other worrying signs.
-- **Soon (within 1–2 weeks)**:
-  - no period for **3 months or more** and pregnancy test is negative
-  - irregular cycles **and** trying to conceive
-  - irregular cycles together with new facial hair, acne, or hair thinning
-  - bleeding between periods or after sex
-- **Urgent (same day / emergency)**: soaking a pad every hour for several hours, large clots with dizziness or fainting, severe belly or pelvic pain, or pain/bleeding with a possible pregnancy. See `red-flags-when-urgent.md`.
+The NHS advises seeing a GP if:
 
-Who to see: a **GP** or **gynaecologist** is a good first stop.
+- your periods are irregular
+- your periods last longer than 7 days
+- you bleed between periods
+- **3 periods in a row are missed**
+- periods have not started by age 15
+- a period is missed along with weight change, tiredness, facial hair growth, or dry or oily skin
+
+- **Routine**: irregular periods with no other worries.
+- **Soon**: missed 3 periods in a row; bleeding between periods or after sex; irregular periods while trying to get pregnant.
+- **Urgent**: heavy bleeding with feeling faint or dizzy, or severe pelvic pain. See `red-flags-when-urgent.md`.
+
+Who to see: a **GP** or **gynaecologist**.
 
 ## Questions for a clinician
 
 - Is my cycle pattern within the normal range for my age?
 - Could my irregular periods be linked to ovulation changes, thyroid, prolactin, or something else?
-- Should I have a pregnancy test, blood tests, or an ultrasound?
+- Should I have a pregnancy test, blood tests, or a scan?
 - Is it a concern that I sometimes go months without a period?
-- Does my cycle pattern affect my chances of getting pregnant later?
 - What should I track before my next visit?
 
 ## Lay aliases
 
-English: irregular periods, late period, missed period, no periods, periods stopped, skipped periods, delayed period, periods not coming, long cycles, period comes every 2 months, unpredictable periods, spotting
+English: irregular periods, late period, missed period, no periods, periods stopped, skipped periods, delayed period, long cycles, period comes every 2 months, spotting
 
 Hindi / Hinglish:
 - "periods nahi aaye"
@@ -84,7 +87,12 @@ Hindi / Hinglish:
 - "kabhi aate hain kabhi nahi"
 - "periods ruk gaye"
 - "date nikal gayi"
-- "periods bahut der se aate hain"
 - "महीना नहीं आया"
 - "पीरियड्स समय पर नहीं आते"
 - "माहवारी अनियमित है"
+
+Tamil / Tanglish:
+- "period olunga varala" (periods not coming regularly)
+- "period late aagudhu" (period is coming late)
+- "rendu maasama period varala" (no period for two months)
+- "மாதவிடாய் சரியாக வரவில்லை" (periods not coming properly)

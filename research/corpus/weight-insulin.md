@@ -7,67 +7,57 @@ urgency_default: routine
 
 ## Plain-language explanation
 
-**Insulin** is a hormone that helps move sugar from the blood into the body's cells for energy. In **insulin resistance**, the body's cells respond less well to insulin, so the body makes more of it to keep blood sugar steady.
+**Insulin** is a hormone that helps the body use sugar from food for energy. In **insulin resistance**, the body does not respond to insulin as well as it should.
 
-Insulin resistance often has no obvious symptoms, but some people notice:
+Signs people notice can include weight gain or finding it hard to lose weight. The NHS lists both among symptoms of PMOS (the new name for PCOS).
 
-- weight gain, especially around the belly, or finding weight hard to lose
-- strong hunger or sugar cravings, or feeling hungry soon after eating
-- **dark, velvety skin patches** on the back of the neck, underarms, or groin (called *acanthosis nigricans*)
-- small skin tags on the neck or underarms
-- feeling sleepy after meals
-
-Weight is influenced by many things, including genes, sleep, stress, medicines, hormones, and daily routines. It is **not** simply about willpower.
+**Acanthosis nigricans** is dry, dark, thicker patches of skin that feel similar to velvet. The NHS says they are most common in skin folds such as the armpits, neck, or groin. The NHS says the most common cause is obesity, and lists type 2 diabetes and PMOS among other causes. It is usually harmless, but the NHS says it is best to get any skin changes checked.
 
 ## PCOS education context
 
-Insulin resistance is common in PCOS, and it can happen in people with PCOS **at any body size**, including those who are slim. Higher insulin levels can encourage the ovaries to make more androgens, which may affect periods, hair growth, and skin. This is one reason weight, hunger, and PCOS are often discussed together.
+WHO says PCOS is linked with **insulin resistance, type 2 diabetes, and obesity**. The NHS says PMOS may involve insulin and testosterone not working properly, and can increase the risk of type 2 diabetes.
 
-PCOS is associated with a higher long-term chance of **prediabetes, type 2 diabetes**, diabetes during pregnancy, and higher cholesterol or blood pressure. Because of this, clinicians often suggest periodic checks of blood sugar and heart-health markers. An association means higher risk on average, not a certainty for any person.
+The 2023 international guideline says blood sugar status should be **rechecked every one to three years**, depending on other risk factors for diabetes.
 
-For people who carry extra weight, even a **modest** change (for example around 5% of body weight) can improve cycles and metabolic health for some people. Weight is not the whole story, though, and health-supporting habits help regardless of weight change.
+WHO recommends **healthy eating and physical activity** for all women with PCOS, **even without weight loss**.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-- Underactive thyroid (weight gain, tiredness, feeling cold, constipation)
-- Some medicines (certain antidepressants, steroids, antipsychotics, some hormone treatments)
-- Poor or short sleep, night shifts, and chronic stress
-- Family history of diabetes
-- Changes after pregnancy, or with age
-- Less common hormone conditions, such as too much cortisol (may include easy bruising, purple stretch marks, rounder face)
-- Eating patterns linked to stress or emotional eating
+- **Underactive thyroid**: the NHS lists putting on weight, tiredness, and feeling cold more than usual.
+- **Type 2 diabetes**: the NHS lists feeling very tired, peeing more than usual, feeling thirsty all the time, and losing weight without trying as common symptoms.
+- **Some medicines**: the NHS lists steroids and the contraceptive pill among medicines that can cause acanthosis nigricans.
+- **Other hormone conditions**, such as Cushing's syndrome (NHS).
+
+The NHS says type 2 diabetes risk is higher for people **over 25 with a South Asian background**, people with a parent or sibling with diabetes, and people who are overweight and not very active.
 
 ## Self-care notes
 
-General, non-prescriptive habits that support metabolic health:
+General habits, not treatment:
 
-- **Move regularly**: aim for activity most days. Brisk walking, yoga, dancing, stairs, or strength exercises all count. A short walk after meals can help.
-- **Build balanced plates**: half vegetables, a portion of protein (dal, paneer, eggs, chana, fish, chicken, tofu), and whole grains (millets, brown rice, whole wheat roti).
-- **Go easy on sugary drinks**, packaged snacks, and sweets, without banning foods entirely.
-- **Sleep 7–9 hours** when possible; poor sleep increases hunger.
-- **Avoid crash diets** and extreme fasting, which are hard to maintain and can affect cycles and mood.
-- Be kind to yourself. Weight stigma is harmful and makes it harder to seek care.
+- **Move regularly**. See `exercise-and-yoga-pcos.md`.
+- **Eat balanced meals**. See `indian-diet-pcos.md`.
+- **Sleep well**. See `sleep-stress-pcos.md`.
+- Avoid crash diets.
+- Be kind to yourself. Weight is affected by many things, including genes, hormones, and medicines.
 
 ## Care pathway
 
-- **Routine (next few weeks)**: weight changes, cravings, or dark skin patches, especially with irregular periods. See a **GP**, **gynaecologist**, or **endocrinologist**. A **dietitian** can help build a realistic eating plan.
-- **Soon (within days)**: extreme thirst, passing urine very often, unexplained weight **loss**, or blurred vision; these can be signs of high blood sugar.
-- Ask about periodic checks of blood sugar, cholesterol, and blood pressure.
+- **Routine**: weight changes, dark skin patches, or wanting a blood sugar check. See a **GP** or **endocrinologist**. A **dietitian** can help build an eating plan.
+- **Soon**: feeling very thirsty, peeing more than usual, or losing weight without trying.
 
 ## Questions for a clinician
 
 - Could insulin resistance be part of what I'm experiencing?
-- Should my blood sugar (for example HbA1c or a glucose test) and cholesterol be checked?
-- Could any of my medicines be affecting my weight?
+- Should my blood sugar and cholesterol be checked, and how often?
+- Could any of my medicines be affecting my weight or skin?
 - What kind of activity and eating changes are realistic for me?
 - Can you refer me to a dietitian?
-- How often should these checks be repeated?
 
 ## Lay aliases
 
-English: weight gain, gaining weight fast, can't lose weight, belly fat, obesity, always hungry, sugar cravings, craving sweets, dark neck, dark skin on neck, dark underarms, skin tags, insulin resistance, prediabetes, borderline sugar
+English: weight gain, gaining weight fast, can't lose weight, belly fat, obesity, always hungry, sugar cravings, dark neck, dark skin on neck, dark underarms, skin tags, insulin resistance, prediabetes, borderline sugar
 
 Hindi / Hinglish:
 - "weight badh raha hai"
@@ -75,13 +65,17 @@ Hindi / Hinglish:
 - "wazan kam hi nahi hota"
 - "motapa badh gaya"
 - "pet pe charbi"
-- "pet nikal aaya"
 - "bhookh bahut lagti hai"
 - "meetha khane ka bahut mann"
 - "gardan kaali ho gayi"
-- "gardan pe kala daag"
 - "sugar border pe hai"
 - "वज़न बढ़ रहा है"
 - "मोटापा"
-- "भूख बहुत लगती है"
 - "गर्दन काली हो गई"
+
+Tamil / Tanglish:
+- "edai koodudhu" (weight is increasing)
+- "edai kuraiya maatenguthu" (weight will not come down)
+- "romba pasikudhu" (I feel very hungry)
+- "kazhuthula karuppu" (dark skin on the neck)
+- "உடல் எடை கூடுகிறது" (body weight is increasing)

@@ -3,72 +3,68 @@ theme_ids: [hirsutism, acne]
 urgency_default: routine
 ---
 
-# Extra facial or body hair and persistent acne
+# Extra facial or body hair and acne
 
 ## Plain-language explanation
 
-**Hirsutism** means coarse, dark hair growing in places where it is more typical for men, such as the upper lip, chin, jawline, chest, around the nipples, lower belly, or inner thighs. This is different from fine, light "peach fuzz", which is normal.
+The NHS describes **hirsutism** as women having thick, dark hair on the face, neck, chest, tummy, lower back, buttocks, or thighs.
 
-**Acne** means pimples, blackheads, whiteheads, or deeper painful bumps. Acne is very common in teenagers. Acne that continues or starts in adulthood, especially along the **jawline, chin, and neck**, is something people often ask about.
-
-How much body hair is "normal" varies widely by family background and ethnicity. What matters most is **change** (new or increasing hair growth) and how much it bothers you.
+The NHS describes **acne** as a common skin condition causing spots that can range from mild to severe. It usually affects the face, chest, and back.
 
 ## PCOS education context
 
-Both extra hair growth and persistent acne can be linked to **androgens**. These are hormones everyone has, and higher levels or stronger skin sensitivity to them can show up on the skin and hair. PCOS is one of the most common reasons for higher androgen effects in women, so these signs are often discussed together with PCOS.
+The NHS says **PMOS** (the new name for PCOS) is the most common cause of hirsutism. WHO lists excess facial or body hair, and acne or oily skin, among the symptoms of PCOS. The NHS lists PMOS among conditions that can cause acne.
 
-Still, extra hair or acne **on its own does not mean PCOS**. A clinician considers these signs alongside cycle patterns, blood tests, and other causes.
+The 2023 international guideline says hirsutism alone predicts high androgens and PCOS in adults, while acne and female-pattern hair loss **on their own** (without hirsutism) are weak predictors.
 
-Hair growth that appears **very quickly over a few months**, especially with a deepening voice, increased muscle bulk, or scalp hair loss at the temples, is **not typical** of PCOS. It should be checked **soon**, because rare hormone-producing growths need to be ruled out.
+So these signs are linked to PCOS, but they do **not** mean someone has it. A clinician looks at the whole picture.
+
+**Watch for fast changes.** The NHS advises an **urgent GP appointment** if thick, dark hair **suddenly** appears on the face and body, the voice becomes lower, or muscles become bigger.
 
 This information is educational. It is not a diagnosis.
 
 ## Other possible causes and overlaps
 
-For extra hair growth:
-- Family or ethnic background (common and harmless)
-- Some medicines (for example certain steroids or hormone treatments)
-- Less common adrenal gland conditions
-- Rarely, a hormone-producing growth (see warning signs above)
-- High prolactin or thyroid problems can sometimes play a role
+For hirsutism, the NHS lists:
+- PMOS (the most common cause)
+- sometimes no clear cause is found
+- certain medicines, such as some epilepsy medicines and steroids, including anabolic steroids
+- other hormone conditions, such as Cushing's syndrome and acromegaly
+- rarely, a tumour affecting hormone levels
 
-For acne:
-- Normal teenage hormone changes
-- Skin products that block pores, heavy oils, or makeup
-- Stress and poor sleep
-- Some medicines
-- Changes in hormonal contraception
-- Friction from helmets, masks, or phone screens
+For acne, the NHS lists:
+- changes in hormone levels, such as during puberty, periods, menopause, and pregnancy
+- conditions such as PMOS
 
 ## Self-care notes
 
-These are general skin and hair care ideas, not treatments:
+From NHS advice on acne:
+- Wash your skin **twice a day** with a gentle cleanser.
+- Use skincare and make-up products that are **non-comedogenic** (less likely to block pores).
+- **Do not pick or squeeze** spots, because this can cause scars.
+- **Do not scrub** your skin; this can irritate it and make acne worse.
 
-- Wash the face gently twice a day with a mild cleanser. Avoid harsh scrubbing.
-- Look for "non-comedogenic" (does not block pores) moisturisers and sunscreen.
-- Try not to pick or squeeze pimples, which can cause marks and scars.
-- Hair removal options like threading, waxing, shaving, or creams are all reasonable personal choices. **Shaving does not make hair grow back thicker.**
-- Be cautious with home remedies that can irritate skin (for example raw lemon or toothpaste on pimples).
-- If these concerns affect your confidence or mood, that is valid. It is worth mentioning to a clinician.
+For unwanted hair, the NHS lists home options such as shaving, waxing, plucking, hair removal creams, or bleaching.
+
+If these changes affect your confidence or mood, that matters too. The NHS lists "affecting your mental health" as a reason to see a GP about acne.
 
 ## Care pathway
 
-- **Routine (next few weeks)**: ongoing acne or unwanted hair that bothers you, especially with irregular periods. See a **GP**, **gynaecologist**, or **dermatologist**.
-- **Soon (within 1–2 weeks)**: hair growth appearing **rapidly** over a few months, deepening voice, or other new "masculinising" changes.
-- **Dermatologist**: for painful, deep, or scarring acne, or acne that does not improve with basic care.
+- **Routine**: the NHS says see a GP about hirsutism "if it's a problem for you", especially with irregular periods. For acne, see a GP if self-care is not helping, or spots are many, deep, painful, or scarring, or if acne affects your mental health.
+- **Soon (urgent GP appointment)**: thick, dark hair appearing suddenly, a lower voice, or bigger muscles.
+- A **dermatologist** (skin doctor) can help with severe acne.
 
 ## Questions for a clinician
 
 - Could my hair growth or acne be related to hormones?
-- Should my hormone levels be checked, and which tests make sense?
+- Should my hormone levels be checked?
 - Could my periods and my skin changes be connected?
-- What treatment options exist for unwanted hair and acne, and what are their pros and cons?
-- Are any of my current medicines or products possibly contributing?
-- Should I see a dermatologist as well?
+- What treatment options are there, and what are their pros and cons?
+- Could any of my medicines be playing a part?
 
 ## Lay aliases
 
-English: facial hair, chin hair, hair on upper lip, moustache, beard-like hair, hair on chest, hair on stomach, unwanted hair, excess body hair, pimples, acne, breakouts, jawline acne, adult acne, cystic acne, oily skin
+English: facial hair, chin hair, hair on upper lip, moustache, beard-like hair, hair on chest, hair on stomach, unwanted hair, pimples, acne, breakouts, jawline acne, oily skin
 
 Hindi / Hinglish:
 - "chehre pe baal"
@@ -77,13 +73,16 @@ Hindi / Hinglish:
 - "upper lip pe baal" / "moonchh aa rahi hai"
 - "daadhi jaise baal"
 - "pet pe baal" / "chhati pe baal"
-- "baar baar threading karni padti hai"
 - "pimples bahut ho rahe"
 - "daane nikal rahe hain"
 - "muhase"
-- "jawline pe pimples"
 - "skin bahut oily hai"
 - "चेहरे पर बाल"
-- "ठुड्डी पर बाल"
 - "मुंहासे"
-- "दाने निकलना"
+
+Tamil / Tanglish:
+- "mugathula mudi" (hair on the face)
+- "thaadai la mudi" (hair on the chin)
+- "mugathula paru" (pimples on the face)
+- "முகத்தில் முடி" (hair on the face)
+- "முகப்பரு" (pimples on the face)

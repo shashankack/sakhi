@@ -35,6 +35,33 @@ Why: Research used docs/contracts/* and docs/README.md non-negotiables as the sa
 ```text
 Date: 2026-10-15
 Need from: UI / Integration
-Request: When red_flags is non-empty, show India emergency numbers (112 / 108) and Tele-MANAS (14416 / 1-800-891-4416) as plain text.
+Request: When red_flags is non-empty, show the India ambulance number 108 and Tele-MANAS (14416 / 1800-89-14416) as plain text.
 Why: The corpus includes these numbers; showing them in the UI too keeps crisis guidance visible even if retrieval is weak.
+Update 2026-10-15: 112 removed from the corpus because no page confirming it could be opened during the fact-check (see SOURCES.md).
+```
+
+```text
+Date: 2026-10-15
+Need from: Integration (contracts, UI copy) / ML (aliases)
+Request: PCOS was renamed PMOS (polyendocrine metabolic ovarian syndrome) in 2026. NHS and MedlinePlus now use PMOS.
+         Please consider (1) mentioning PMOS alongside PCOS in UI copy and disclaimers, and
+         (2) adding "PMOS" and "PCOD" to ML's alias / keyword lists so they retrieve PCOS content.
+         Theme IDs do not need to change.
+Why: Users may hear the new name from doctors or news; the corpus already says "PCOS (now also called PMOS)".
+```
+
+```text
+Date: 2026-10-15
+Need from: Integration (team decision)
+Request: Confirm whether official Government of India pages (MoHFW / DGHS for Tele-MANAS, National Health Mission for 108)
+         may be used as sources. They are not on the trusted-source list, but no listed source covers Indian helplines.
+Why: These two pages are the only sources for the Tele-MANAS and 108 numbers in the corpus (SOURCES.md S16, S18).
+```
+
+```text
+Date: 2026-10-15
+Need from: Integration
+Request: Consider adding theme ids for period pain and heavy bleeding (e.g. `period_pain`, `heavy_bleeding`).
+Why: painful-periods.md, heavy-periods.md, endometriosis.md and anaemia-and-periods.md currently borrow the nearest ids
+     (cycle_irregularity, fatigue), which may blur retrieval.
 ```
