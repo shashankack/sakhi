@@ -2,9 +2,9 @@
 
 ## Order (important)
 
-1. **First** — ADCE setup: [prompts/FULL_adce_setup.md](prompts/FULL_adce_setup.md)  
+1. **First**  ADCE setup: [prompts/FULL_adce_setup.md](prompts/FULL_adce_setup.md)  
    Installs with `npm install -g adce-cli`, then `adce init` / `scan` / `context`.
-2. **Second** — your role FULL prompt (table below).
+2. **Second**  your role FULL prompt (table below).
 
 Each person pastes **only the fenced `text` block** from the file.
 

@@ -32,9 +32,9 @@ const THEME_HINTS: {
     summary_hi:
       "देर से आना, छूटना या अनिश्चित पीरियड्स आम चिंता है। कई कारण समय बदल सकते हैं।",
     pcos_en:
-      "In PCOS education, irregular cycles are often discussed alongside ovulation patterns — this is not a diagnosis.",
+      "In PCOS education, irregular cycles are often discussed alongside ovulation patterns  this is not a diagnosis.",
     pcos_hi:
-      "PCOS शिक्षा में अनियमित चक्रों की चर्चा ओव्यूलेशन पैटर्न के साथ होती है — यह निदान नहीं है।",
+      "PCOS शिक्षा में अनियमित चक्रों की चर्चा ओव्यूलेशन पैटर्न के साथ होती है  यह निदान नहीं है।",
     overlap_en: "Thyroid issues, stress, pregnancy, and medicines can also change cycles.",
     overlap_hi: "थायरॉइड, तनाव, गर्भावस्था और दवाएँ भी चक्र बदल सकती हैं।",
   },
@@ -64,9 +64,9 @@ const THEME_HINTS: {
     summary_hi:
       "भूख या वज़न बदलाव नींद, तनाव, दवाएँ, थायरॉइड या ग्लूकोज़ हैंडलिंग से जुड़ सकते हैं।",
     pcos_en:
-      "Some PCOS education notes insulin resistance can make weight feel harder to manage — not a diagnosis by itself.",
+      "Some PCOS education notes insulin resistance can make weight feel harder to manage  not a diagnosis by itself.",
     pcos_hi:
-      "कुछ PCOS शिक्षा में इंसुलिन प्रतिरोध का ज़िक्र है — स्वयं निदान नहीं।",
+      "कुछ PCOS शिक्षा में इंसुलिन प्रतिरोध का ज़िक्र है  स्वयं निदान नहीं।",
     overlap_en: "Thyroid disease and lifestyle factors are common other explanations.",
     overlap_hi: "थायरॉइड और जीवनशैली अन्य आम कारण हैं।",
   },

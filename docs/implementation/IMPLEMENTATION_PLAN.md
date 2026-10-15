@@ -1,4 +1,4 @@
-# Implementation Plan — Women’s Health Symptom Understanding (PCOS)
+# Implementation Plan  Women’s Health Symptom Understanding (PCOS)
 
 **Duration:** 5 hours · **Team:** 4 · **Constraint:** no cloud LLM APIs · **Stance:** non-diagnostic
 
@@ -40,7 +40,7 @@ UI never imports ML internals. ML never edits UI files. Research never edits API
 |-------|-------|---------|
 | `/` | UI | Landing: brand, one-liner, disclaimer, CTA |
 | `/chat` | UI | Chat UI + structured cards in-thread |
-| `/learn` | UI | Static PCOS education (copy from Research summaries if needed — paste via Integration if shared) |
+| `/learn` | UI | Static PCOS education (copy from Research summaries if needed  paste via Integration if shared) |
 | `/about` | UI | Full disclaimer, privacy, emergency note |
 
 ## 5. Chat flow

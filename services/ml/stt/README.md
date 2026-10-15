@@ -12,6 +12,6 @@ See **[docs/integration/STT_TUNNEL.md](../../../docs/integration/STT_TUNNEL.md)*
 ## Quick test
 
 ```powershell
-$env:SAKHI_CHAT_URL = "http://<INTEGRATION_IP_OR_TUNNEL>/api/chat"
-python send_to_sakhi.py "periods 2 mahine se nahi aaye, chehre pe baal"
+$env:Aai_CHAT_URL = "http://<INTEGRATION_IP_OR_TUNNEL>/api/chat"
+python send_to_Aai.py "periods 2 mahine se nahi aaye, chehre pe baal"
 ```

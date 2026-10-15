@@ -4,7 +4,7 @@
 
 | Branch | Human role | Coding agent prompt |
 |--------|------------|---------------------|
-| `main` | Protected — no direct work | — |
+| `main` | Protected  no direct work |  |
 | `dev` | Complete system / Integration | `docs/agents/prompts/integration-agent.md` |
 | `ui` | UI developer | `docs/agents/prompts/ui-agent.md` |
 | `ml` | ML developer | `docs/agents/prompts/ml-agent.md` |
@@ -16,7 +16,7 @@
 If a task seems to require another role’s files, they must:
 
 1. Document the need in their own `docs/<role>/` notes, and  
-2. Ask Integration to coordinate — **not** edit the other path.
+2. Ask Integration to coordinate  **not** edit the other path.
 
 This rule exists so merge conflicts are structurally rare, even if prompts are vague.
 

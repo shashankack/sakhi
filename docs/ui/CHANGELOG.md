@@ -15,11 +15,11 @@
 - Applied the supplied warm pink/periwinkle palette as shared color tokens,
   added accessible gradient accents for existing controls and hero text, and
   kept urgent/error treatments high-contrast.
-- Configured shadcn/ui with the Saheli theme and integrated shared buttons,
+- Configured shadcn/ui with the Aai theme and integrated shared buttons,
   cards, badges, textarea, and tooltips into chat. Added reduced-motion-aware
   Framer Motion transitions, keyboard send shortcut, and session reset action.
 - Refreshed the app with Lunara-inspired cream, plum, berry, and sage styling,
   Fraunces and Plus Jakarta Sans typography, softer rounded cards, and an
-  organic landing illustration. Kept Saheli's education-only scope and urgent
+  organic landing illustration. Kept Aai's education-only scope and urgent
   guidance behavior unchanged; no cycle tracking or fertility predictions
   were added.

@@ -1,4 +1,4 @@
-# ADR 002 — Exclusive directory ownership
+# ADR 002  Exclusive directory ownership
 
 ## Status
 

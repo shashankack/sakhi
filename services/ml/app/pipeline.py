@@ -80,7 +80,7 @@ def _clean_prose(text: str, limit: int = 320) -> str:
     cleaned = re.sub(r"(?m)^\s*[-*•]\s+", "", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     lower = cleaned.lower()
-    # Skip checklist / bullet dumps — they read poorly in chat cards.
+    # Skip checklist / bullet dumps  they read poorly in chat cards.
     if cleaned.count(":") >= 2 and cleaned.count(".") <= 1:
         return ""
     if lower.startswith(("the nhs advises", "the nhs says see", "- routine", "- urgent")):
@@ -155,9 +155,9 @@ def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], languag
     if not pcos:
         pcos = _t(
             language,
-            "In PCOS education this theme is sometimes discussed as an association — not a diagnosis.",
-            "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है — निदान नहीं।",
-            "PCOS ಶಿಕ್ಷಣದಲ್ಲಿ ಈ ವಿಷಯವನ್ನು ಸಂಬಂಧವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ — ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+            "In PCOS education this theme is sometimes discussed as an association  not a diagnosis.",
+            "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है  निदान नहीं।",
+            "PCOS ಶಿಕ್ಷಣದಲ್ಲಿ ಈ ವಿಷಯವನ್ನು ಸಂಬಂಧವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ  ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
         )
     if not overlap:
         overlap = _t(
@@ -166,19 +166,19 @@ def _extract_theme_fields(theme_id: str, hits: list[tuple[float, dict]], languag
             "अन्य कारणों में थायरॉइड, तनाव, दवाएँ और जीवनशैली शामिल हो सकते हैं।",
             "ಥೈರಾಯ್ಡ್, ಒತ್ತಡ, ಔಷಧಗಳು ಮತ್ತು ಜೀವನಶೈಲಿಯೂ ಕಾರಣವಾಗಬಹುದು.",
         )
-    # Corpus is mostly English — for HI/KN use short localized card copy.
+    # Corpus is mostly English  for HI/KN use short localized card copy.
     if language in ("hi", "kn"):
         summary = _t(
             language,
             summary,
-            "ये लक्षण महिला स्वास्थ्य शिक्षा में आम चर्चा के विषय हैं — कई कारण हो सकते हैं।",
-            "ಈ ಲಕ್ಷಣಗಳು ಮಹಿಳಾ ಆರೋಗ್ಯ ಶಿಕ್ಷಣದಲ್ಲಿ ಸಾಮಾನ್ಯ — ಹಲವು ಕಾರಣಗಳಿರಬಹುದು.",
+            "ये लक्षण महिला स्वास्थ्य शिक्षा में आम चर्चा के विषय हैं  कई कारण हो सकते हैं।",
+            "ಈ ಲಕ್ಷಣಗಳು ಮಹಿಳಾ ಆರೋಗ್ಯ ಶಿಕ್ಷಣದಲ್ಲಿ ಸಾಮಾನ್ಯ  ಹಲವು ಕಾರಣಗಳಿರಬಹುದು.",
         )
         pcos = _t(
             language,
             pcos,
-            "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है — निदान नहीं।",
-            "PCOS ಶಿಕ್ಷಣದಲ್ಲಿ ಈ ವಿಷಯವನ್ನು ಸಂಬಂಧವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ — ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+            "PCOS शिक्षा में इस विषय की चर्चा एक जुड़ाव के रूप में होती है  निदान नहीं।",
+            "PCOS ಶಿಕ್ಷಣದಲ್ಲಿ ಈ ವಿಷಯವನ್ನು ಸಂಬಂಧವಾಗಿ ಚರ್ಚಿಸಲಾಗುತ್ತದೆ  ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
         )
         overlap = _t(
             language,
@@ -256,9 +256,9 @@ def _care_summary(language: str, urgent: bool, theme_ids: list[str], hits: list[
     if theme_ids:
         return _t(
             language,
-            "Consider a soon appointment with a GP or gynecologist to discuss these educational themes — not as a diagnosis.",
-            "इन शैक्षिक विषयों पर चर्चा के लिए GP या स्त्री रोग विशेषज्ञ से जल्द मिलने पर विचार करें — यह निदान नहीं है।",
-            "ಈ ಶೈಕ್ಷಣಿಕ ವಿಷಯಗಳನ್ನು ಚರ್ಚಿಸಲು GP ಅಥವಾ ಸ್ತ್ರೀರೋಗ ತಜ್ಞರನ್ನು ಶೀಘ್ರದಲ್ಲೇ ನೋಡಿ — ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+            "Consider a soon appointment with a GP or gynecologist to discuss these educational themes  not as a diagnosis.",
+            "इन शैक्षिक विषयों पर चर्चा के लिए GP या स्त्री रोग विशेषज्ञ से जल्द मिलने पर विचार करें  यह निदान नहीं है।",
+            "ಈ ಶೈಕ್ಷಣಿಕ ವಿಷಯಗಳನ್ನು ಚರ್ಚಿಸಲು GP ಅಥವಾ ಸ್ತ್ರೀರೋಗ ತಜ್ಞರನ್ನು ಶೀಘ್ರದಲ್ಲೇ ನೋಡಿ  ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ.",
         )
     return _t(
         language,
@@ -288,9 +288,9 @@ def _build_reply(
     """Warm educational opener; includes one retrieved insight when available."""
     lead = _t(
         language,
-        "Thanks for sharing what you’ve noticed — this is educational information, not a diagnosis.",
-        "आपने जो बताया उसके लिए धन्यवाद — यह शैक्षिक जानकारी है, निदान नहीं।",
-        "ನೀವು ಹಂಚಿಕೊಂಡಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು — ಇದು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ, ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+        "Thanks for sharing what you’ve noticed  this is educational information, not a diagnosis.",
+        "आपने जो बताया उसके लिए धन्यवाद  यह शैक्षिक जानकारी है, निदान नहीं।",
+        "ನೀವು ಹಂಚಿಕೊಂಡಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು  ಇದು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ, ರೋಗನಿರ್ಣಯವಲ್ಲ.",
     )
     if urgent:
         return (
@@ -298,9 +298,9 @@ def _build_reply(
             + " "
             + _t(
                 language,
-                "Some of what you described needs urgent care first — follow the guidance above, then talk with a clinician.",
-                "आपके कुछ लक्षणों के लिए पहले तात्कालिक देखभाल ज़रूरी है — ऊपर दिए मार्गदर्शन का पालन करें, फिर चिकित्सक से बात करें।",
-                "ನೀವು ಹೇಳಿದ ಕೆಲವು ಲಕ್ಷಣಗಳಿಗೆ ಮೊದಲು ತುರ್ತು ಆರೈಕೆ ಬೇಕು — ಮೇಲಿನ ಮಾರ್ಗದರ್ಶನವನ್ನು ಅನುಸರಿಸಿ, ನಂತರ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+                "Some of what you described needs urgent care first  follow the guidance above, then talk with a clinician.",
+                "आपके कुछ लक्षणों के लिए पहले तात्कालिक देखभाल ज़रूरी है  ऊपर दिए मार्गदर्शन का पालन करें, फिर चिकित्सक से बात करें।",
+                "ನೀವು ಹೇಳಿದ ಕೆಲವು ಲಕ್ಷಣಗಳಿಗೆ ಮೊದಲು ತುರ್ತು ಆರೈಕೆ ಬೇಕು  ಮೇಲಿನ ಮಾರ್ಗದರ್ಶನವನ್ನು ಅನುಸರಿಸಿ, ನಂತರ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
             )
         )
 

@@ -1,11 +1,11 @@
-# Repo Setup — Commands (human lead / Integration)
+# Repo Setup  Commands (human lead / Integration)
 
 Do this **once** at the start. Prefer GitHub (or Cursor Origin) so `main` can be protected in the UI.
 
 ## 0. Prerequisites
 
 - Git installed
-- GitHub account (or Origin) with a new empty repo, e.g. `saheli-pcos`
+- GitHub account (or Origin) with a new empty repo, e.g. `aai-pcos`
 - Node.js 20+ and Python 3.11+ on machines that will run the app
 
 ## 1. Create local project + git
@@ -28,8 +28,8 @@ git commit -m "chore: initial scaffold, docs, and ownership boundaries"
 ## 2. Create remote and push `main`
 
 ```bash
-# GitHub example — create empty repo first on github.com (no README if you already committed locally)
-git remote add origin https://github.com/<ORG_OR_USER>/saheli-pcos.git
+# GitHub example  create empty repo first on github.com (no README if you already committed locally)
+git remote add origin https://github.com/<ORG_OR_USER>/aai-pcos.git
 git push -u origin main
 ```
 
@@ -64,7 +64,7 @@ GitHub → **Settings → Branches → Add branch protection rule**
 - Branch name pattern: `main`
 - Enable:
   - **Require a pull request before merging**
-  - **Require approvals** (at least 1 — Integration lead)
+  - **Require approvals** (at least 1  Integration lead)
   - **Do not allow force pushes**
   - **Do not allow deletions**
 - Optional: restrict who can push to `main` to Integration only
@@ -122,8 +122,8 @@ Each owned folder should contain a short `README.md` stating **Owner** and **Do 
 ## 6. Each teammate: clone and checkout their branch
 
 ```bash
-git clone https://github.com/<ORG_OR_USER>/saheli-pcos.git
-cd saheli-pcos
+git clone https://github.com/<ORG_OR_USER>/aai-pcos.git
+cd aai-pcos
 
 # Research
 git checkout research

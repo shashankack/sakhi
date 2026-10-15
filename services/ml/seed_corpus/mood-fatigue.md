@@ -5,7 +5,7 @@ urgency_default: soon
 
 # Mood and ongoing tiredness
 
-Living with unpredictable symptoms or body changes can affect mood. Persistent tiredness is a signal to look at sleep, mood, iron, thyroid, blood sugar, and overall health — not a single label.
+Living with unpredictable symptoms or body changes can affect mood. Persistent tiredness is a signal to look at sleep, mood, iron, thyroid, blood sugar, and overall health  not a single label.
 
 ## PCOS education context
 

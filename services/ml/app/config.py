@@ -14,7 +14,7 @@ EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 TOP_K = 4
 MIN_SCORE = 0.22
 
-# Teammate Ollama (tunnel to their :11434). Internal llama-server ports (62xxx) change — never tunnel those.
+# Teammate Ollama (tunnel to their :11434). Internal llama-server ports (62xxx) change  never tunnel those.
 OLLAMA_ENABLED = os.getenv("OLLAMA_ENABLED", "0").strip().lower() in {"1", "true", "yes"}
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434/api/generate").rstrip("/")
 if not OLLAMA_URL.endswith("/api/generate"):
@@ -23,18 +23,18 @@ OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
 OLLAMA_TIMEOUT_S = float(os.getenv("OLLAMA_TIMEOUT_S", "45"))
 
 DISCLAIMER_EN = (
-    "This is not a medical diagnosis. Sakhi shares educational information only. "
-    "Many symptoms overlap with other causes — talk to a qualified clinician. "
+    "This is not a medical diagnosis. Aai shares educational information only. "
+    "Many symptoms overlap with other causes  talk to a qualified clinician. "
     "In an emergency, call local emergency services."
 )
 DISCLAIMER_HI = (
-    "यह चिकित्सा निदान नहीं है। सखी केवल शैक्षिक जानकारी साझा करती है। "
-    "कई लक्षण अन्य कारणों से भी हो सकते हैं — योग्य चिकित्सक से बात करें। "
+    "यह चिकित्सा निदान नहीं है। आई केवल शैक्षिक जानकारी साझा करती है। "
+    "कई लक्षण अन्य कारणों से भी हो सकते हैं  योग्य चिकित्सक से बात करें। "
     "आपात स्थिति में स्थानीय आपातकालीन सेवाओं को कॉल करें।"
 )
 DISCLAIMER_KN = (
-    "ಇದು ವೈದ್ಯಕೀಯ ರೋಗನಿರ್ಣಯವಲ್ಲ. ಸಖಿ ಕೇವಲ ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ. "
-    "ಅನೇಕ ಲಕ್ಷಣಗಳು ಇತರ ಕಾರಣಗಳಿಂದಲೂ ಆಗಬಹುದು — ಅರ್ಹ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ. "
+    "ಇದು ವೈದ್ಯಕೀಯ ರೋಗನಿರ್ಣಯವಲ್ಲ. ಆಯಿ ಕೇವಲ ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ. "
+    "ಅನೇಕ ಲಕ್ಷಣಗಳು ಇತರ ಕಾರಣಗಳಿಂದಲೂ ಆಗಬಹುದು  ಅರ್ಹ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ. "
     "ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಸ್ಥಳೀಯ ತುರ್ತು ಸೇವೆಗಳನ್ನು ಕರೆ ಮಾಡಿ."
 )
 

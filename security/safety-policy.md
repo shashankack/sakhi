@@ -2,7 +2,7 @@
 
 ## Medical
 
-- Product is educational only — not a device, not a clinician, not a diagnosis.
+- Product is educational only  not a device, not a clinician, not a diagnosis.
 - Disclaimers required on UI and API responses.
 - Red-flag symptoms escalate to urgent/emergency guidance immediately.
 - No prescribing or dosage instructions.

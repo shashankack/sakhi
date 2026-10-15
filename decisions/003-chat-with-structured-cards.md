@@ -1,4 +1,4 @@
-# ADR 003 — Chat-first with structured cards
+# ADR 003  Chat-first with structured cards
 
 ## Status
 

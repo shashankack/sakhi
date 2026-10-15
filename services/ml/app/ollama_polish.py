@@ -74,7 +74,7 @@ def polish_reply(reply: str, user_message: str, language: str) -> str | None:
         return None
     lang_name = _LANG_NAME.get(language, "English")
     prompt = (
-        f"You polish educational health replies for Sakhi. Language: {lang_name} only.\n"
+        f"You polish educational health replies for Aai. Language: {lang_name} only.\n"
         "Rules:\n"
         "- Output ONLY the final reply paragraph(s). No title, no preamble, no 'Here is…'.\n"
         "- Keep it warm, clear, and under 3 short sentences (~90 words max).\n"

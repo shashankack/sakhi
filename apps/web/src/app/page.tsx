@@ -1,43 +1,68 @@
 import Link from "next/link";
+import { HomeHero } from "@/components/home-hero";
+
+const path = [
+  {
+    step: "01",
+    title: "Describe",
+    body: "Share what you have noticed in English, Hindi, Hinglish, or Kannada  typed or spoken.",
+  },
+  {
+    step: "02",
+    title: "Understand",
+    body: "Get calm educational themes grounded in our research corpus, with clear non-diagnostic language.",
+  },
+  {
+    step: "03",
+    title: "Prepare",
+    body: "Leave with clinician questions, nearby care options, and optional comfort essentials.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
-      <section className="home-hero">
-        <div className="hero-content">
-          <p className="eyebrow">A little more clarity, at your pace</p>
-          <h1>
-            Your body has a story.
-            <br />
-            <em>Let&apos;s make sense of it.</em>
-          </h1>
-          <p className="hero-copy">
-            A gentle place to learn about PCOS-related symptoms, find words for
-            what you&apos;re feeling, and prepare for a conversation with a
-            clinician.
-          </p>
-          <div className="hero-actions">
-            <Link className="button-primary" href="/chat">
-              Start a conversation <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className="text-link" href="/learn">
-              Explore the learning space
-            </Link>
-          </div>
-          <p className="hero-note">
-            No judgement. Just clear, educational information.
-          </p>
-        </div>
-        <div className="hero-art" aria-hidden="true" />
-      </section>
-      <section className="home-band">
-        <h2>Made for questions that don&apos;t always come easily.</h2>
+      <HomeHero />
+
+      <section className="home-promise" aria-labelledby="home-promise-title">
+        <h2 id="home-promise-title">A private moment to make sense of symptoms.</h2>
         <p>
-          Share symptoms in everyday language. Sakhi can offer general
-          education and care conversation starters—not a diagnosis or a
-          replacement for a health professional.
+          Aai listens without judgement and helps you prepare for a real care
+          conversation  not replace one.
         </p>
       </section>
+
+      <section className="home-path" aria-labelledby="home-path-title">
+        <header className="home-path-intro">
+          <p className="eyebrow">How it works</p>
+          <h2 id="home-path-title">Three quiet steps.</h2>
+        </header>
+        <ol className="home-path-list">
+          {path.map((item) => (
+            <li key={item.step}>
+              <span className="home-path-step">{item.step}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="home-continue" aria-labelledby="home-continue-title">
+        <div className="home-continue-copy">
+          <h2 id="home-continue-title">When you are ready, keep going.</h2>
+          <p>
+            Learn the themes, find hospitals near you, or start with whatever is
+            on your mind today.
+          </p>
+        </div>
+        <div className="home-continue-links">
+          <Link href="/learn">Learn about PCOS themes</Link>
+          <Link href="/care">Find care &amp; weather tips</Link>
+          <Link href="/chat">Start a conversation</Link>
+        </div>
+      </section>
+
     </>
   );
 }

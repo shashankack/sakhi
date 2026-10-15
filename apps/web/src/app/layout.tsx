@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
@@ -18,19 +19,12 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Sakhi — understand your symptoms",
-    template: "%s | Sakhi",
+    default: "Aai — understand your symptoms",
+    template: "%s | Aai",
   },
   description:
     "A calm place to learn about PCOS-related symptoms and prepare for a care conversation.",
 };
-
-const navigation = [
-  { href: "/", label: "Home" },
-  { href: "/chat", label: "Ask Sakhi" },
-  { href: "/learn", label: "Learn" },
-  { href: "/about", label: "About" },
-];
 
 export default function RootLayout({
   children,
@@ -50,28 +44,14 @@ export default function RootLayout({
             </span>
             <span>This is not a medical diagnosis.</span>
             <span className="disclaimer-detail">
-              Sakhi shares education, not a substitute for care.
+              Aai shares education, not a substitute for care.
             </span>
           </div>
-          <header className="site-header">
-            <Link className="wordmark" href="/" aria-label="Sakhi home">
-              sakhi<span className="wordmark-dot">.</span>
-            </Link>
-            <nav className="site-nav" aria-label="Main navigation">
-              {navigation.map((item) => (
-                <Link className="nav-link" href={item.href} key={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <Link className="header-cta" href="/chat">
-              Start a conversation <span aria-hidden="true">↗</span>
-            </Link>
-          </header>
+          <SiteHeader />
           <main>{children}</main>
           <footer className="site-footer">
             <Link className="footer-wordmark" href="/">
-              sakhi.
+              Aai.
             </Link>
             <p>Small steps toward feeling more informed.</p>
             <span>Education only · Not a diagnosis</span>

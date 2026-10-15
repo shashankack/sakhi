@@ -9,7 +9,7 @@ Cycles that come very late, skip months, or feel unpredictable are a common reas
 
 ## PCOS education context
 
-In PCOS education, irregular or infrequent periods are often discussed as one possible pattern linked to irregular ovulation. Clinicians use history, exam, and tests — never a symptom checklist alone.
+In PCOS education, irregular or infrequent periods are often discussed as one possible pattern linked to irregular ovulation. Clinicians use history, exam, and tests  never a symptom checklist alone.
 
 ## Other possible causes
 

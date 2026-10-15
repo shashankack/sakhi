@@ -16,7 +16,7 @@ Open http://localhost:3000. Run `npm run lint` and `npm run build` from
 
 ## Routes and behavior
 
-- `/` introduces Saheli and links to chat and learning.
+- `/` introduces Aai and links to chat and learning.
 - `/chat` sends only `POST /api/chat`, shows four composer demo prompts,
   optional theme chips, response cards, and an urgent panel before education
   when `red_flags` is non-empty.
@@ -36,7 +36,7 @@ language, engine, and disclaimer are rendered from the API response.
 
 shadcn/ui is configured in `apps/web/components.json`; generated primitives
 live in `apps/web/src/components/ui`. The chat uses its buttons, cards, badges,
-textarea, and tooltips, styled with the shared Saheli color variables.
+textarea, and tooltips, styled with the shared Aai color variables.
 
 Framer Motion powers chat entry, loading, and response transitions while
 respecting reduced-motion preferences. Topic chips include helper tooltips,
@@ -45,5 +45,5 @@ current in-memory session without making an API request.
 
 The visual system uses the supplied Lunara references for warm cream surfaces,
 plum/berry and sage accents, rounded cards, and Fraunces / Plus Jakarta Sans
-typography. These references inform styling only; Saheli does not track cycles
+typography. These references inform styling only; Aai does not track cycles
 or make fertility predictions.

@@ -5,7 +5,7 @@ urgency_default: urgent
 
 # When to seek urgent care
 
-Some symptoms need emergency or urgent care first — not PCOS education.
+Some symptoms need emergency or urgent care first  not PCOS education.
 
 ## Heavy bleeding with dizziness or fainting
 
@@ -29,4 +29,4 @@ Contact local emergency services or a crisis helpline immediately.
 
 ## Guidance
 
-Sakhi / educational tools cannot replace emergency services. Follow urgent guidance before any PCOS-related education cards.
+Aai / educational tools cannot replace emergency services. Follow urgent guidance before any PCOS-related education cards.

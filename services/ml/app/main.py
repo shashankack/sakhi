@@ -8,7 +8,7 @@ from .models import AnalyzeRequest, AnalyzeResponse
 from .pipeline import analyze
 
 app = FastAPI(
-    title="Sakhi ML Analyze",
+    title="Aai ML Analyze",
     description="Local RAG over research/seed corpus. Non-diagnostic education only.",
     version="0.1.0",
 )
@@ -28,14 +28,14 @@ def _startup() -> None:
 
 @app.get("/health")
 def health() -> dict:
-    return {"ok": True, "service": "sakhi-ml"}
+    return {"ok": True, "service": "aai-ml"}
 
 
 @app.post("/analyze", response_model=AnalyzeResponse)
 def post_analyze(body: AnalyzeRequest) -> AnalyzeResponse:
     try:
         return analyze(body)
-    except Exception as exc:  # noqa: BLE001 — return safe message to BFF
+    except Exception as exc:  # noqa: BLE001  return safe message to BFF
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 

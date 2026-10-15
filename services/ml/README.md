@@ -1,4 +1,4 @@
-# services/ml — Local RAG
+# services/ml  Local RAG
 
 **Owner:** RAG lead (Integration lead for this hackathon)  
 **STT teammate:** only `services/ml/stt/**`
@@ -25,8 +25,8 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 Port **8001** by default so a teammate model can use **8000**. BFF expects `http://127.0.0.1:8001/analyze`.
 
 - `GET /health`
-- `POST /analyze` — same JSON as `docs/contracts/API_CONTRACT.md`
-- `POST /reindex` — rebuild after corpus changes
+- `POST /analyze`  same JSON as `docs/contracts/API_CONTRACT.md`
+- `POST /reindex`  rebuild after corpus changes
 
 Rebuild CLI:
 

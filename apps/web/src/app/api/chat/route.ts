@@ -138,7 +138,7 @@ function createFallbackResponse(message: string): ChatResponse {
       : {
           urgency: themes.length ? "soon" : "routine",
           summary:
-            "Consider arranging a conversation with a GP or gynecologist. (Offline template — connect CHAT_API_URL for full RAG.)",
+            "Consider arranging a conversation with a GP or gynecologist. (Offline template  connect CHAT_API_URL for full RAG.)",
           questions: [
             "What changes should I keep track of before my visit?",
             "Could there be other explanations for these symptoms?",
@@ -155,7 +155,7 @@ function createFallbackResponse(message: string): ChatResponse {
         ]
       : [],
     disclaimer:
-      "This is not a medical diagnosis. Sakhi provides general education and cannot replace care from a qualified health professional.",
+      "This is not a medical diagnosis. Aai provides general education and cannot replace care from a qualified health professional.",
     engine: "template",
   };
 }

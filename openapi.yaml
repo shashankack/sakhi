@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
-  title: Saheli Chat API
+  title: Aai Chat API
   description: >
     Non-diagnostic women’s health symptom education API (PCOS-focused).
-    Local RAG only — no cloud LLM backends required.
+    Local RAG only  no cloud LLM backends required.
   version: 0.1.0
 servers:
   - url: http://localhost:3000

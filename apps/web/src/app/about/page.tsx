@@ -2,10 +2,10 @@ export default function AboutPage() {
   return (
     <div className="page-shell">
       <header className="page-intro">
-        <p className="eyebrow">About Sakhi</p>
+        <p className="eyebrow">About Aai</p>
         <h1>Clear information. Your choices stay yours.</h1>
         <p>
-          Sakhi is a symptom education experience focused on PCOS-related
+          Aai is a symptom education experience focused on PCOS-related
           questions. It is here to help you feel more prepared—not to make
           health decisions for you.
         </p>
@@ -14,7 +14,7 @@ export default function AboutPage() {
         <article className="info-card">
           <h2>Important to know</h2>
           <p>
-            <strong>This is not a medical diagnosis.</strong> Sakhi cannot
+            <strong>This is not a medical diagnosis.</strong> Aai cannot
             diagnose a condition, assess your personal health, or replace advice
             from a qualified healthcare professional.
           </p>

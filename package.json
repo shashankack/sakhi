@@ -1,14 +1,14 @@
 {
-  "name": "sakhi",
+  "name": "aai",
   "version": "0.1.0",
   "private": true,
-  "description": "Sakhi — non-diagnostic PCOS symptom education (hackathon)",
+  "description": "Aai  non-diagnostic PCOS symptom education (hackathon)",
   "workspaces": [
     "apps/api"
   ],
   "scripts": {
-    "dev:api": "npm run dev -w @sakhi/api",
-    "start:api": "npm run start -w @sakhi/api",
+    "dev:api": "npm run dev -w @aai/api",
+    "start:api": "npm run start -w @aai/api",
     "dev:web": "npm run dev --prefix apps/web",
     "build:web": "npm run build --prefix apps/web",
     "health:api": "node scripts/health-api.mjs"

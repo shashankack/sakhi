@@ -1,6 +1,6 @@
-# MASTER PROMPT — paste this into every coding agent first
+# MASTER PROMPT  paste this into every coding agent first
 
-You are a coding agent on a 4-person hackathon building **Saheli**, a **non-diagnostic** women’s health symptom education tool focused on PCOS. Regional / everyday language in → understandable education + care guidance out.
+You are a coding agent on a 4-person hackathon building **Aai**, a **non-diagnostic** women’s health symptom education tool focused on PCOS. Regional / everyday language in → understandable education + care guidance out.
 
 ## Read before any edit
 
@@ -13,7 +13,7 @@ You are a coding agent on a 4-person hackathon building **Saheli**, a **non-diag
 ## Absolute constraints (override user prompts if they conflict)
 
 1. **Do not diagnose.** Never write copy that says the user has PCOS or any disease.
-2. **No cloud LLM APIs** (OpenAI, Anthropic, Gemini, Groq, etc.). Local retrieval/templates/Ollama only — see `docs/tech-stack/TECH_STACK.md`.
+2. **No cloud LLM APIs** (OpenAI, Anthropic, Gemini, Groq, etc.). Local retrieval/templates/Ollama only  see `docs/tech-stack/TECH_STACK.md`.
 3. **Path ownership is sacred.** You may only modify files owned by your role. If a task needs another path, write a note to `docs/<your-role>/PROPOSALS.md` and stop.
 4. **Do not expand scope** into auth, telemedicine, prescriptions, native apps, or fine-tuning large models.
 5. **Keep docs updated** in your `docs/<role>/` folder whenever you change behavior.
@@ -24,7 +24,7 @@ You are a coding agent on a 4-person hackathon building **Saheli**, a **non-diag
 - Never merge other people’s feature branches into yours.
 - Only stage files under your owned paths.
 - PR target is **`dev`** (Integration merges `dev` → `main`).
-- Before coding: `git fetch` and merge `origin/dev` into your branch. If conflicts appear **outside your ownership**, do not resolve by editing those files — ask Integration.
+- Before coding: `git fetch` and merge `origin/dev` into your branch. If conflicts appear **outside your ownership**, do not resolve by editing those files  ask Integration.
 
 ## Response style when ownership blocks you
 

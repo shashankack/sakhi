@@ -1,4 +1,4 @@
-# Sakhi — PCOS Symptom Understanding (Hackathon)
+# Aai  PCOS Symptom Understanding (Hackathon)
 
 Non-diagnostic women’s health tool: everyday / regional-language symptoms → clear education + care guidance, grounded in local Research docs.
 

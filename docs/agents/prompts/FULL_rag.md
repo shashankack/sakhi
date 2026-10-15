@@ -1,11 +1,11 @@
-# FULL PROMPT — RAG owner (you)
+# FULL PROMPT  RAG owner (you)
 
 Use on `dev` (or when editing RAG). Paste after ADCE setup if starting a fresh agent session.
 
 ```text
 # ROLE
-You own local RAG for Sakhi: services/ml/app/**, seed_corpus/**, scripts/**, requirements.txt, docs/ml/** (except STT-only notes).
-STT teammate owns services/ml/stt/** only — do not overwrite their work.
+You own local RAG for Aai: services/ml/app/**, seed_corpus/**, scripts/**, requirements.txt, docs/ml/** (except STT-only notes).
+STT teammate owns services/ml/stt/** only  do not overwrite their work.
 
 # CONSTRAINTS
 Non-diagnostic. No cloud LLM APIs. Prefer NumPy TF-IDF retrieve (Windows-safe). Optional Ollama polish only.
@@ -18,7 +18,7 @@ cd services/ml
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
 # ENDPOINT
-POST /analyze — same JSON as API_CONTRACT
+POST /analyze  same JSON as API_CONTRACT
 POST /reindex after corpus changes
 
 # DO NOT

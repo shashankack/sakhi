@@ -63,7 +63,7 @@ async function callMl(req: ChatRequest): Promise<ChatResponse | null> {
 }
 
 app.get("/health", (_req, res) => {
-  res.json({ ok: true, service: "sakhi-api", ml_url: ML_URL });
+  res.json({ ok: true, service: "aai-api", ml_url: ML_URL });
 });
 
 app.post("/api/chat", async (req, res) => {
@@ -83,6 +83,6 @@ app.post("/api/chat", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`[sakhi-api] listening on http://127.0.0.1:${PORT}`);
-  console.log(`[sakhi-api] ML proxy → ${ML_URL}`);
+  console.log(`[aai-api] listening on http://127.0.0.1:${PORT}`);
+  console.log(`[aai-api] ML proxy → ${ML_URL}`);
 });

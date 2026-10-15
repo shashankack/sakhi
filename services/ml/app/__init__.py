@@ -1,1 +1,1 @@
-"""Sakhi local RAG analyze service."""
+"""Aai local RAG analyze service."""

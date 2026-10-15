@@ -3,6 +3,8 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUp,
+  Check,
+  ClipboardCopy,
   HeartHandshake,
   MessageCircleHeart,
   Mic,
@@ -11,6 +13,8 @@ import {
   Sparkles,
   Square,
 } from "lucide-react";
+import { EssentialsOffer } from "@/components/essentials-offer";
+import { NearbyCarePanel } from "@/components/nearby-care";
 import {
   FormEvent,
   KeyboardEvent,
@@ -97,7 +101,7 @@ function RedFlagPanel({ flags, summary }: { flags: RedFlag[]; summary: string })
       </div>
       <p>{summary}</p>
       <p className="alert-panel-note">
-        Sakhi cannot assess an emergency. If you may faint, ask someone nearby
+        Aai cannot assess an emergency. If you may faint, ask someone nearby
         to help you get care.
       </p>
       <ul>
@@ -161,7 +165,40 @@ function ThemeCards({
   );
 }
 
-function CareCard({ care }: { care: ChatResponse["care"] }) {
+function CareCard({
+  care,
+  reply,
+}: {
+  care: ChatResponse["care"];
+  reply: string;
+}) {
+  const [copied, setCopied] = useState<"questions" | "summary" | null>(null);
+
+  async function copyText(kind: "questions" | "summary", text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(kind);
+      window.setTimeout(() => setCopied(null), 1800);
+    } catch {
+      /* clipboard may be blocked */
+    }
+  }
+
+  const questionsBlock = care.questions.map((q, i) => `${i + 1}. ${q}`).join("\n");
+  const visitSummary = [
+    "Aai visit notes (education only  not a diagnosis)",
+    "",
+    reply,
+    "",
+    `Urgency: ${care.urgency}`,
+    care.summary,
+    care.questions.length
+      ? `\nQuestions for my clinician:\n${questionsBlock}`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
   return (
     <section className="care-panel" aria-label="Care next steps">
       <header className="care-topline">
@@ -176,7 +213,24 @@ function CareCard({ care }: { care: ChatResponse["care"] }) {
       <p className="care-summary">{care.summary}</p>
       {care.questions.length > 0 && (
         <>
-          <p className="care-ask">Questions you can take to a clinician</p>
+          <div className="care-ask-row">
+            <p className="care-ask">Questions you can take to a clinician</p>
+            <button
+              type="button"
+              className="care-copy-button"
+              onClick={() => copyText("questions", questionsBlock)}
+            >
+              {copied === "questions" ? (
+                <>
+                  <Check aria-hidden="true" size={13} /> Copied
+                </>
+              ) : (
+                <>
+                  <ClipboardCopy aria-hidden="true" size={13} /> Copy
+                </>
+              )}
+            </button>
+          </div>
           <ul>
             {care.questions.map((question) => (
               <li key={question}>{question}</li>
@@ -184,6 +238,23 @@ function CareCard({ care }: { care: ChatResponse["care"] }) {
           </ul>
         </>
       )}
+      <div className="care-actions">
+        <button
+          type="button"
+          className="care-copy-button care-copy-wide"
+          onClick={() => copyText("summary", visitSummary)}
+        >
+          {copied === "summary" ? (
+            <>
+              <Check aria-hidden="true" size={13} /> Visit notes copied
+            </>
+          ) : (
+            <>
+              <ClipboardCopy aria-hidden="true" size={13} /> Copy visit summary
+            </>
+          )}
+        </button>
+      </div>
     </section>
   );
 }
@@ -256,8 +327,13 @@ function AssistantMessage({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: reduceMotion ? 0 : 0.18, duration: 0.35, ease: easeOut }}
       >
-        <CareCard care={response.care} />
+        <CareCard care={response.care} reply={response.reply} />
       </motion.div>
+      <NearbyCarePanel emphasize={hasRedFlags} />
+      <EssentialsOffer
+        themeIds={response.themes.map((theme) => theme.id)}
+        urgent={hasRedFlags}
+      />
       <SourceChips sources={response.sources} />
       <p className="response-disclaimer">{response.disclaimer}</p>
     </div>
@@ -442,13 +518,13 @@ export default function ChatPage() {
           "error" in result &&
           typeof result.error === "string"
             ? result.error
-            : "Sakhi could not respond. Please try again.";
+            : "Aai could not respond. Please try again.";
         throw new Error(detail);
       }
       const normalized = normalizeChatResponse(result);
       if (!normalized) {
         throw new Error(
-          "Sakhi returned a response that did not match the chat contract.",
+          "Aai returned a response that did not match the chat contract.",
         );
       }
       const nextTurn: Turn = {
@@ -468,7 +544,7 @@ export default function ChatPage() {
       setError(
         caught instanceof Error
           ? caught.message
-          : "Sakhi could not respond. Please try again.",
+          : "Aai could not respond. Please try again.",
       );
     } finally {
       setIsLoading(false);

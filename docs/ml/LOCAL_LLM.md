@@ -12,7 +12,7 @@
 
 - Input = user message + retrieved chunks only.
 - Output = short reflective paragraph; no diagnosis language.
-- Do not let the model invent theme IDs — stick to retrieved/mapped IDs from code.
+- Do not let the model invent theme IDs  stick to retrieved/mapped IDs from code.
 
 ## Commands
 

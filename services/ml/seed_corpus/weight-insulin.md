@@ -5,7 +5,7 @@ urgency_default: soon
 
 # Weight and appetite changes
 
-Feeling hungrier, gaining weight around the midsection, or finding weight hard to lose can have many drivers — sleep, stress, medicines, thyroid, and how the body handles insulin and glucose.
+Feeling hungrier, gaining weight around the midsection, or finding weight hard to lose can have many drivers  sleep, stress, medicines, thyroid, and how the body handles insulin and glucose.
 
 ## PCOS education context
 

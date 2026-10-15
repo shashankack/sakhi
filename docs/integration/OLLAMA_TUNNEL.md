@@ -49,13 +49,13 @@ Restart RAG with:
 cd C:\crucifer\Hackathons\chaos\services\ml
 .\.venv\Scripts\Activate.ps1
 $env:OLLAMA_ENABLED="1"
-# Current (15 Oct 2026): miniature-quarter-circuit-obviously
-$env:OLLAMA_URL="https://miniature-quarter-circuit-obviously.trycloudflare.com/api/generate"
+# Current (15 Oct 2026): investments-brought-modem-screen
+$env:OLLAMA_URL="https://investments-brought-modem-screen.trycloudflare.com/api/generate"
 $env:OLLAMA_MODEL="llama3.2"
 uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
 Chat still goes: Vercel → our BFF tunnel → RAG `:8001` → (optional) his Ollama polish.
 
-Frontend: https://sakhi-seven-sigma.vercel.app/chat  
+Frontend: https://Aai-seven-sigma.vercel.app/chat  
 Needs `CHAT_API_URL` = our BFF cloudflared `…/api/chat` (already working if chat replies).

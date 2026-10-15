@@ -1,4 +1,4 @@
-# ADR 001 — No cloud LLM APIs
+# ADR 001  No cloud LLM APIs
 
 ## Status
 

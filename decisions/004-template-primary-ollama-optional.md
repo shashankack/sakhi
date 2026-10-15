@@ -1,4 +1,4 @@
-# ADR 004 — Templates primary, Ollama optional
+# ADR 004  Templates primary, Ollama optional
 
 ## Status
 

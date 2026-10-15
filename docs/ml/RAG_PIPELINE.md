@@ -4,7 +4,7 @@
 message
   → language hint (en/hi/hinglish)
   → red-flag rules
-  → TF-IDF embed query (pure NumPy — Windows-safe; no sklearn/torch required)
+  → TF-IDF embed query (pure NumPy  Windows-safe; no sklearn/torch required)
   → cosine top-k over index (research/corpus ∪ seed_corpus)
   → map theme_ids + keyword boost → THEME_IDS
   → fill reply / themes / care / sources / disclaimer

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://saheli.local/schemas/chat-request.schema.json",
+  "$id": "https://aai.local/schemas/chat-request.schema.json",
   "title": "ChatRequest",
   "type": "object",
   "required": ["message"],

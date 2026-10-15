@@ -1,4 +1,4 @@
-# Deploy Sakhi frontend on Vercel (chat + RAG only)
+# Deploy Aai frontend on Vercel (chat + RAG only)
 
 Frontend on Vercel. Your laptop runs **RAG + BFF** behind one Cloudflare tunnel.  
 STT / Whisper is **not** used.
@@ -34,20 +34,20 @@ Do **not** set `STT_API_URL`.
 
 ## Your PC (before / during demo)
 
-**Terminal 1 — RAG** (port **8001**; `:8000` reserved for teammate model)
+**Terminal 1  RAG** (port **8001**; `:8000` reserved for teammate model)
 ```powershell
 cd C:\crucifer\Hackathons\chaos\services\ml
 .\.venv\Scripts\Activate.ps1
 uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
-**Terminal 2 — BFF**
+**Terminal 2  BFF**
 ```powershell
 cd C:\crucifer\Hackathons\chaos
 npm run dev:api
 ```
 
-**Terminal 3 — tunnel**
+**Terminal 3  tunnel**
 ```powershell
 cloudflared tunnel --url http://127.0.0.1:3001
 ```
@@ -61,7 +61,7 @@ CHAT_API_URL=https://….trycloudflare.com/api/chat
 ## Deploy steps
 
 1. Push is already on `main` / `dev` (pull latest if needed).
-2. Vercel → Import `shashankack/sakhi` (or existing project).
+2. Vercel → Import `shashankack/Aai` (or existing project).
 3. Root Directory = `apps/web`.
 4. Add `CHAT_API_URL`.
 5. Deploy.

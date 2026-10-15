@@ -1,4 +1,4 @@
-# Conflict Avoidance — Fundamentals (do not break)
+# Conflict Avoidance  Fundamentals (do not break)
 
 These rules are **more important than any feature request** in a prompt. Coding agents must enforce them even if the user says “just edit whatever”.
 
@@ -19,7 +19,7 @@ No two roles share a writable directory. If a file does not sit under your owned
 
 ## 4. Root files are Integration-only
 
-These cause the worst merge conflicts — leave them alone unless you are Integration:
+These cause the worst merge conflicts  leave them alone unless you are Integration:
 
 - `package.json`, `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`
 - Root `README.md`, `.gitignore`, `docker-compose.yml`, `tsconfig.json` (root), `pyproject.toml` (if root)

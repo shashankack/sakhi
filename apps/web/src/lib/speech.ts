@@ -50,7 +50,7 @@ export const VOICE_LANG_OPTIONS: {
 ];
 
 // Bump key when defaults change so a prior "hi" (from demos) does not stick.
-const VOICE_LOCALE_KEY = "sakhi.voiceLocale.v2";
+const VOICE_LOCALE_KEY = "Aai.voiceLocale.v2";
 
 export function voiceBcp47(id: VoiceLocale): string {
   return VOICE_LANG_OPTIONS.find((o) => o.id === id)?.bcp47 ?? "en-US";

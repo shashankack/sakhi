@@ -1,11 +1,11 @@
-# FULL PROMPT — Install & initialize ADCE (everyone, do this FIRST)
+# FULL PROMPT  Install & initialize ADCE (everyone, do this FIRST)
 
-**How to use:** After cloning the Saheli repo and checking out your branch, paste **everything inside the fence below** into your coding agent.  
+**How to use:** After cloning the Aai repo and checking out your branch, paste **everything inside the fence below** into your coding agent.  
 When it finishes, paste your **role FULL prompt** (`FULL_ui.md` / `FULL_ml.md` / `FULL_research.md` / `FULL_integration.md`).
 
 ```text
 # ROLE
-You are setting up ADCE (Artifact-Driven Context Engine) for this teammate on the Saheli hackathon repo.
+You are setting up ADCE (Artifact-Driven Context Engine) for this teammate on the Aai hackathon repo.
 Do ONLY ADCE install + project init/scan/doctor. Do NOT build product features yet.
 Do NOT edit apps/, services/, or research/corpus during this setup.
 When setup is verified, tell me which role FULL prompt to paste next.
@@ -21,11 +21,11 @@ When setup is verified, tell me which role FULL prompt to paste next.
 - No destructive git (no force push, no reset --hard)
 - Do not overwrite filled knowledge docs with empty stubs
 
-# STEP 1 — Prerequisites
+# STEP 1  Prerequisites
 - Confirm Node.js works (`node -v`). Prefer Node 22+. If missing, tell the human to install it and stop.
-- Confirm we are in the Saheli repo root (docs/, AGENTS.md, apps/, research/, services/).
+- Confirm we are in the Aai repo root (docs/, AGENTS.md, apps/, research/, services/).
 
-# STEP 2 — Install ADCE CLI
+# STEP 2  Install ADCE CLI
 Check: `adce --version`
 
 If missing or broken, install with:
@@ -41,8 +41,8 @@ Notes:
 
 If global install fails (permissions), retry with an elevated terminal or fix npm prefix, then re-run `adce --version`. Keep trying until `adce` runs.
 
-# STEP 3 — Initialize this repo
-From Saheli repo root:
+# STEP 3  Initialize this repo
+From Aai repo root:
 
 ```powershell
 adce doctor
@@ -63,14 +63,14 @@ adce status
 
 Skip `adce login` / ML server unless the team explicitly shared `ADCE_ML_URL`. Core works offline; use `--skip-ml` later if needed.
 
-# STEP 4 — Smoke-test context
+# STEP 4  Smoke-test context
 ```powershell
-adce context --task "Saheli PCOS non-diagnostic local RAG setup smoke test" --format markdown
+adce context --task "Aai PCOS non-diagnostic local RAG setup smoke test" --format markdown
 ```
 
 Confirm MUST READ / CAUTION / TRUST ORDER sections appear (empty lists are OK).
 
-# STEP 5 — Report back
+# STEP 5  Report back
 Checklist for the human:
 - [ ] `adce --version` works
 - [ ] `adce doctor` has no errors
